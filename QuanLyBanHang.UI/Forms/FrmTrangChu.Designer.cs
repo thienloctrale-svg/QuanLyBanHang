@@ -39,7 +39,7 @@
             btnKiemTraSQL.TabIndex = 0;
             btnKiemTraSQL.Text = "Kiểm tra kết nối SQL";
             btnKiemTraSQL.UseVisualStyleBackColor = true;
-            btnKiemTraSQL.Click += this.btnKiemTraSQL_Click;
+            btnKiemTraSQL.Click += btnKiemTraSQL_Click;
             // 
             // FrmTrangChu
             // 
