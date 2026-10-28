@@ -1,4 +1,4 @@
-﻿namespace QuanLyBanHang.UI
+namespace QuanLyBanHang.UI
 {
     partial class FrmTrangChu
     {
@@ -29,31 +29,45 @@
         private void InitializeComponent()
         {
             btnKiemTraSQL = new Button();
+            btnQuanLyKhachHang = new Button();
             SuspendLayout();
             // 
             // btnKiemTraSQL
             // 
-            btnKiemTraSQL.Location = new Point(260, 186);
+            btnKiemTraSQL.Location = new Point(260, 160);
             btnKiemTraSQL.Name = "btnKiemTraSQL";
-            btnKiemTraSQL.Size = new Size(262, 29);
+            btnKiemTraSQL.Size = new Size(262, 40);
             btnKiemTraSQL.TabIndex = 0;
-            btnKiemTraSQL.Text = "Kiểm tra kết nối SQL";
+            btnKiemTraSQL.Text = "🔍 Kiểm tra kết nối SQL";
             btnKiemTraSQL.UseVisualStyleBackColor = true;
             btnKiemTraSQL.Click += btnKiemTraSQL_Click;
+            // 
+            // btnQuanLyKhachHang
+            // 
+            btnQuanLyKhachHang.Location = new Point(260, 220);
+            btnQuanLyKhachHang.Name = "btnQuanLyKhachHang";
+            btnQuanLyKhachHang.Size = new Size(262, 40);
+            btnQuanLyKhachHang.TabIndex = 1;
+            btnQuanLyKhachHang.Text = "👤 Quản lý khách hàng";
+            btnQuanLyKhachHang.UseVisualStyleBackColor = true;
+            btnQuanLyKhachHang.Click += btnQuanLyKhachHang_Click;
             // 
             // FrmTrangChu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnQuanLyKhachHang);
             Controls.Add(btnKiemTraSQL);
             Name = "FrmTrangChu";
-            Text = "FrmTrangChu";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Trang chủ - Quản lý bán hàng";
             ResumeLayout(false);
         }
 
         #endregion
 
         private Button btnKiemTraSQL;
+        private Button btnQuanLyKhachHang;
     }
 }

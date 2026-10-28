@@ -36,5 +36,11 @@ namespace QuanLyBanHang.UI
                     ? MessageBoxIcon.Information
                     : MessageBoxIcon.Error);
         }
+
+        private void btnQuanLyKhachHang_Click(object sender, EventArgs e)
+        {
+            var frm = new FrmKhachHang();
+            frm.ShowDialog();
+        }
     }
 }

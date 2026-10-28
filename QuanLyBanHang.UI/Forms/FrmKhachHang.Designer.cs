@@ -389,6 +389,7 @@ namespace QuanLyBanHang.UI
             btnDatLai.TabIndex = 6;
             btnDatLai.Text = "🔄 Đặt lại";
             btnDatLai.UseVisualStyleBackColor = false;
+            btnDatLai.Click += btnDatLai_Click;
             // 
             // btnTimKiem
             // 
@@ -404,6 +405,7 @@ namespace QuanLyBanHang.UI
             btnTimKiem.TabIndex = 5;
             btnTimKiem.Text = "🔍 Tìm kiếm";
             btnTimKiem.UseVisualStyleBackColor = false;
+            btnTimKiem.Click += btnTimKiem_Click;
             // 
             // cboLocLoaiKH
             // 
@@ -451,6 +453,7 @@ namespace QuanLyBanHang.UI
             dgvKhachHang.AllowUserToAddRows = false;
             dgvKhachHang.AllowUserToDeleteRows = false;
             dgvKhachHang.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvKhachHang.AutoGenerateColumns = false;
             dgvKhachHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvKhachHang.BackgroundColor = Color.White;
             dgvKhachHang.BorderStyle = BorderStyle.Fixed3D;
@@ -467,9 +470,11 @@ namespace QuanLyBanHang.UI
             dgvKhachHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvKhachHang.Size = new Size(1285, 438);
             dgvKhachHang.TabIndex = 0;
+            dgvKhachHang.CellClick += dgvKhachHang_CellClick;
             // 
             // colSTT
             // 
+            colSTT.DataPropertyName = "STT";
             colSTT.FillWeight = 45F;
             colSTT.HeaderText = "STT";
             colSTT.MinimumWidth = 6;
@@ -478,6 +483,7 @@ namespace QuanLyBanHang.UI
             // 
             // colMaKH
             // 
+            colMaKH.DataPropertyName = "MaKhachHang";
             colMaKH.FillWeight = 85F;
             colMaKH.HeaderText = "Mã KH";
             colMaKH.MinimumWidth = 6;
@@ -486,6 +492,7 @@ namespace QuanLyBanHang.UI
             // 
             // colTenKH
             // 
+            colTenKH.DataPropertyName = "TenKhachHang";
             colTenKH.FillWeight = 150F;
             colTenKH.HeaderText = "Tên khách hàng";
             colTenKH.MinimumWidth = 6;
@@ -494,6 +501,7 @@ namespace QuanLyBanHang.UI
             // 
             // colGioiTinh
             // 
+            colGioiTinh.DataPropertyName = "GioiTinh";
             colGioiTinh.FillWeight = 70F;
             colGioiTinh.HeaderText = "Giới tính";
             colGioiTinh.MinimumWidth = 6;
@@ -502,6 +510,8 @@ namespace QuanLyBanHang.UI
             // 
             // colNgaySinh
             // 
+            colNgaySinh.DataPropertyName = "NgaySinh";
+            colNgaySinh.DefaultCellStyle.Format = "dd/MM/yyyy";
             colNgaySinh.FillWeight = 85F;
             colNgaySinh.HeaderText = "Ngày sinh";
             colNgaySinh.MinimumWidth = 6;
@@ -510,6 +520,7 @@ namespace QuanLyBanHang.UI
             // 
             // colSoDienThoai
             // 
+            colSoDienThoai.DataPropertyName = "SoDienThoai";
             colSoDienThoai.FillWeight = 100F;
             colSoDienThoai.HeaderText = "Số điện thoại";
             colSoDienThoai.MinimumWidth = 6;
@@ -518,6 +529,7 @@ namespace QuanLyBanHang.UI
             // 
             // colEmail
             // 
+            colEmail.DataPropertyName = "Email";
             colEmail.FillWeight = 130F;
             colEmail.HeaderText = "Email";
             colEmail.MinimumWidth = 6;
@@ -526,6 +538,7 @@ namespace QuanLyBanHang.UI
             // 
             // colLoaiKH
             // 
+            colLoaiKH.DataPropertyName = "LoaiKhachHang";
             colLoaiKH.FillWeight = 100F;
             colLoaiKH.HeaderText = "Loại khách";
             colLoaiKH.MinimumWidth = 6;
@@ -534,6 +547,7 @@ namespace QuanLyBanHang.UI
             // 
             // colDiaChi
             // 
+            colDiaChi.DataPropertyName = "DiaChi";
             colDiaChi.FillWeight = 160F;
             colDiaChi.HeaderText = "Địa chỉ";
             colDiaChi.MinimumWidth = 6;
@@ -542,6 +556,7 @@ namespace QuanLyBanHang.UI
             // 
             // colTrangThai
             // 
+            colTrangThai.DataPropertyName = "TrangThai";
             colTrangThai.FillWeight = 95F;
             colTrangThai.HeaderText = "Trạng thái";
             colTrangThai.MinimumWidth = 6;
@@ -550,6 +565,7 @@ namespace QuanLyBanHang.UI
             // 
             // colGhiChu
             // 
+            colGhiChu.DataPropertyName = "GhiChu";
             colGhiChu.FillWeight = 120F;
             colGhiChu.HeaderText = "Ghi chú";
             colGhiChu.MinimumWidth = 6;
@@ -588,6 +604,7 @@ namespace QuanLyBanHang.UI
             btnHome.TabIndex = 0;
             btnHome.Text = "⌂ Trang chủ";
             btnHome.UseVisualStyleBackColor = false;
+            btnHome.Click += btnHome_Click;
             // 
             // btnLuu
             // 
@@ -668,6 +685,7 @@ namespace QuanLyBanHang.UI
             btnLamMoi.TabIndex = 5;
             btnLamMoi.Text = "🔄 Làm mới";
             btnLamMoi.UseVisualStyleBackColor = false;
+            btnLamMoi.Click += btnLamMoi_Click;
             // 
             // btnXuatExcel
             // 
@@ -700,6 +718,7 @@ namespace QuanLyBanHang.UI
             btnDong.TabIndex = 7;
             btnDong.Text = "🚪 Đóng";
             btnDong.UseVisualStyleBackColor = false;
+            btnDong.Click += btnDong_Click;
             // 
             // FrmKhachHang
             // 
@@ -715,6 +734,7 @@ namespace QuanLyBanHang.UI
             Name = "FrmKhachHang";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản lý khách hàng";
+            Load += FrmKhachHang_Load;
             grpThongTinKhachHang.ResumeLayout(false);
             grpThongTinKhachHang.PerformLayout();
             grpDanhSachKhachHang.ResumeLayout(false);
