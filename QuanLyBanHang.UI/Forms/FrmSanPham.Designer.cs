@@ -59,6 +59,7 @@
             colGiaBan = new DataGridViewTextBoxColumn();
             colSoLuong = new DataGridViewTextBoxColumn();
             colTrangThai = new DataGridViewTextBoxColumn();
+            btnHome = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSanPham).BeginInit();
             SuspendLayout();
@@ -214,60 +215,70 @@
             // btnThem
             // 
             btnThem.BackColor = Color.MediumSeaGreen;
+            btnThem.FlatStyle = FlatStyle.Flat;
+            btnThem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnThem.ForeColor = Color.White;
-            btnThem.Location = new Point(37, 278);
+            btnThem.Location = new Point(333, 278);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(94, 29);
             btnThem.TabIndex = 15;
-            btnThem.Text = "Thêm";
+            btnThem.Text = "➕ Thêm";
             btnThem.UseVisualStyleBackColor = false;
             btnThem.Click += btnThem_Click;
             // 
             // btnSua
             // 
-            btnSua.BackColor = Color.Blue;
+            btnSua.BackColor = Color.Olive;
+            btnSua.FlatStyle = FlatStyle.Flat;
+            btnSua.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnSua.ForeColor = SystemColors.ButtonHighlight;
-            btnSua.Location = new Point(237, 278);
+            btnSua.Location = new Point(498, 278);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(94, 29);
             btnSua.TabIndex = 16;
-            btnSua.Text = "Sửa";
+            btnSua.Text = "🛠️ Sửa";
             btnSua.UseVisualStyleBackColor = false;
             btnSua.Click += btnSua_Click;
             // 
             // btnXoa
             // 
             btnXoa.BackColor = Color.Red;
+            btnXoa.FlatStyle = FlatStyle.Flat;
+            btnXoa.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnXoa.ForeColor = Color.White;
-            btnXoa.Location = new Point(469, 278);
+            btnXoa.Location = new Point(659, 278);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(94, 29);
             btnXoa.TabIndex = 17;
-            btnXoa.Text = "Xóa";
+            btnXoa.Text = "❌ Xóa";
             btnXoa.UseVisualStyleBackColor = false;
             btnXoa.Click += btnXoa_Click;
             // 
             // btnLamMoi
             // 
             btnLamMoi.BackColor = Color.FromArgb(255, 128, 0);
+            btnLamMoi.FlatStyle = FlatStyle.Flat;
+            btnLamMoi.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnLamMoi.ForeColor = Color.White;
-            btnLamMoi.Location = new Point(679, 278);
+            btnLamMoi.Location = new Point(812, 278);
             btnLamMoi.Name = "btnLamMoi";
-            btnLamMoi.Size = new Size(94, 29);
+            btnLamMoi.Size = new Size(117, 29);
             btnLamMoi.TabIndex = 18;
-            btnLamMoi.Text = "Làm mới ";
+            btnLamMoi.Text = "🔁 Làm mới ";
             btnLamMoi.UseVisualStyleBackColor = false;
             btnLamMoi.Click += btnLamMoi_Click;
             // 
             // btnTimKiem
             // 
             btnTimKiem.BackColor = Color.Gray;
+            btnTimKiem.FlatStyle = FlatStyle.Flat;
+            btnTimKiem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnTimKiem.ForeColor = SystemColors.ButtonHighlight;
-            btnTimKiem.Location = new Point(908, 278);
+            btnTimKiem.Location = new Point(983, 278);
             btnTimKiem.Name = "btnTimKiem";
-            btnTimKiem.Size = new Size(94, 29);
+            btnTimKiem.Size = new Size(110, 29);
             btnTimKiem.TabIndex = 19;
-            btnTimKiem.Text = "Tìm kiếm";
+            btnTimKiem.Text = "🔍 Tìm kiếm";
             btnTimKiem.UseVisualStyleBackColor = false;
             btnTimKiem.Click += btnTimKiem_Click;
             // 
@@ -278,7 +289,7 @@
             dgvSanPham.Location = new Point(26, 345);
             dgvSanPham.Name = "dgvSanPham";
             dgvSanPham.RowHeadersWidth = 51;
-            dgvSanPham.Size = new Size(1067, 230);
+            dgvSanPham.Size = new Size(1067, 220);
             dgvSanPham.TabIndex = 20;
             // 
             // colMaSP
@@ -337,11 +348,26 @@
             colTrangThai.Name = "colTrangThai";
             colTrangThai.Width = 125;
             // 
+            // btnHome
+            // 
+            btnHome.BackColor = Color.Blue;
+            btnHome.FlatStyle = FlatStyle.Flat;
+            btnHome.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnHome.ForeColor = Color.White;
+            btnHome.Location = new Point(26, 278);
+            btnHome.Name = "btnHome";
+            btnHome.Size = new Size(94, 29);
+            btnHome.TabIndex = 21;
+            btnHome.Text = " ⌂ Home ";
+            btnHome.UseVisualStyleBackColor = false;
+            btnHome.Click += btnHome_Click;
+            // 
             // FrmSanPham
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1118, 604);
+            ClientSize = new Size(1189, 615);
+            Controls.Add(btnHome);
             Controls.Add(dgvSanPham);
             Controls.Add(btnThem);
             Controls.Add(btnSua);
@@ -391,5 +417,6 @@
         private DataGridViewTextBoxColumn colGiaBan;
         private DataGridViewTextBoxColumn colSoLuong;
         private DataGridViewTextBoxColumn colTrangThai;
+        private Button btnHome;
     }
 }

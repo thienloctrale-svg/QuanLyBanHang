@@ -245,5 +245,17 @@ namespace QuanLyBanHang.UI
                 txtTimKiem.ForeColor = Color.Gray; // Đổi sang màu xám cho giống chữ mờ
             }
         }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            // 1. Khởi tạo form Trang chủ với tên chính xác FrmTrangChu
+            FrmTrangChu frmTrangChu = new FrmTrangChu();
+
+            // 2. Hiển thị form trang chủ lên
+            frmTrangChu.Show();
+
+            // 3. Ẩn form quản lý sản phẩm hiện tại đi
+            this.Hide();
+        }
     }
 }
