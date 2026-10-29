@@ -15,6 +15,7 @@ namespace QuanLyBanHang.BLL
             string maHoaDon,
             DateTime ngayLap,
             string? maKhachHang,
+            int maTaiKhoan,
             decimal tongTien,
             string phuongThucThanhToan,
             List<ChiTietHoaDonDTO> chiTiet)
@@ -46,6 +47,7 @@ namespace QuanLyBanHang.BLL
                     maHoaDon,
                     ngayLap,
                     maKhachHang,
+                    maTaiKhoan,
                     tongTien,
                     phuongThucThanhToan,
                     chiTiet);

@@ -17,12 +17,29 @@ namespace QuanLyBanHang.UI
         private List<SanPhamDTO> danhSachSanPham =
             new List<SanPhamDTO>();
 
+
+
+        private TaiKhoanDTO taiKhoanDangNhap;
+
         public FrmBanHang()
         {
             InitializeComponent();
+            KhoiTaoSuKien();
+        }
 
-            // Gắn sự kiện cho các nút
+        public FrmBanHang(TaiKhoanDTO taiKhoan)
+        {
+            InitializeComponent();
+            KhoiTaoSuKien();
+
+            taiKhoanDangNhap = taiKhoan;
+            lblHoTen.Text = taiKhoanDangNhap.HoTen;
+        }
+
+        private void KhoiTaoSuKien()
+        {
             Load += FrmBanHang_Load;
+
             btnTimSanPham.Click += btnTimSanPham_Click;
             btnThemSanPham.Click += btnThemSanPham_Click;
             btnXoaSanPham.Click += btnXoaSanPham_Click;
@@ -475,6 +492,7 @@ namespace QuanLyBanHang.UI
                     maHoaDon,
                     dtpNgayLap.Value,
                     maKhachHang,
+                    taiKhoanDangNhap.MaTaiKhoan,
                     tongTien,
                     phuongThucThanhToan,
                     chiTiet);

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             btnKiemTraSQL = new Button();
+            btnBanHang = new Button();
             SuspendLayout();
             // 
             // btnKiemTraSQL
@@ -41,11 +42,22 @@
             btnKiemTraSQL.UseVisualStyleBackColor = true;
             btnKiemTraSQL.Click += btnKiemTraSQL_Click;
             // 
+            // btnBanHang
+            // 
+            btnBanHang.Location = new Point(312, 293);
+            btnBanHang.Name = "btnBanHang";
+            btnBanHang.Size = new Size(94, 29);
+            btnBanHang.TabIndex = 1;
+            btnBanHang.Text = "Bán hàng";
+            btnBanHang.UseVisualStyleBackColor = true;
+            btnBanHang.Click += btnBanHang_Click;
+            // 
             // FrmTrangChu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnBanHang);
             Controls.Add(btnKiemTraSQL);
             Name = "FrmTrangChu";
             Text = "FrmTrangChu";
@@ -55,5 +67,6 @@
         #endregion
 
         private Button btnKiemTraSQL;
+        private Button btnBanHang;
     }
 }

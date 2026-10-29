@@ -73,6 +73,7 @@
             rdoTienMat = new RadioButton();
             rdoChuyenKhoan = new RadioButton();
             rdoQuetThe = new RadioButton();
+            lblHoTen = new Label();
             grpThongTinHoaDon.SuspendLayout();
             grpSanPham.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSanPham).BeginInit();
@@ -101,6 +102,7 @@
             // 
             grpThongTinHoaDon.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             grpThongTinHoaDon.BackColor = Color.FromArgb(248, 250, 252);
+            grpThongTinHoaDon.Controls.Add(lblHoTen);
             grpThongTinHoaDon.Controls.Add(cboKhachHang);
             grpThongTinHoaDon.Controls.Add(dtpNgayLap);
             grpThongTinHoaDon.Controls.Add(txtMaHoaDon);
@@ -124,9 +126,9 @@
             cboKhachHang.DropDownWidth = 454;
             cboKhachHang.Font = new Font("Segoe UI", 9.5F);
             cboKhachHang.FormattingEnabled = true;
-            cboKhachHang.Location = new Point(840, 39);
+            cboKhachHang.Location = new Point(825, 39);
             cboKhachHang.Name = "cboKhachHang";
-            cboKhachHang.Size = new Size(454, 29);
+            cboKhachHang.Size = new Size(260, 29);
             cboKhachHang.TabIndex = 5;
             // 
             // dtpNgayLap
@@ -135,16 +137,16 @@
             dtpNgayLap.CustomFormat = "dd/MM/yyyy HH:mm";
             dtpNgayLap.Font = new Font("Segoe UI", 9.5F);
             dtpNgayLap.Format = DateTimePickerFormat.Custom;
-            dtpNgayLap.Location = new Point(491, 37);
+            dtpNgayLap.Location = new Point(475, 37);
             dtpNgayLap.Margin = new Padding(3, 4, 3, 4);
             dtpNgayLap.Name = "dtpNgayLap";
-            dtpNgayLap.Size = new Size(211, 29);
+            dtpNgayLap.Size = new Size(200, 29);
             dtpNgayLap.TabIndex = 3;
             // 
             // txtMaHoaDon
             // 
             txtMaHoaDon.Font = new Font("Segoe UI", 9.5F);
-            txtMaHoaDon.Location = new Point(143, 37);
+            txtMaHoaDon.Location = new Point(139, 37);
             txtMaHoaDon.Margin = new Padding(3, 4, 3, 4);
             txtMaHoaDon.Name = "txtMaHoaDon";
             txtMaHoaDon.Size = new Size(222, 29);
@@ -154,7 +156,7 @@
             // 
             lblKhachHang.AutoSize = true;
             lblKhachHang.Font = new Font("Segoe UI", 9.5F);
-            lblKhachHang.Location = new Point(737, 43);
+            lblKhachHang.Location = new Point(722, 43);
             lblKhachHang.Name = "lblKhachHang";
             lblKhachHang.Size = new Size(94, 21);
             lblKhachHang.TabIndex = 4;
@@ -164,7 +166,7 @@
             // 
             lblNgayLap.AutoSize = true;
             lblNgayLap.Font = new Font("Segoe UI", 9.5F);
-            lblNgayLap.Location = new Point(406, 43);
+            lblNgayLap.Location = new Point(392, 43);
             lblNgayLap.Name = "lblNgayLap";
             lblNgayLap.Size = new Size(75, 21);
             lblNgayLap.TabIndex = 2;
@@ -174,7 +176,7 @@
             // 
             lblMaHoaDon.AutoSize = true;
             lblMaHoaDon.Font = new Font("Segoe UI", 9.5F);
-            lblMaHoaDon.Location = new Point(29, 43);
+            lblMaHoaDon.Location = new Point(27, 43);
             lblMaHoaDon.Name = "lblMaHoaDon";
             lblMaHoaDon.Size = new Size(97, 21);
             lblMaHoaDon.TabIndex = 0;
@@ -651,6 +653,17 @@
             rdoQuetThe.Text = "Quẹt thẻ";
             rdoQuetThe.UseVisualStyleBackColor = true;
             // 
+            // lblHoTen
+            // 
+            lblHoTen.AutoSize = true;
+            lblHoTen.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHoTen.ForeColor = Color.RoyalBlue;
+            lblHoTen.Location = new Point(1144, 43);
+            lblHoTen.Name = "lblHoTen";
+            lblHoTen.Size = new Size(71, 23);
+            lblHoTen.TabIndex = 6;
+            lblHoTen.Text = "*Họ Tên";
+            // 
             // FrmBanHang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -731,5 +744,6 @@
         private RadioButton rdoTienMat;
         private RadioButton rdoChuyenKhoan;
         private RadioButton rdoQuetThe;
+        private Label lblHoTen;
     }
 }

@@ -11,6 +11,7 @@ namespace QuanLyBanHang.DAL
             string maHoaDon,
             DateTime ngayLap,
             string? maKhachHang,
+            int maTaiKhoan,
             decimal tongTien,
             string phuongThucThanhToan,
             List<ChiTietHoaDonDTO> chiTiet)
@@ -25,10 +26,10 @@ namespace QuanLyBanHang.DAL
                     {
                         string sqlHoaDon = @"
                             INSERT INTO HoaDon
-                                (MaHoaDon, NgayLap, MaKhachHang,
+                                (MaHoaDon, NgayLap, MaKhachHang, MaTaiKhoan,
                                  TongTien, TrangThai)
                             VALUES
-                                (@MaHoaDon, @NgayLap, @MaKhachHang,
+                                (@MaHoaDon, @NgayLap, @MaKhachHang, @MaTaiKhoan,
                                  @TongTien, @TrangThai);";
 
                         using (SqlCommand cmd = new SqlCommand(
@@ -36,6 +37,7 @@ namespace QuanLyBanHang.DAL
                         {
                             cmd.Parameters.AddWithValue("@MaHoaDon", maHoaDon);
                             cmd.Parameters.AddWithValue("@NgayLap", ngayLap);
+                            cmd.Parameters.AddWithValue("@MaTaiKhoan", maTaiKhoan);
                             cmd.Parameters.AddWithValue(
                                 "@MaKhachHang",
                                 string.IsNullOrWhiteSpace(maKhachHang)
