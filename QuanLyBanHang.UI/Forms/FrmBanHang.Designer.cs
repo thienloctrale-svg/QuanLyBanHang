@@ -30,25 +30,30 @@
         {
             lblTieuDeForm = new Label();
             grpThongTinHoaDon = new GroupBox();
-            cboKhachHang = new ComboBox();
-            dtpNgayLap = new DateTimePicker();
-            txtMaHoaDon = new TextBox();
-            lblKhachHang = new Label();
-            lblNgayLap = new Label();
             lblMaHoaDon = new Label();
+            lblNgayLap = new Label();
+            lblKhachHang = new Label();
+            txtMaHoaDon = new TextBox();
+            dtpNgayLap = new DateTimePicker();
+            cboKhachHang = new ComboBox();
             grpSanPham = new GroupBox();
-            dgvSanPham = new DataGridView();
-            colSP_Ma = new DataGridViewTextBoxColumn();
-            colSP_Ten = new DataGridViewTextBoxColumn();
-            colSP_DVT = new DataGridViewTextBoxColumn();
-            colSP_Gia = new DataGridViewTextBoxColumn();
-            colSP_TonKho = new DataGridViewTextBoxColumn();
-            btnThemSanPham = new Button();
-            numSoLuong = new NumericUpDown();
-            lblSoLuong = new Label();
-            btnTimSanPham = new Button();
-            txtTimSanPham = new TextBox();
             grpGioHang = new GroupBox();
+            grpThanhToan = new GroupBox();
+            txtTimSanPham = new TextBox();
+            btnTimSanPham = new Button();
+            lblSoLuong = new Label();
+            numSoLuong = new NumericUpDown();
+            btnThemSanPham = new Button();
+            btnCapNhatSoLuong = new Button();
+            btnXoaSanPham = new Button();
+            lblTieuDeTongTien = new Label();
+            lblTongTien = new Label();
+            btnLamMoi = new Button();
+            btnHuyHoaDon = new Button();
+            btnDong = new Button();
+            btnLuuHoaDon = new Button();
+            panelChucNang = new Panel();
+            dgvSanPham = new DataGridView();
             dgvGioHang = new DataGridView();
             colGH_STT = new DataGridViewTextBoxColumn();
             colGH_Ma = new DataGridViewTextBoxColumn();
@@ -57,33 +62,20 @@
             colGH_SoLuong = new DataGridViewTextBoxColumn();
             colGH_DonGia = new DataGridViewTextBoxColumn();
             colGH_ThanhTien = new DataGridViewTextBoxColumn();
-            btnXoaSanPham = new Button();
-            btnCapNhatSoLuong = new Button();
-            grpThanhToan = new GroupBox();
-            lblTongTien = new Label();
-            lblTieuDeTongTien = new Label();
-            btnLamMoi = new Button();
-            btnHuyHoaDon = new Button();
-            btnDong = new Button();
-            btnLuuHoaDon = new Button();
-            panelChucNang = new Panel();
+            colSP_Ma = new DataGridViewTextBoxColumn();
+            colSP_Ten = new DataGridViewTextBoxColumn();
+            colSP_DVT = new DataGridViewTextBoxColumn();
+            colSP_Gia = new DataGridViewTextBoxColumn();
+            colSP_TonKho = new DataGridViewTextBoxColumn();
             bntHome = new Button();
-            grpPhuongThucThanhToan = new GroupBox();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            rdoTienMat = new RadioButton();
-            rdoChuyenKhoan = new RadioButton();
-            rdoQuetThe = new RadioButton();
-            lblHoTen = new Label();
             grpThongTinHoaDon.SuspendLayout();
             grpSanPham.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSanPham).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numSoLuong).BeginInit();
             grpGioHang.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvGioHang).BeginInit();
             grpThanhToan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numSoLuong).BeginInit();
             panelChucNang.SuspendLayout();
-            grpPhuongThucThanhToan.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSanPham).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvGioHang).BeginInit();
             SuspendLayout();
             // 
             // lblTieuDeForm
@@ -102,7 +94,6 @@
             // 
             grpThongTinHoaDon.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             grpThongTinHoaDon.BackColor = Color.FromArgb(248, 250, 252);
-            grpThongTinHoaDon.Controls.Add(lblHoTen);
             grpThongTinHoaDon.Controls.Add(cboKhachHang);
             grpThongTinHoaDon.Controls.Add(dtpNgayLap);
             grpThongTinHoaDon.Controls.Add(txtMaHoaDon);
@@ -120,16 +111,44 @@
             grpThongTinHoaDon.TabStop = false;
             grpThongTinHoaDon.Text = "A. Thông tin hóa đơn";
             // 
-            // cboKhachHang
+            // lblMaHoaDon
             // 
-            cboKhachHang.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            cboKhachHang.DropDownWidth = 454;
-            cboKhachHang.Font = new Font("Segoe UI", 9.5F);
-            cboKhachHang.FormattingEnabled = true;
-            cboKhachHang.Location = new Point(825, 39);
-            cboKhachHang.Name = "cboKhachHang";
-            cboKhachHang.Size = new Size(260, 29);
-            cboKhachHang.TabIndex = 5;
+            lblMaHoaDon.AutoSize = true;
+            lblMaHoaDon.Font = new Font("Segoe UI", 9.5F);
+            lblMaHoaDon.Location = new Point(29, 43);
+            lblMaHoaDon.Name = "lblMaHoaDon";
+            lblMaHoaDon.Size = new Size(97, 21);
+            lblMaHoaDon.TabIndex = 0;
+            lblMaHoaDon.Text = "Mã hóa đơn:";
+            // 
+            // lblNgayLap
+            // 
+            lblNgayLap.AutoSize = true;
+            lblNgayLap.Font = new Font("Segoe UI", 9.5F);
+            lblNgayLap.Location = new Point(406, 43);
+            lblNgayLap.Name = "lblNgayLap";
+            lblNgayLap.Size = new Size(75, 21);
+            lblNgayLap.TabIndex = 2;
+            lblNgayLap.Text = "Ngày lập:";
+            // 
+            // lblKhachHang
+            // 
+            lblKhachHang.AutoSize = true;
+            lblKhachHang.Font = new Font("Segoe UI", 9.5F);
+            lblKhachHang.Location = new Point(737, 43);
+            lblKhachHang.Name = "lblKhachHang";
+            lblKhachHang.Size = new Size(94, 21);
+            lblKhachHang.TabIndex = 4;
+            lblKhachHang.Text = "Khách hàng:";
+            // 
+            // txtMaHoaDon
+            // 
+            txtMaHoaDon.Font = new Font("Segoe UI", 9.5F);
+            txtMaHoaDon.Location = new Point(143, 37);
+            txtMaHoaDon.Margin = new Padding(3, 4, 3, 4);
+            txtMaHoaDon.Name = "txtMaHoaDon";
+            txtMaHoaDon.Size = new Size(222, 29);
+            txtMaHoaDon.TabIndex = 1;
             // 
             // dtpNgayLap
             // 
@@ -137,50 +156,22 @@
             dtpNgayLap.CustomFormat = "dd/MM/yyyy HH:mm";
             dtpNgayLap.Font = new Font("Segoe UI", 9.5F);
             dtpNgayLap.Format = DateTimePickerFormat.Custom;
-            dtpNgayLap.Location = new Point(475, 37);
+            dtpNgayLap.Location = new Point(491, 37);
             dtpNgayLap.Margin = new Padding(3, 4, 3, 4);
             dtpNgayLap.Name = "dtpNgayLap";
-            dtpNgayLap.Size = new Size(200, 29);
+            dtpNgayLap.Size = new Size(211, 29);
             dtpNgayLap.TabIndex = 3;
             // 
-            // txtMaHoaDon
+            // cboKhachHang
             // 
-            txtMaHoaDon.Font = new Font("Segoe UI", 9.5F);
-            txtMaHoaDon.Location = new Point(139, 37);
-            txtMaHoaDon.Margin = new Padding(3, 4, 3, 4);
-            txtMaHoaDon.Name = "txtMaHoaDon";
-            txtMaHoaDon.Size = new Size(222, 29);
-            txtMaHoaDon.TabIndex = 1;
-            // 
-            // lblKhachHang
-            // 
-            lblKhachHang.AutoSize = true;
-            lblKhachHang.Font = new Font("Segoe UI", 9.5F);
-            lblKhachHang.Location = new Point(722, 43);
-            lblKhachHang.Name = "lblKhachHang";
-            lblKhachHang.Size = new Size(94, 21);
-            lblKhachHang.TabIndex = 4;
-            lblKhachHang.Text = "Khách hàng:";
-            // 
-            // lblNgayLap
-            // 
-            lblNgayLap.AutoSize = true;
-            lblNgayLap.Font = new Font("Segoe UI", 9.5F);
-            lblNgayLap.Location = new Point(392, 43);
-            lblNgayLap.Name = "lblNgayLap";
-            lblNgayLap.Size = new Size(75, 21);
-            lblNgayLap.TabIndex = 2;
-            lblNgayLap.Text = "Ngày lập:";
-            // 
-            // lblMaHoaDon
-            // 
-            lblMaHoaDon.AutoSize = true;
-            lblMaHoaDon.Font = new Font("Segoe UI", 9.5F);
-            lblMaHoaDon.Location = new Point(27, 43);
-            lblMaHoaDon.Name = "lblMaHoaDon";
-            lblMaHoaDon.Size = new Size(97, 21);
-            lblMaHoaDon.TabIndex = 0;
-            lblMaHoaDon.Text = "Mã hóa đơn:";
+            cboKhachHang.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cboKhachHang.DropDownWidth = 454;
+            cboKhachHang.Font = new Font("Segoe UI", 9.5F);
+            cboKhachHang.FormattingEnabled = true;
+            cboKhachHang.Location = new Point(840, 39);
+            cboKhachHang.Name = "cboKhachHang";
+            cboKhachHang.Size = new Size(454, 29);
+            cboKhachHang.TabIndex = 5;
             // 
             // grpSanPham
             // 
@@ -198,134 +189,10 @@
             grpSanPham.Margin = new Padding(3, 4, 3, 4);
             grpSanPham.Name = "grpSanPham";
             grpSanPham.Padding = new Padding(3, 4, 3, 4);
-            grpSanPham.Size = new Size(589, 536);
+            grpSanPham.Size = new Size(589, 633);
             grpSanPham.TabIndex = 2;
             grpSanPham.TabStop = false;
             grpSanPham.Text = "B. Tìm kiếm và chọn sản phẩm";
-            // 
-            // dgvSanPham
-            // 
-            dgvSanPham.AllowUserToAddRows = false;
-            dgvSanPham.AllowUserToDeleteRows = false;
-            dgvSanPham.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvSanPham.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvSanPham.BackgroundColor = Color.White;
-            dgvSanPham.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSanPham.Columns.AddRange(new DataGridViewColumn[] { colSP_Ma, colSP_Ten, colSP_DVT, colSP_Gia, colSP_TonKho });
-            dgvSanPham.Location = new Point(17, 91);
-            dgvSanPham.Margin = new Padding(3, 4, 3, 4);
-            dgvSanPham.MultiSelect = false;
-            dgvSanPham.Name = "dgvSanPham";
-            dgvSanPham.ReadOnly = true;
-            dgvSanPham.RowHeadersVisible = false;
-            dgvSanPham.RowHeadersWidth = 51;
-            dgvSanPham.Size = new Size(554, 371);
-            dgvSanPham.TabIndex = 2;
-            // 
-            // colSP_Ma
-            // 
-            colSP_Ma.FillWeight = 84.89307F;
-            colSP_Ma.HeaderText = "Mã SP";
-            colSP_Ma.MinimumWidth = 6;
-            colSP_Ma.Name = "colSP_Ma";
-            colSP_Ma.ReadOnly = true;
-            // 
-            // colSP_Ten
-            // 
-            colSP_Ten.FillWeight = 160.427826F;
-            colSP_Ten.HeaderText = "Tên sản phẩm";
-            colSP_Ten.MinimumWidth = 6;
-            colSP_Ten.Name = "colSP_Ten";
-            colSP_Ten.ReadOnly = true;
-            // 
-            // colSP_DVT
-            // 
-            colSP_DVT.FillWeight = 84.89307F;
-            colSP_DVT.HeaderText = "ĐVT";
-            colSP_DVT.MinimumWidth = 6;
-            colSP_DVT.Name = "colSP_DVT";
-            colSP_DVT.ReadOnly = true;
-            // 
-            // colSP_Gia
-            // 
-            colSP_Gia.FillWeight = 84.89307F;
-            colSP_Gia.HeaderText = "Giá bán";
-            colSP_Gia.MinimumWidth = 6;
-            colSP_Gia.Name = "colSP_Gia";
-            colSP_Gia.ReadOnly = true;
-            // 
-            // colSP_TonKho
-            // 
-            colSP_TonKho.FillWeight = 84.89307F;
-            colSP_TonKho.HeaderText = "Tồn kho";
-            colSP_TonKho.MinimumWidth = 6;
-            colSP_TonKho.Name = "colSP_TonKho";
-            colSP_TonKho.ReadOnly = true;
-            // 
-            // btnThemSanPham
-            // 
-            btnThemSanPham.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnThemSanPham.BackColor = Color.FromArgb(239, 246, 255);
-            btnThemSanPham.Cursor = Cursors.Hand;
-            btnThemSanPham.FlatStyle = FlatStyle.Flat;
-            btnThemSanPham.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            btnThemSanPham.ForeColor = Color.FromArgb(29, 78, 216);
-            btnThemSanPham.Location = new Point(211, 476);
-            btnThemSanPham.Margin = new Padding(3, 4, 3, 4);
-            btnThemSanPham.Name = "btnThemSanPham";
-            btnThemSanPham.Size = new Size(183, 45);
-            btnThemSanPham.TabIndex = 5;
-            btnThemSanPham.Text = "➕ Thêm vào giỏ";
-            btnThemSanPham.UseVisualStyleBackColor = false;
-            // 
-            // numSoLuong
-            // 
-            numSoLuong.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            numSoLuong.Font = new Font("Segoe UI", 9.5F);
-            numSoLuong.Location = new Point(103, 483);
-            numSoLuong.Margin = new Padding(3, 4, 3, 4);
-            numSoLuong.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
-            numSoLuong.Name = "numSoLuong";
-            numSoLuong.Size = new Size(91, 29);
-            numSoLuong.TabIndex = 4;
-            numSoLuong.TextAlign = HorizontalAlignment.Right;
-            numSoLuong.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            // 
-            // lblSoLuong
-            // 
-            lblSoLuong.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            lblSoLuong.AutoSize = true;
-            lblSoLuong.Font = new Font("Segoe UI", 9.5F);
-            lblSoLuong.Location = new Point(21, 487);
-            lblSoLuong.Name = "lblSoLuong";
-            lblSoLuong.Size = new Size(76, 21);
-            lblSoLuong.TabIndex = 3;
-            lblSoLuong.Text = "Số lượng:";
-            // 
-            // btnTimSanPham
-            // 
-            btnTimSanPham.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnTimSanPham.BackColor = Color.FromArgb(241, 245, 249);
-            btnTimSanPham.Cursor = Cursors.Hand;
-            btnTimSanPham.Font = new Font("Segoe UI", 9.5F);
-            btnTimSanPham.Location = new Point(446, 36);
-            btnTimSanPham.Margin = new Padding(3, 4, 3, 4);
-            btnTimSanPham.Name = "btnTimSanPham";
-            btnTimSanPham.Size = new Size(126, 40);
-            btnTimSanPham.TabIndex = 1;
-            btnTimSanPham.Text = "🔍 Tìm kiếm";
-            btnTimSanPham.UseVisualStyleBackColor = false;
-            // 
-            // txtTimSanPham
-            // 
-            txtTimSanPham.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtTimSanPham.Font = new Font("Segoe UI", 9.5F);
-            txtTimSanPham.Location = new Point(17, 40);
-            txtTimSanPham.Margin = new Padding(3, 4, 3, 4);
-            txtTimSanPham.Name = "txtTimSanPham";
-            txtTimSanPham.PlaceholderText = "Nhập mã hoặc tên sản phẩm...";
-            txtTimSanPham.Size = new Size(417, 29);
-            txtTimSanPham.TabIndex = 0;
             // 
             // grpGioHang
             // 
@@ -345,96 +212,87 @@
             grpGioHang.TabStop = false;
             grpGioHang.Text = "C. Giỏ hàng / Chi tiết hóa đơn";
             // 
-            // dgvGioHang
+            // grpThanhToan
             // 
-            dgvGioHang.AllowUserToAddRows = false;
-            dgvGioHang.AllowUserToDeleteRows = false;
-            dgvGioHang.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvGioHang.BackgroundColor = Color.White;
-            dgvGioHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGioHang.Columns.AddRange(new DataGridViewColumn[] { colGH_STT, colGH_Ma, colGH_Ten, colGH_DVT, colGH_SoLuong, colGH_DonGia, colGH_ThanhTien });
-            dgvGioHang.Location = new Point(17, 36);
-            dgvGioHang.Margin = new Padding(3, 4, 3, 4);
-            dgvGioHang.MultiSelect = false;
-            dgvGioHang.Name = "dgvGioHang";
-            dgvGioHang.ReadOnly = true;
-            dgvGioHang.RowHeadersVisible = false;
-            dgvGioHang.RowHeadersWidth = 51;
-            dgvGioHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvGioHang.Size = new Size(685, 387);
-            dgvGioHang.TabIndex = 0;
+            grpThanhToan.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            grpThanhToan.BackColor = Color.FromArgb(248, 250, 252);
+            grpThanhToan.Controls.Add(lblTongTien);
+            grpThanhToan.Controls.Add(lblTieuDeTongTien);
+            grpThanhToan.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            grpThanhToan.ForeColor = Color.FromArgb(30, 41, 59);
+            grpThanhToan.Location = new Point(617, 689);
+            grpThanhToan.Margin = new Padding(3, 4, 3, 4);
+            grpThanhToan.Name = "grpThanhToan";
+            grpThanhToan.Padding = new Padding(3, 4, 3, 4);
+            grpThanhToan.Size = new Size(719, 121);
+            grpThanhToan.TabIndex = 4;
+            grpThanhToan.TabStop = false;
+            grpThanhToan.Text = "D. Thanh toán";
             // 
-            // colGH_STT
+            // txtTimSanPham
             // 
-            colGH_STT.HeaderText = "STT";
-            colGH_STT.MinimumWidth = 6;
-            colGH_STT.Name = "colGH_STT";
-            colGH_STT.ReadOnly = true;
-            colGH_STT.Width = 50;
+            txtTimSanPham.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtTimSanPham.Font = new Font("Segoe UI", 9.5F);
+            txtTimSanPham.Location = new Point(17, 40);
+            txtTimSanPham.Margin = new Padding(3, 4, 3, 4);
+            txtTimSanPham.Name = "txtTimSanPham";
+            txtTimSanPham.PlaceholderText = "Nhập mã hoặc tên sản phẩm...";
+            txtTimSanPham.Size = new Size(417, 29);
+            txtTimSanPham.TabIndex = 0;
             // 
-            // colGH_Ma
+            // btnTimSanPham
             // 
-            colGH_Ma.HeaderText = "Mã SP";
-            colGH_Ma.MinimumWidth = 6;
-            colGH_Ma.Name = "colGH_Ma";
-            colGH_Ma.ReadOnly = true;
-            colGH_Ma.Width = 90;
+            btnTimSanPham.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnTimSanPham.BackColor = Color.FromArgb(241, 245, 249);
+            btnTimSanPham.Cursor = Cursors.Hand;
+            btnTimSanPham.Font = new Font("Segoe UI", 9.5F);
+            btnTimSanPham.Location = new Point(446, 36);
+            btnTimSanPham.Margin = new Padding(3, 4, 3, 4);
+            btnTimSanPham.Name = "btnTimSanPham";
+            btnTimSanPham.Size = new Size(126, 40);
+            btnTimSanPham.TabIndex = 1;
+            btnTimSanPham.Text = "🔍 Tìm kiếm";
+            btnTimSanPham.UseVisualStyleBackColor = false;
             // 
-            // colGH_Ten
+            // lblSoLuong
             // 
-            colGH_Ten.HeaderText = "Tên sản phẩm";
-            colGH_Ten.MinimumWidth = 6;
-            colGH_Ten.Name = "colGH_Ten";
-            colGH_Ten.ReadOnly = true;
-            colGH_Ten.Width = 170;
+            lblSoLuong.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            lblSoLuong.AutoSize = true;
+            lblSoLuong.Font = new Font("Segoe UI", 9.5F);
+            lblSoLuong.Location = new Point(21, 580);
+            lblSoLuong.Name = "lblSoLuong";
+            lblSoLuong.Size = new Size(76, 21);
+            lblSoLuong.TabIndex = 3;
+            lblSoLuong.Text = "Số lượng:";
             // 
-            // colGH_DVT
+            // numSoLuong
             // 
-            colGH_DVT.HeaderText = "ĐVT";
-            colGH_DVT.MinimumWidth = 6;
-            colGH_DVT.Name = "colGH_DVT";
-            colGH_DVT.ReadOnly = true;
-            colGH_DVT.Width = 70;
+            numSoLuong.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            numSoLuong.Font = new Font("Segoe UI", 9.5F);
+            numSoLuong.Location = new Point(103, 576);
+            numSoLuong.Margin = new Padding(3, 4, 3, 4);
+            numSoLuong.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
+            numSoLuong.Name = "numSoLuong";
+            numSoLuong.Size = new Size(91, 29);
+            numSoLuong.TabIndex = 4;
+            numSoLuong.TextAlign = HorizontalAlignment.Right;
+            numSoLuong.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
-            // colGH_SoLuong
+            // btnThemSanPham
             // 
-            colGH_SoLuong.HeaderText = "Số lượng";
-            colGH_SoLuong.MinimumWidth = 6;
-            colGH_SoLuong.Name = "colGH_SoLuong";
-            colGH_SoLuong.ReadOnly = true;
-            colGH_SoLuong.Width = 85;
-            // 
-            // colGH_DonGia
-            // 
-            colGH_DonGia.HeaderText = "Đơn giá";
-            colGH_DonGia.MinimumWidth = 6;
-            colGH_DonGia.Name = "colGH_DonGia";
-            colGH_DonGia.ReadOnly = true;
-            colGH_DonGia.Width = 125;
-            // 
-            // colGH_ThanhTien
-            // 
-            colGH_ThanhTien.HeaderText = "Thành tiền";
-            colGH_ThanhTien.MinimumWidth = 6;
-            colGH_ThanhTien.Name = "colGH_ThanhTien";
-            colGH_ThanhTien.ReadOnly = true;
-            colGH_ThanhTien.Width = 125;
-            // 
-            // btnXoaSanPham
-            // 
-            btnXoaSanPham.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnXoaSanPham.BackColor = Color.FromArgb(254, 242, 242);
-            btnXoaSanPham.Cursor = Cursors.Hand;
-            btnXoaSanPham.FlatStyle = FlatStyle.Flat;
-            btnXoaSanPham.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnXoaSanPham.ForeColor = Color.FromArgb(185, 28, 28);
-            btnXoaSanPham.Location = new Point(217, 440);
-            btnXoaSanPham.Margin = new Padding(3, 4, 3, 4);
-            btnXoaSanPham.Name = "btnXoaSanPham";
-            btnXoaSanPham.Size = new Size(171, 44);
-            btnXoaSanPham.TabIndex = 2;
-            btnXoaSanPham.Text = "❌ Xóa sản phẩm";
-            btnXoaSanPham.UseVisualStyleBackColor = false;
+            btnThemSanPham.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnThemSanPham.BackColor = Color.FromArgb(239, 246, 255);
+            btnThemSanPham.Cursor = Cursors.Hand;
+            btnThemSanPham.FlatStyle = FlatStyle.Flat;
+            btnThemSanPham.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            btnThemSanPham.ForeColor = Color.FromArgb(29, 78, 216);
+            btnThemSanPham.Location = new Point(211, 569);
+            btnThemSanPham.Margin = new Padding(3, 4, 3, 4);
+            btnThemSanPham.Name = "btnThemSanPham";
+            btnThemSanPham.Size = new Size(183, 45);
+            btnThemSanPham.TabIndex = 5;
+            btnThemSanPham.Text = "➕ Thêm vào giỏ";
+            btnThemSanPham.UseVisualStyleBackColor = false;
             // 
             // btnCapNhatSoLuong
             // 
@@ -452,22 +310,32 @@
             btnCapNhatSoLuong.Text = "🔄 Cập nhật số lượng";
             btnCapNhatSoLuong.UseVisualStyleBackColor = false;
             // 
-            // grpThanhToan
+            // btnXoaSanPham
             // 
-            grpThanhToan.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            grpThanhToan.BackColor = Color.FromArgb(248, 250, 252);
-            grpThanhToan.Controls.Add(lblTongTien);
-            grpThanhToan.Controls.Add(lblTieuDeTongTien);
-            grpThanhToan.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            grpThanhToan.ForeColor = Color.FromArgb(30, 41, 59);
-            grpThanhToan.Location = new Point(617, 689);
-            grpThanhToan.Margin = new Padding(3, 4, 3, 4);
-            grpThanhToan.Name = "grpThanhToan";
-            grpThanhToan.Padding = new Padding(3, 4, 3, 4);
-            grpThanhToan.Size = new Size(719, 121);
-            grpThanhToan.TabIndex = 4;
-            grpThanhToan.TabStop = false;
-            grpThanhToan.Text = "E. Thanh toán";
+            btnXoaSanPham.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnXoaSanPham.BackColor = Color.FromArgb(254, 242, 242);
+            btnXoaSanPham.Cursor = Cursors.Hand;
+            btnXoaSanPham.FlatStyle = FlatStyle.Flat;
+            btnXoaSanPham.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnXoaSanPham.ForeColor = Color.FromArgb(185, 28, 28);
+            btnXoaSanPham.Location = new Point(217, 440);
+            btnXoaSanPham.Margin = new Padding(3, 4, 3, 4);
+            btnXoaSanPham.Name = "btnXoaSanPham";
+            btnXoaSanPham.Size = new Size(171, 44);
+            btnXoaSanPham.TabIndex = 2;
+            btnXoaSanPham.Text = "❌ Xóa sản phẩm";
+            btnXoaSanPham.UseVisualStyleBackColor = false;
+            // 
+            // lblTieuDeTongTien
+            // 
+            lblTieuDeTongTien.AutoSize = true;
+            lblTieuDeTongTien.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblTieuDeTongTien.ForeColor = Color.FromArgb(51, 65, 85);
+            lblTieuDeTongTien.Location = new Point(23, 56);
+            lblTieuDeTongTien.Name = "lblTieuDeTongTien";
+            lblTieuDeTongTien.Size = new Size(265, 28);
+            lblTieuDeTongTien.TabIndex = 0;
+            lblTieuDeTongTien.Text = "TỔNG TIỀN THANH TOÁN:";
             // 
             // lblTongTien
             // 
@@ -480,17 +348,6 @@
             lblTongTien.TabIndex = 1;
             lblTongTien.Text = "0 VNĐ";
             lblTongTien.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // lblTieuDeTongTien
-            // 
-            lblTieuDeTongTien.AutoSize = true;
-            lblTieuDeTongTien.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblTieuDeTongTien.ForeColor = Color.FromArgb(51, 65, 85);
-            lblTieuDeTongTien.Location = new Point(23, 56);
-            lblTieuDeTongTien.Name = "lblTieuDeTongTien";
-            lblTieuDeTongTien.Size = new Size(265, 28);
-            lblTieuDeTongTien.TabIndex = 0;
-            lblTieuDeTongTien.Text = "TỔNG TIỀN THANH TOÁN:";
             // 
             // btnLamMoi
             // 
@@ -571,6 +428,140 @@
             panelChucNang.Size = new Size(1353, 83);
             panelChucNang.TabIndex = 5;
             // 
+            // dgvSanPham
+            // 
+            dgvSanPham.AllowUserToAddRows = false;
+            dgvSanPham.AllowUserToDeleteRows = false;
+            dgvSanPham.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvSanPham.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvSanPham.BackgroundColor = Color.White;
+            dgvSanPham.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSanPham.Columns.AddRange(new DataGridViewColumn[] { colSP_Ma, colSP_Ten, colSP_DVT, colSP_Gia, colSP_TonKho });
+            dgvSanPham.Location = new Point(17, 91);
+            dgvSanPham.Margin = new Padding(3, 4, 3, 4);
+            dgvSanPham.MultiSelect = false;
+            dgvSanPham.Name = "dgvSanPham";
+            dgvSanPham.ReadOnly = true;
+            dgvSanPham.RowHeadersVisible = false;
+            dgvSanPham.RowHeadersWidth = 51;
+            dgvSanPham.Size = new Size(554, 460);
+            dgvSanPham.TabIndex = 2;
+            // 
+            // dgvGioHang
+            // 
+            dgvGioHang.AllowUserToAddRows = false;
+            dgvGioHang.AllowUserToDeleteRows = false;
+            dgvGioHang.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvGioHang.BackgroundColor = Color.White;
+            dgvGioHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvGioHang.Columns.AddRange(new DataGridViewColumn[] { colGH_STT, colGH_Ma, colGH_Ten, colGH_DVT, colGH_SoLuong, colGH_DonGia, colGH_ThanhTien });
+            dgvGioHang.Location = new Point(17, 36);
+            dgvGioHang.Margin = new Padding(3, 4, 3, 4);
+            dgvGioHang.MultiSelect = false;
+            dgvGioHang.Name = "dgvGioHang";
+            dgvGioHang.ReadOnly = true;
+            dgvGioHang.RowHeadersVisible = false;
+            dgvGioHang.RowHeadersWidth = 51;
+            dgvGioHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvGioHang.Size = new Size(685, 387);
+            dgvGioHang.TabIndex = 0;
+            // 
+            // colGH_STT
+            // 
+            colGH_STT.HeaderText = "STT";
+            colGH_STT.MinimumWidth = 6;
+            colGH_STT.Name = "colGH_STT";
+            colGH_STT.ReadOnly = true;
+            colGH_STT.Width = 50;
+            // 
+            // colGH_Ma
+            // 
+            colGH_Ma.HeaderText = "Mã SP";
+            colGH_Ma.MinimumWidth = 6;
+            colGH_Ma.Name = "colGH_Ma";
+            colGH_Ma.ReadOnly = true;
+            colGH_Ma.Width = 90;
+            // 
+            // colGH_Ten
+            // 
+            colGH_Ten.HeaderText = "Tên sản phẩm";
+            colGH_Ten.MinimumWidth = 6;
+            colGH_Ten.Name = "colGH_Ten";
+            colGH_Ten.ReadOnly = true;
+            colGH_Ten.Width = 170;
+            // 
+            // colGH_DVT
+            // 
+            colGH_DVT.HeaderText = "ĐVT";
+            colGH_DVT.MinimumWidth = 6;
+            colGH_DVT.Name = "colGH_DVT";
+            colGH_DVT.ReadOnly = true;
+            colGH_DVT.Width = 70;
+            // 
+            // colGH_SoLuong
+            // 
+            colGH_SoLuong.HeaderText = "Số lượng";
+            colGH_SoLuong.MinimumWidth = 6;
+            colGH_SoLuong.Name = "colGH_SoLuong";
+            colGH_SoLuong.ReadOnly = true;
+            colGH_SoLuong.Width = 85;
+            // 
+            // colGH_DonGia
+            // 
+            colGH_DonGia.HeaderText = "Đơn giá";
+            colGH_DonGia.MinimumWidth = 6;
+            colGH_DonGia.Name = "colGH_DonGia";
+            colGH_DonGia.ReadOnly = true;
+            colGH_DonGia.Width = 125;
+            // 
+            // colGH_ThanhTien
+            // 
+            colGH_ThanhTien.HeaderText = "Thành tiền";
+            colGH_ThanhTien.MinimumWidth = 6;
+            colGH_ThanhTien.Name = "colGH_ThanhTien";
+            colGH_ThanhTien.ReadOnly = true;
+            colGH_ThanhTien.Width = 125;
+            // 
+            // colSP_Ma
+            // 
+            colSP_Ma.FillWeight = 84.89307F;
+            colSP_Ma.HeaderText = "Mã SP";
+            colSP_Ma.MinimumWidth = 6;
+            colSP_Ma.Name = "colSP_Ma";
+            colSP_Ma.ReadOnly = true;
+            // 
+            // colSP_Ten
+            // 
+            colSP_Ten.FillWeight = 160.427826F;
+            colSP_Ten.HeaderText = "Tên sản phẩm";
+            colSP_Ten.MinimumWidth = 6;
+            colSP_Ten.Name = "colSP_Ten";
+            colSP_Ten.ReadOnly = true;
+            // 
+            // colSP_DVT
+            // 
+            colSP_DVT.FillWeight = 84.89307F;
+            colSP_DVT.HeaderText = "ĐVT";
+            colSP_DVT.MinimumWidth = 6;
+            colSP_DVT.Name = "colSP_DVT";
+            colSP_DVT.ReadOnly = true;
+            // 
+            // colSP_Gia
+            // 
+            colSP_Gia.FillWeight = 84.89307F;
+            colSP_Gia.HeaderText = "Giá bán";
+            colSP_Gia.MinimumWidth = 6;
+            colSP_Gia.Name = "colSP_Gia";
+            colSP_Gia.ReadOnly = true;
+            // 
+            // colSP_TonKho
+            // 
+            colSP_TonKho.FillWeight = 84.89307F;
+            colSP_TonKho.HeaderText = "Tồn kho";
+            colSP_TonKho.MinimumWidth = 6;
+            colSP_TonKho.Name = "colSP_TonKho";
+            colSP_TonKho.ReadOnly = true;
+            // 
             // bntHome
             // 
             bntHome.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -587,90 +578,12 @@
             bntHome.Text = "⌂ Home";
             bntHome.UseVisualStyleBackColor = false;
             // 
-            // grpPhuongThucThanhToan
-            // 
-            grpPhuongThucThanhToan.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            grpPhuongThucThanhToan.Controls.Add(tableLayoutPanel1);
-            grpPhuongThucThanhToan.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
-            grpPhuongThucThanhToan.ForeColor = Color.FromArgb(30, 41, 59);
-            grpPhuongThucThanhToan.Location = new Point(17, 725);
-            grpPhuongThucThanhToan.Name = "grpPhuongThucThanhToan";
-            grpPhuongThucThanhToan.Size = new Size(589, 85);
-            grpPhuongThucThanhToan.TabIndex = 6;
-            grpPhuongThucThanhToan.TabStop = false;
-            grpPhuongThucThanhToan.Text = "D. Phương thức thanh toán";
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Controls.Add(rdoTienMat, 0, 0);
-            tableLayoutPanel1.Controls.Add(rdoChuyenKhoan, 1, 0);
-            tableLayoutPanel1.Controls.Add(rdoQuetThe, 2, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 25);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(583, 57);
-            tableLayoutPanel1.TabIndex = 0;
-            // 
-            // rdoTienMat
-            // 
-            rdoTienMat.Anchor = AnchorStyles.None;
-            rdoTienMat.AutoSize = true;
-            rdoTienMat.Checked = true;
-            rdoTienMat.Location = new Point(48, 16);
-            rdoTienMat.Name = "rdoTienMat";
-            rdoTienMat.Size = new Size(98, 25);
-            rdoTienMat.TabIndex = 0;
-            rdoTienMat.TabStop = true;
-            rdoTienMat.Text = "Tiền mặt";
-            rdoTienMat.TextAlign = ContentAlignment.MiddleCenter;
-            rdoTienMat.UseVisualStyleBackColor = true;
-            // 
-            // rdoChuyenKhoan
-            // 
-            rdoChuyenKhoan.Anchor = AnchorStyles.None;
-            rdoChuyenKhoan.AutoSize = true;
-            rdoChuyenKhoan.Location = new Point(220, 16);
-            rdoChuyenKhoan.Name = "rdoChuyenKhoan";
-            rdoChuyenKhoan.Size = new Size(141, 25);
-            rdoChuyenKhoan.TabIndex = 1;
-            rdoChuyenKhoan.Text = "Chuyển khoản";
-            rdoChuyenKhoan.UseVisualStyleBackColor = true;
-            // 
-            // rdoQuetThe
-            // 
-            rdoQuetThe.Anchor = AnchorStyles.None;
-            rdoQuetThe.AutoSize = true;
-            rdoQuetThe.Location = new Point(437, 16);
-            rdoQuetThe.Name = "rdoQuetThe";
-            rdoQuetThe.Size = new Size(97, 25);
-            rdoQuetThe.TabIndex = 2;
-            rdoQuetThe.Text = "Quẹt thẻ";
-            rdoQuetThe.UseVisualStyleBackColor = true;
-            // 
-            // lblHoTen
-            // 
-            lblHoTen.AutoSize = true;
-            lblHoTen.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblHoTen.ForeColor = Color.RoyalBlue;
-            lblHoTen.Location = new Point(1144, 43);
-            lblHoTen.Name = "lblHoTen";
-            lblHoTen.Size = new Size(71, 23);
-            lblHoTen.TabIndex = 6;
-            lblHoTen.Text = "*Họ Tên";
-            // 
             // FrmBanHang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(248, 250, 252);
             ClientSize = new Size(1353, 908);
-            Controls.Add(grpPhuongThucThanhToan);
             Controls.Add(panelChucNang);
             Controls.Add(grpThanhToan);
             Controls.Add(grpGioHang);
@@ -684,16 +597,13 @@
             grpThongTinHoaDon.PerformLayout();
             grpSanPham.ResumeLayout(false);
             grpSanPham.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSanPham).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numSoLuong).EndInit();
             grpGioHang.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvGioHang).EndInit();
             grpThanhToan.ResumeLayout(false);
             grpThanhToan.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numSoLuong).EndInit();
             panelChucNang.ResumeLayout(false);
-            grpPhuongThucThanhToan.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSanPham).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvGioHang).EndInit();
             ResumeLayout(false);
         }
 
@@ -739,11 +649,5 @@
         private DataGridViewTextBoxColumn colSP_Gia;
         private DataGridViewTextBoxColumn colSP_TonKho;
         private Button bntHome;
-        private GroupBox grpPhuongThucThanhToan;
-        private TableLayoutPanel tableLayoutPanel1;
-        private RadioButton rdoTienMat;
-        private RadioButton rdoChuyenKhoan;
-        private RadioButton rdoQuetThe;
-        private Label lblHoTen;
     }
 }

@@ -2,7 +2,6 @@ using QuanLyBanHang.BLL;
 using QuanLyBanHang.Logging;
 using System;
 using System.Windows.Forms;
-using QuanLyBanHang.DTO;
 
 namespace QuanLyBanHang.UI
 {
@@ -11,15 +10,6 @@ namespace QuanLyBanHang.UI
         public FrmTrangChu()
         {
             InitializeComponent();
-
-        }
-
-        public TaiKhoanDTO TaiKhoanDangNhap { get; private set; }
-
-        public FrmTrangChu(TaiKhoanDTO taiKhoan)
-        {
-            InitializeComponent();
-            TaiKhoanDangNhap = taiKhoan;
         }
 
         private void btnKiemTraSQL_Click(object sender, EventArgs e)
@@ -47,16 +37,10 @@ namespace QuanLyBanHang.UI
                     : MessageBoxIcon.Error);
         }
 
-        private void btnBanHang_Click(object sender, EventArgs e)
+        private void btnQuanLyKhachHang_Click(object sender, EventArgs e)
         {
-            if (TaiKhoanDangNhap == null)
-            {
-                MessageBox.Show("Không tìm thấy thông tin tài khoản đăng nhập!");
-                return;
-            }
-
-            FrmBanHang formBanHang = new FrmBanHang(TaiKhoanDangNhap);
-            formBanHang.ShowDialog();
+            var frm = new FrmKhachHang();
+            frm.ShowDialog();
         }
     }
 }

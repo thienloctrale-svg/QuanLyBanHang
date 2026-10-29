@@ -59,15 +59,5 @@ namespace QuanLyBanHang.UI.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _7_quan_hai_san_ngon_nhat_vung_tau_4 {
-            get {
-                object obj = ResourceManager.GetObject("7-quan-hai-san-ngon-nhat-vung-tau-4", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

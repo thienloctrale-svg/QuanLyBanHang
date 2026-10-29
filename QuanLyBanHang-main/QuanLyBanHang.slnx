@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="QuanLyBanHang.BLL/QuanLyBanHang.BLL.csproj" />
+  <Project Path="QuanLyBanHang.DAL/QuanLyBanHang.DAL.csproj" />
+  <Project Path="QuanLyBanHang.DTO/QuanLyBanHang.DTO.csproj" />
+  <Project Path="QuanLyBanHang.Logging/QuanLyBanHang.Logging.csproj" />
+  <Project Path="QuanLyBanHang.Tests/QuanLyBanHang.Tests.csproj" />
+  <Project Path="QuanLyBanHang.UI/QuanLyBanHang.UI.csproj" />
+</Solution>
