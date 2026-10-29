@@ -621,6 +621,7 @@ namespace QuanLyBanHang.UI
             btnLuu.TabIndex = 1;
             btnLuu.Text = "💾 Lưu";
             btnLuu.UseVisualStyleBackColor = false;
+            btnLuu.Click += btnLuu_Click;
             // 
             // btnThem
             // 
@@ -637,6 +638,7 @@ namespace QuanLyBanHang.UI
             btnThem.TabIndex = 2;
             btnThem.Text = "➕ Thêm mới";
             btnThem.UseVisualStyleBackColor = false;
+            btnThem.Click += btnThem_Click;
             // 
             // btnSua
             // 
@@ -653,6 +655,7 @@ namespace QuanLyBanHang.UI
             btnSua.TabIndex = 3;
             btnSua.Text = "✏ Sửa";
             btnSua.UseVisualStyleBackColor = false;
+            btnSua.Click += btnSua_Click;
             // 
             // btnXoa
             // 
@@ -669,6 +672,7 @@ namespace QuanLyBanHang.UI
             btnXoa.TabIndex = 4;
             btnXoa.Text = "🗑 Xóa";
             btnXoa.UseVisualStyleBackColor = false;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnLamMoi
             // 
@@ -702,6 +706,7 @@ namespace QuanLyBanHang.UI
             btnXuatExcel.TabIndex = 6;
             btnXuatExcel.Text = "📊 Xuất Excel";
             btnXuatExcel.UseVisualStyleBackColor = false;
+            btnXuatExcel.Click += btnXuatExcel_Click;
             // 
             // btnDong
             // 
