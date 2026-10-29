@@ -24,8 +24,8 @@ namespace QuanLyBanHang.UI
                 AppLogger.Information(
                     "Ung dung QuanLyBanHang da khoi dong.");
 
-                // Mo man hinh Quan ly khach hang de kiem tra giao dien va chuc nang
-                Application.Run(new FrmKhachHang());
+                // Mo man hinh chinh
+                Application.Run(new FrmDangNhap());
             }
             catch (Exception ex)
             {
