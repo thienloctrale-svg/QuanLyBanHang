@@ -30,6 +30,7 @@
         {
             lblTieuDeForm = new Label();
             grpThongTinHoaDon = new GroupBox();
+            lblHoTen = new Label();
             cboKhachHang = new ComboBox();
             dtpNgayLap = new DateTimePicker();
             txtMaHoaDon = new TextBox();
@@ -67,13 +68,12 @@
             btnDong = new Button();
             btnLuuHoaDon = new Button();
             panelChucNang = new Panel();
-            bntHome = new Button();
+            btnHome = new Button();
             grpPhuongThucThanhToan = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             rdoTienMat = new RadioButton();
             rdoChuyenKhoan = new RadioButton();
             rdoQuetThe = new RadioButton();
-            lblHoTen = new Label();
             grpThongTinHoaDon.SuspendLayout();
             grpSanPham.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSanPham).BeginInit();
@@ -119,6 +119,17 @@
             grpThongTinHoaDon.TabIndex = 1;
             grpThongTinHoaDon.TabStop = false;
             grpThongTinHoaDon.Text = "A. Thông tin hóa đơn";
+            // 
+            // lblHoTen
+            // 
+            lblHoTen.AutoSize = true;
+            lblHoTen.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHoTen.ForeColor = Color.RoyalBlue;
+            lblHoTen.Location = new Point(1144, 43);
+            lblHoTen.Name = "lblHoTen";
+            lblHoTen.Size = new Size(71, 23);
+            lblHoTen.TabIndex = 6;
+            lblHoTen.Text = "*Họ Tên";
             // 
             // cboKhachHang
             // 
@@ -559,7 +570,7 @@
             // panelChucNang
             // 
             panelChucNang.BackColor = Color.FromArgb(241, 245, 249);
-            panelChucNang.Controls.Add(bntHome);
+            panelChucNang.Controls.Add(btnHome);
             panelChucNang.Controls.Add(btnLuuHoaDon);
             panelChucNang.Controls.Add(btnDong);
             panelChucNang.Controls.Add(btnHuyHoaDon);
@@ -571,21 +582,21 @@
             panelChucNang.Size = new Size(1353, 83);
             panelChucNang.TabIndex = 5;
             // 
-            // bntHome
+            // btnHome
             // 
-            bntHome.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            bntHome.BackColor = Color.FromArgb(37, 99, 235);
-            bntHome.Cursor = Cursors.Hand;
-            bntHome.FlatStyle = FlatStyle.Flat;
-            bntHome.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            bntHome.ForeColor = Color.White;
-            bntHome.Location = new Point(30, 17);
-            bntHome.Margin = new Padding(3, 4, 3, 4);
-            bntHome.Name = "bntHome";
-            bntHome.Size = new Size(150, 48);
-            bntHome.TabIndex = 4;
-            bntHome.Text = "⌂ Home";
-            bntHome.UseVisualStyleBackColor = false;
+            btnHome.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnHome.BackColor = Color.FromArgb(37, 99, 235);
+            btnHome.Cursor = Cursors.Hand;
+            btnHome.FlatStyle = FlatStyle.Flat;
+            btnHome.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnHome.ForeColor = Color.White;
+            btnHome.Location = new Point(30, 17);
+            btnHome.Margin = new Padding(3, 4, 3, 4);
+            btnHome.Name = "btnHome";
+            btnHome.Size = new Size(150, 48);
+            btnHome.TabIndex = 4;
+            btnHome.Text = "⌂ Home";
+            btnHome.UseVisualStyleBackColor = false;
             // 
             // grpPhuongThucThanhToan
             // 
@@ -652,17 +663,6 @@
             rdoQuetThe.TabIndex = 2;
             rdoQuetThe.Text = "Quẹt thẻ";
             rdoQuetThe.UseVisualStyleBackColor = true;
-            // 
-            // lblHoTen
-            // 
-            lblHoTen.AutoSize = true;
-            lblHoTen.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblHoTen.ForeColor = Color.RoyalBlue;
-            lblHoTen.Location = new Point(1144, 43);
-            lblHoTen.Name = "lblHoTen";
-            lblHoTen.Size = new Size(71, 23);
-            lblHoTen.TabIndex = 6;
-            lblHoTen.Text = "*Họ Tên";
             // 
             // FrmBanHang
             // 
@@ -738,7 +738,7 @@
         private DataGridViewTextBoxColumn colSP_DVT;
         private DataGridViewTextBoxColumn colSP_Gia;
         private DataGridViewTextBoxColumn colSP_TonKho;
-        private Button bntHome;
+        private Button btnHome;
         private GroupBox grpPhuongThucThanhToan;
         private TableLayoutPanel tableLayoutPanel1;
         private RadioButton rdoTienMat;
