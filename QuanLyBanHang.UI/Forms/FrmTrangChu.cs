@@ -49,14 +49,20 @@ namespace QuanLyBanHang.UI
 
         private void btnBanHang_Click(object sender, EventArgs e)
         {
-            if (TaiKhoanDangNhap == null)
+            // Kiểm tra trực tiếp qua biến static của FrmDangNhap
+            if (FrmDangNhap.TaiKhoanDangNhap == null)
             {
-                MessageBox.Show("Không tìm thấy thông tin tài khoản đăng nhập!");
+                MessageBox.Show("Vui lòng đăng nhập lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                FrmDangNhap login = new FrmDangNhap();
+                login.Show();
+                this.Hide();
                 return;
             }
 
-            FrmBanHang formBanHang = new FrmBanHang(TaiKhoanDangNhap);
-            formBanHang.ShowDialog();
+            // Nếu đã đăng nhập thì mở bán hàng bình thường
+            FrmBanHang banHang = new FrmBanHang();
+            banHang.Show();
+            this.Hide();
         }
     }
 }
