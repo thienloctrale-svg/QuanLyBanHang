@@ -25,7 +25,7 @@ namespace QuanLyBanHang.UI
                     "Ung dung QuanLyBanHang da khoi dong.");
 
                 // Mo man hinh chinh
-                Application.Run(new FrmTaiKhoan());
+                Application.Run(new FrmSanPham());
             }
             catch (Exception ex)
             {
