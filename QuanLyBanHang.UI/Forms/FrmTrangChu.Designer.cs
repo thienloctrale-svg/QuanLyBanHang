@@ -137,6 +137,7 @@ namespace QuanLyBanHang.UI
             btnThoat.Text = "❌  Thoát ứng dụng";
             btnThoat.TextAlign = ContentAlignment.MiddleLeft;
             btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnDangXuat
             // 
@@ -154,6 +155,7 @@ namespace QuanLyBanHang.UI
             btnDangXuat.Text = "🚪  Đăng xuất";
             btnDangXuat.TextAlign = ContentAlignment.MiddleLeft;
             btnDangXuat.UseVisualStyleBackColor = true;
+            btnDangXuat.Click += btnDangXuat_Click;
             // 
             // btnMenuThongKe
             // 
@@ -171,6 +173,7 @@ namespace QuanLyBanHang.UI
             btnMenuThongKe.Text = "📊  Báo cáo & Thống kê";
             btnMenuThongKe.TextAlign = ContentAlignment.MiddleLeft;
             btnMenuThongKe.UseVisualStyleBackColor = true;
+            btnMenuThongKe.Click += btnMenuThongKe_Click;
             // 
             // btnMenuTaiKhoan
             // 
@@ -188,6 +191,7 @@ namespace QuanLyBanHang.UI
             btnMenuTaiKhoan.Text = "👤  Quản lý tài khoản";
             btnMenuTaiKhoan.TextAlign = ContentAlignment.MiddleLeft;
             btnMenuTaiKhoan.UseVisualStyleBackColor = true;
+            btnMenuTaiKhoan.Click += btnMenuTaiKhoan_Click;
             // 
             // btnMenuNhapHang
             // 
@@ -205,6 +209,7 @@ namespace QuanLyBanHang.UI
             btnMenuNhapHang.Text = "📥  Quản lý nhập hàng";
             btnMenuNhapHang.TextAlign = ContentAlignment.MiddleLeft;
             btnMenuNhapHang.UseVisualStyleBackColor = true;
+            btnMenuNhapHang.Click += btnMenuNhapHang_Click;
             // 
             // btnMenuKhachHang
             // 
@@ -222,6 +227,7 @@ namespace QuanLyBanHang.UI
             btnMenuKhachHang.Text = "👥  Quản lý khách hàng";
             btnMenuKhachHang.TextAlign = ContentAlignment.MiddleLeft;
             btnMenuKhachHang.UseVisualStyleBackColor = true;
+            btnMenuKhachHang.Click += btnMenuKhachHang_Click;
             // 
             // btnMenuSanPham
             // 
@@ -239,6 +245,7 @@ namespace QuanLyBanHang.UI
             btnMenuSanPham.Text = "📦  Quản lý sản phẩm";
             btnMenuSanPham.TextAlign = ContentAlignment.MiddleLeft;
             btnMenuSanPham.UseVisualStyleBackColor = true;
+            btnMenuSanPham.Click += btnMenuSanPham_Click;
             // 
             // btnMenuBanHang
             // 
@@ -256,6 +263,7 @@ namespace QuanLyBanHang.UI
             btnMenuBanHang.Text = "🛒  Bán hàng (POS)";
             btnMenuBanHang.TextAlign = ContentAlignment.MiddleLeft;
             btnMenuBanHang.UseVisualStyleBackColor = true;
+            btnMenuBanHang.Click += btnMenuBanHang_Click;
             // 
             // btnMenuTrangChu
             // 
@@ -274,6 +282,7 @@ namespace QuanLyBanHang.UI
             btnMenuTrangChu.Text = "🏠  Trang chủ";
             btnMenuTrangChu.TextAlign = ContentAlignment.MiddleLeft;
             btnMenuTrangChu.UseVisualStyleBackColor = false;
+            btnMenuTrangChu.Click += btnMenuTrangChu_Click;
             // 
             // pnlLogo
             // 
@@ -330,7 +339,7 @@ namespace QuanLyBanHang.UI
             lblDongHo.RightToLeft = RightToLeft.No;
             lblDongHo.Size = new Size(310, 22);
             lblDongHo.TabIndex = 2;
-            lblDongHo.Text = "🕒 Thứ Bảy, 31/10/2026 15:30:00";
+            lblDongHo.Text = "🕒 Đang cập nhật thời gian...";
             lblDongHo.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lblXinChao
@@ -406,6 +415,7 @@ namespace QuanLyBanHang.UI
             btnQuickTaiKhoan.TabIndex = 5;
             btnQuickTaiKhoan.Text = "👤\r\nQUẢN LÝ TÀI KHOẢN\r\nPhân quyền & tài khoản";
             btnQuickTaiKhoan.UseVisualStyleBackColor = false;
+            btnQuickTaiKhoan.Click += btnMenuTaiKhoan_Click;
             // 
             // btnQuickNhapHang
             // 
@@ -421,6 +431,7 @@ namespace QuanLyBanHang.UI
             btnQuickNhapHang.TabIndex = 4;
             btnQuickNhapHang.Text = "📥\r\nQUẢN LÝ NHẬP HÀNG\r\nNhập kho từ nhà cung cấp";
             btnQuickNhapHang.UseVisualStyleBackColor = false;
+            btnQuickNhapHang.Click += btnMenuNhapHang_Click;
             // 
             // btnQuickThongKe
             // 
@@ -436,6 +447,7 @@ namespace QuanLyBanHang.UI
             btnQuickThongKe.TabIndex = 3;
             btnQuickThongKe.Text = "📊\r\nBÁO CÁO THỐNG KÊ\r\nTheo dõi doanh thu & lãi";
             btnQuickThongKe.UseVisualStyleBackColor = false;
+            btnQuickThongKe.Click += btnMenuThongKe_Click;
             // 
             // btnQuickKhachHang
             // 
@@ -451,6 +463,7 @@ namespace QuanLyBanHang.UI
             btnQuickKhachHang.TabIndex = 2;
             btnQuickKhachHang.Text = "👥\r\nQUẢN LÝ KHÁCH HÀNG\r\nThông tin & chính sách VIP";
             btnQuickKhachHang.UseVisualStyleBackColor = false;
+            btnQuickKhachHang.Click += btnMenuKhachHang_Click;
             // 
             // btnQuickSanPham
             // 
@@ -466,6 +479,7 @@ namespace QuanLyBanHang.UI
             btnQuickSanPham.TabIndex = 1;
             btnQuickSanPham.Text = "📦\r\nQUẢN LÝ SẢN PHẨM\r\nDanh mục, giá cả & tồn kho";
             btnQuickSanPham.UseVisualStyleBackColor = false;
+            btnQuickSanPham.Click += btnMenuSanPham_Click;
             // 
             // btnQuickBanHang
             // 
@@ -481,6 +495,7 @@ namespace QuanLyBanHang.UI
             btnQuickBanHang.TabIndex = 0;
             btnQuickBanHang.Text = "🛒\r\nLẬP HÓA ĐƠN BÁN HÀNG\r\nThu ngân & in phiếu";
             btnQuickBanHang.UseVisualStyleBackColor = false;
+            btnQuickBanHang.Click += btnMenuBanHang_Click;
             // 
             // pnlCardKhachHang
             // 
@@ -515,7 +530,7 @@ namespace QuanLyBanHang.UI
             lblCardKhachHangVal.Name = "lblCardKhachHangVal";
             lblCardKhachHangVal.Size = new Size(122, 41);
             lblCardKhachHangVal.TabIndex = 1;
-            lblCardKhachHangVal.Text = "8 khách";
+            lblCardKhachHangVal.Text = "0 khách";
             // 
             // lblCardKhachHangTitle
             // 
@@ -561,7 +576,7 @@ namespace QuanLyBanHang.UI
             lblCardSanPhamVal.Name = "lblCardSanPhamVal";
             lblCardSanPhamVal.Size = new Size(102, 41);
             lblCardSanPhamVal.TabIndex = 1;
-            lblCardSanPhamVal.Text = "12 SP";
+            lblCardSanPhamVal.Text = "0 SP";
             // 
             // lblCardSanPhamTitle
             // 
@@ -607,7 +622,7 @@ namespace QuanLyBanHang.UI
             lblCardHoaDonVal.Name = "lblCardHoaDonVal";
             lblCardHoaDonVal.Size = new Size(106, 41);
             lblCardHoaDonVal.TabIndex = 1;
-            lblCardHoaDonVal.Text = "5 đơn";
+            lblCardHoaDonVal.Text = "0 đơn";
             // 
             // lblCardHoaDonTitle
             // 
@@ -653,7 +668,7 @@ namespace QuanLyBanHang.UI
             lblCardDoanhThuVal.Name = "lblCardDoanhThuVal";
             lblCardDoanhThuVal.Size = new Size(198, 37);
             lblCardDoanhThuVal.TabIndex = 1;
-            lblCardDoanhThuVal.Text = "16.500.000 đ";
+            lblCardDoanhThuVal.Text = "0 đ";
             // 
             // lblCardDoanhThuTitle
             // 
@@ -735,6 +750,11 @@ namespace QuanLyBanHang.UI
             lblStatusThoiGian.Size = new Size(130, 24);
             lblStatusThoiGian.Text = "Trạng thái: Đã kết nối";
             // 
+            // tmrDongHo
+            // 
+            tmrDongHo.Interval = 1000;
+            tmrDongHo.Tick += tmrDongHo_Tick;
+            // 
             // FrmTrangChu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -749,6 +769,8 @@ namespace QuanLyBanHang.UI
             Name = "FrmTrangChu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Hệ thống Quản lý Bán hàng - Trang Chủ";
+            FormClosing += FrmTrangChu_FormClosing;
+            Load += FrmTrangChu_Load;
             pnlSidebar.ResumeLayout(false);
             pnlSidebarBottom.ResumeLayout(false);
             pnlLogo.ResumeLayout(false);
