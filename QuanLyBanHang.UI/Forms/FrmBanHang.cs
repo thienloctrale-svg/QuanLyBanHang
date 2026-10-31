@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -499,7 +499,7 @@ namespace QuanLyBanHang.UI
             try
             {
                 List<KhachHangDTO> danhSach =
-                    khachHangBLL.LayDanhSachKhachHang();
+                    khachHangBLL.LayDanhSachKhachHangDTO();
 
                 cboKhachHang.DataSource = null;
                 cboKhachHang.DisplayMember =
