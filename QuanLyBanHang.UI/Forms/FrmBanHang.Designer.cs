@@ -679,6 +679,7 @@
             Controls.Add(lblTieuDeForm);
             ForeColor = SystemColors.ControlText;
             Name = "FrmBanHang";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmBanHang";
             grpThongTinHoaDon.ResumeLayout(false);
             grpThongTinHoaDon.PerformLayout();

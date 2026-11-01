@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿
+using Serilog;
 using System;
 using System.IO;
 
@@ -8,8 +9,9 @@ namespace QuanLyBanHang.Logging
     {
         public static void Initialize()
         {
-            string logDirectory = Path.Combine(
-                AppContext.BaseDirectory, "Logs");
+            // Đường dẫn lưu Log tại thư mục gốc dự án
+            string logDirectory =
+                @"D:\QuanLyBanHang\QuanLyBanHang\Logs";
 
             Directory.CreateDirectory(logDirectory);
 

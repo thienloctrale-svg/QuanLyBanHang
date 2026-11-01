@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using QuanLyBanHang.DAL;
 using QuanLyBanHang.DTO;
 using QuanLyBanHang.Logging;
+using System.Linq;
 
 namespace QuanLyBanHang.BLL
 {
@@ -43,6 +44,34 @@ namespace QuanLyBanHang.BLL
 
                 throw;
             }
+        }
+
+        // Tìm kiếm sản phẩm theo mã hoặc tên.
+        public List<SanPhamDTO> TimKiemSanPham(
+            List<SanPhamDTO> danhSach,
+            string tuKhoa)
+        {
+            if (danhSach == null)
+                throw new ArgumentNullException(nameof(danhSach));
+
+            if (string.IsNullOrWhiteSpace(tuKhoa))
+                return new List<SanPhamDTO>(danhSach);
+
+            tuKhoa = tuKhoa.Trim();
+
+            return danhSach
+                .Where(sp =>
+                    (!string.IsNullOrEmpty(sp.MaSanPham) &&
+                     sp.MaSanPham.Contains(
+                         tuKhoa,
+                         StringComparison.OrdinalIgnoreCase))
+                    ||
+                    (!string.IsNullOrEmpty(sp.TenSanPham) &&
+                     sp.TenSanPham.Contains(
+                         tuKhoa,
+                         StringComparison.OrdinalIgnoreCase))
+                )
+                .ToList();
         }
     }
 }

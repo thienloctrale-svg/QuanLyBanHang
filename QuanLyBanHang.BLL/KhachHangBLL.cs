@@ -185,5 +185,21 @@ namespace QuanLyBanHang.BLL
                 return false;
             }
         }
+
+        public List<KhachHangDTO> TimKiemKhachHang(List<KhachHangDTO> danhSach, string tuKhoa)
+        {
+            if (danhSach == null)
+                throw new ArgumentNullException(nameof(danhSach));
+
+            if (string.IsNullOrWhiteSpace(tuKhoa))
+                return new List<KhachHangDTO>(danhSach);
+
+            tuKhoa = tuKhoa.Trim();
+
+            return danhSach
+                .Where(kh => !string.IsNullOrEmpty(kh.TenKhachHang) &&
+                             kh.TenKhachHang.Contains(tuKhoa, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+        }
     }
 }
