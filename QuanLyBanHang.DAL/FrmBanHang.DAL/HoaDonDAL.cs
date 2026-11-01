@@ -5,7 +5,7 @@ using QuanLyBanHang.DTO;
 
 namespace QuanLyBanHang.DAL
 {
-    public class HoaDonDAL
+    public class HoaDonDAL : IHoaDonDAL
     {
 
         // Tự động tạo mã hóa đơn mới: HD001, HD002, HD003...
