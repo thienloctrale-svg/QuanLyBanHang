@@ -122,7 +122,9 @@ namespace QuanLyBanHang.UI
                         row["PhuongThucThanhToan"];
 
                     dgvHoaDon.Rows[index].Cells["colHD_TongTien"].Value =
-                        Convert.ToDecimal(row["TongTien"])
+                        (row.IsNull("TongTien")
+                            ? 0
+                            : Convert.ToDecimal(row["TongTien"]))
                             .ToString("N0") + " VNĐ";
                 }
 
@@ -138,19 +140,31 @@ namespace QuanLyBanHang.UI
                 {
                     DataRow row = tongQuan.Rows[0];
 
-                    lblSoHoaDon.Text =
-                        Convert.ToInt32(row["SoHoaDon"]).ToString("N0");
+                    int soHoaDon = row.IsNull("SoHoaDon")
+                        ? 0
+                        : Convert.ToInt32(row["SoHoaDon"]);
+
+                    decimal tongDoanhThu = row.IsNull("TongDoanhThu")
+                        ? 0
+                        : Convert.ToDecimal(row["TongDoanhThu"]);
+
+                    int soHoaDonHuy = row.IsNull("SoHoaDonHuy")
+                        ? 0
+                        : Convert.ToInt32(row["SoHoaDonHuy"]);
+
+                    decimal trungBinhDon = row.IsNull("TrungBinhDon")
+                        ? 0
+                        : Convert.ToDecimal(row["TrungBinhDon"]);
+
+                    lblSoHoaDon.Text = soHoaDon.ToString("N0");
 
                     lblTongDoanhThu.Text =
-                        Convert.ToDecimal(row["TongDoanhThu"])
-                            .ToString("N0") + " VNĐ";
+                        tongDoanhThu.ToString("N0") + " VNĐ";
 
-                    lblSoHoaDonHuy.Text =
-                        Convert.ToInt32(row["SoHoaDonHuy"]).ToString("N0");
+                    lblSoHoaDonHuy.Text = soHoaDonHuy.ToString("N0");
 
                     lblGiaTriTrungBinh.Text =
-                        Convert.ToDecimal(row["TrungBinhDon"])
-                            .ToString("N0") + " VNĐ";
+                        trungBinhDon.ToString("N0") + " VNĐ";
                 }
 
                 // Xóa chi tiết cũ khi thống kê lại
