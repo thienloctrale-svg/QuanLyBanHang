@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using QuanLyBanHang.DAL;
 using QuanLyBanHang.DTO;
 
-namespace QuanLyBanHang.Tests
+namespace QuanLyBanHang.Tests.BanHang
 {
-    public class SanPhamDALGia : ISanPhamDAL
+    public class BanHang_SanPhamDALFake : ISanPhamDAL
     {
         public List<SanPhamDTO> DanhSachSanPham { get; set; }
             = new List<SanPhamDTO>();

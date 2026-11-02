@@ -54,7 +54,7 @@
             lblGiaTriTrungBinh = new Label();
             lblTitleGiaTriTrungBinh = new Label();
             grpDanhSachHoaDon = new GroupBox();
-            this.dgvHoaDon = new DataGridView();
+            dgvHoaDon = new DataGridView();
             colHD_Ma = new DataGridViewTextBoxColumn();
             colHD_NgayLap = new DataGridViewTextBoxColumn();
             colHD_KhachHang = new DataGridViewTextBoxColumn();
@@ -69,7 +69,7 @@
             colCT_SoLuong = new DataGridViewTextBoxColumn();
             colCT_ThanhTien = new DataGridViewTextBoxColumn();
             panelChucNang = new Panel();
-            bntHome = new Button();
+            btnHome = new Button();
             btnDong = new Button();
             btnXuatBaoCao = new Button();
             grpBoLoc.SuspendLayout();
@@ -79,7 +79,7 @@
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             grpDanhSachHoaDon.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)this.dgvHoaDon).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvHoaDon).BeginInit();
             tblGrids.SuspendLayout();
             grpChiTietHoaDon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvChiTietHoaDon).BeginInit();
@@ -419,7 +419,7 @@
             // 
             // grpDanhSachHoaDon
             // 
-            grpDanhSachHoaDon.Controls.Add(this.dgvHoaDon);
+            grpDanhSachHoaDon.Controls.Add(dgvHoaDon);
             grpDanhSachHoaDon.Dock = DockStyle.Fill;
             grpDanhSachHoaDon.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             grpDanhSachHoaDon.ForeColor = Color.FromArgb(30, 41, 59);
@@ -434,21 +434,21 @@
             // 
             // dgvHoaDon
             // 
-            this.dgvHoaDon.AllowUserToAddRows = false;
-            this.dgvHoaDon.AllowUserToDeleteRows = false;
-            this.dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvHoaDon.BackgroundColor = Color.White;
-            this.dgvHoaDon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHoaDon.Columns.AddRange(new DataGridViewColumn[] { colHD_Ma, colHD_NgayLap, colHD_KhachHang, colHD_TrangThai, colHD_TongTien });
-            this.dgvHoaDon.Dock = DockStyle.Fill;
-            this.dgvHoaDon.Location = new Point(11, 35);
-            this.dgvHoaDon.Margin = new Padding(3, 4, 3, 4);
-            this.dgvHoaDon.Name = "dgvHoaDon";
-            this.dgvHoaDon.ReadOnly = true;
-            this.dgvHoaDon.RowHeadersVisible = false;
-            this.dgvHoaDon.RowHeadersWidth = 51;
-            this.dgvHoaDon.Size = new Size(628, 512);
-            this.dgvHoaDon.TabIndex = 0;
+            dgvHoaDon.AllowUserToAddRows = false;
+            dgvHoaDon.AllowUserToDeleteRows = false;
+            dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvHoaDon.BackgroundColor = Color.White;
+            dgvHoaDon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvHoaDon.Columns.AddRange(new DataGridViewColumn[] { colHD_Ma, colHD_NgayLap, colHD_KhachHang, colHD_TrangThai, colHD_TongTien });
+            dgvHoaDon.Dock = DockStyle.Fill;
+            dgvHoaDon.Location = new Point(11, 35);
+            dgvHoaDon.Margin = new Padding(3, 4, 3, 4);
+            dgvHoaDon.Name = "dgvHoaDon";
+            dgvHoaDon.ReadOnly = true;
+            dgvHoaDon.RowHeadersVisible = false;
+            dgvHoaDon.RowHeadersWidth = 51;
+            dgvHoaDon.Size = new Size(628, 512);
+            dgvHoaDon.TabIndex = 0;
             // 
             // colHD_Ma
             // 
@@ -572,7 +572,7 @@
             // 
             // panelChucNang
             // 
-            panelChucNang.Controls.Add(bntHome);
+            panelChucNang.Controls.Add(btnHome);
             panelChucNang.Controls.Add(btnDong);
             panelChucNang.Controls.Add(btnXuatBaoCao);
             panelChucNang.Dock = DockStyle.Bottom;
@@ -581,21 +581,21 @@
             panelChucNang.Size = new Size(1353, 87);
             panelChucNang.TabIndex = 4;
             // 
-            // bntHome
+            // btnHome
             // 
-            bntHome.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            bntHome.BackColor = Color.FromArgb(37, 99, 235);
-            bntHome.Cursor = Cursors.Hand;
-            bntHome.FlatStyle = FlatStyle.Flat;
-            bntHome.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            bntHome.ForeColor = Color.White;
-            bntHome.Location = new Point(30, 19);
-            bntHome.Margin = new Padding(3, 4, 3, 4);
-            bntHome.Name = "bntHome";
-            bntHome.Size = new Size(150, 48);
-            bntHome.TabIndex = 11;
-            bntHome.Text = "⌂ Home";
-            bntHome.UseVisualStyleBackColor = false;
+            btnHome.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnHome.BackColor = Color.FromArgb(37, 99, 235);
+            btnHome.Cursor = Cursors.Hand;
+            btnHome.FlatStyle = FlatStyle.Flat;
+            btnHome.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnHome.ForeColor = Color.White;
+            btnHome.Location = new Point(30, 19);
+            btnHome.Margin = new Padding(3, 4, 3, 4);
+            btnHome.Name = "btnHome";
+            btnHome.Size = new Size(150, 48);
+            btnHome.TabIndex = 11;
+            btnHome.Text = "⌂ Home";
+            btnHome.UseVisualStyleBackColor = false;
             // 
             // btnDong
             // 
@@ -649,7 +649,7 @@
             panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);
             grpDanhSachHoaDon.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)this.dgvHoaDon).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvHoaDon).EndInit();
             tblGrids.ResumeLayout(false);
             grpChiTietHoaDon.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvChiTietHoaDon).EndInit();
@@ -691,7 +691,7 @@
         private Panel panelChucNang;
         private Button btnXuatBaoCao;
         private Button btnDong;
-        private Button bntHome;
+        private Button btnHome;
         private DataGridView dgvHoaDon;
         private DataGridView dgvChiTietHoaDon;
         private DataGridViewTextBoxColumn colCT_STT;
