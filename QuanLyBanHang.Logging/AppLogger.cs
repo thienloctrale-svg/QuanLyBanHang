@@ -9,14 +9,15 @@ namespace QuanLyBanHang.Logging
     {
         public static void Initialize()
         {
-            // Đường dẫn lưu Log tại thư mục gốc dự án
-            string logDirectory =
-                @"D:\QuanLyBanHang\QuanLyBanHang\Logs";
+            // Tạo thư mục Logs tại thư mục chạy ứng dụng
+            string logDirectory = Path.Combine(
+                AppContext.BaseDirectory, "Logs");
 
             Directory.CreateDirectory(logDirectory);
 
             Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Information()
+                // Cho phép ghi từ Debug trở lên
+                .MinimumLevel.Debug()
                 .WriteTo.File(
                     Path.Combine(logDirectory, "log-.txt"),
                     rollingInterval: RollingInterval.Day,
@@ -27,7 +28,12 @@ namespace QuanLyBanHang.Logging
                         "[{Level:u3}] {Message:lj}{NewLine}{Exception}")
                 .CreateLogger();
 
-            Log.Information("He thong bat dau khoi dong.");
+            Log.Information("He thong QuanLyBanHang bat dau khoi dong.");
+        }
+
+        public static void Debug(string message)
+        {
+            Log.Debug("{LogMessage}", message);
         }
 
         public static void Information(string message)
@@ -52,6 +58,7 @@ namespace QuanLyBanHang.Logging
 
         public static void CloseAndFlush()
         {
+            Log.Information("He thong QuanLyBanHang da dong.");
             Log.CloseAndFlush();
         }
     }
