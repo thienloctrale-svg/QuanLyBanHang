@@ -34,7 +34,7 @@ namespace QuanLyBanHang.Tests.BanHang
             };
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra tìm kiếm khách hàng trả về đúng bản ghi khi từ khóa khớp với tên
         public void TimKiemKhachHang_KhiTuKhoaKhopTen_TraVeDungKhachHang()
         {
             var bll = new KhachHangBLL();
@@ -46,7 +46,7 @@ namespace QuanLyBanHang.Tests.BanHang
             Assert.AreEqual("KH001", ketQua[0].MaKhachHang);
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra chức năng tìm kiếm không phân biệt chữ hoa, chữ thường
         public void TimKiemKhachHang_KhiTuKhoaChuHoaChuThuong_VanTimThay()
         {
             var bll = new KhachHangBLL();
@@ -58,7 +58,7 @@ namespace QuanLyBanHang.Tests.BanHang
             Assert.AreEqual("KH002", ketQua[0].MaKhachHang);
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra trả về danh sách rỗng khi từ khóa tìm kiếm không tồn tại trong dữ liệu
         public void TimKiemKhachHang_KhiTuKhoaKhongTonTai_TraVeDanhSachRong()
         {
             var bll = new KhachHangBLL();
@@ -69,7 +69,7 @@ namespace QuanLyBanHang.Tests.BanHang
             Assert.AreEqual(0, ketQua.Count);
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra trả về toàn bộ danh sách khi từ khóa là rỗng hoặc khoảng trắng
         public void TimKiemKhachHang_KhiTuKhoaRongHoacKhoangTrang_TraVeToanBoDanhSach()
         {
             var bll = new KhachHangBLL();
@@ -80,7 +80,7 @@ namespace QuanLyBanHang.Tests.BanHang
             Assert.AreEqual(3, ketQua.Count);
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra ném ngoại lệ ArgumentNullException khi danh sách nguồn truyền vào là null
         public void TimKiemKhachHang_KhiDanhSachTruyenVaoNull_NemLoiArgumentNullException()
         {
             var bll = new KhachHangBLL();
