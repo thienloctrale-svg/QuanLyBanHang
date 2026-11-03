@@ -14,7 +14,7 @@ namespace QuanLyBanHang.Tests.BanHang
         // 1. KIỂM THỬ SẢN PHẨM
         // =====================================================
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra lấy danh sách sản phẩm thành công khi cơ sở dữ liệu có sẵn dữ liệu
         public void LayDanhSachSanPham_KhiCoDuLieu_TraVeDanhSach()
         {
             // Arrange: Chuẩn bị dữ liệu giả lập.
@@ -54,7 +54,7 @@ namespace QuanLyBanHang.Tests.BanHang
             Assert.AreEqual("Áo thun", ketQua[0].TenSanPham);
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra trả về danh sách rỗng khi cơ sở dữ liệu không chứa sản phẩm nào
         public void LayDanhSachSanPham_KhiDanhSachRong_TraVeDanhSachRong()
         {
             // Arrange
@@ -71,7 +71,7 @@ namespace QuanLyBanHang.Tests.BanHang
             Assert.AreEqual(0, ketQua.Count);
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra ném lại đúng ngoại lệ khi tầng DAL phát sinh lỗi truy xuất dữ liệu
         public void LayDanhSachSanPham_KhiDALPhatSinhLoi_NemLaiLoi()
         {
             // Arrange
@@ -132,7 +132,7 @@ namespace QuanLyBanHang.Tests.BanHang
             };
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra tìm kiếm sản phẩm theo mã trả về đúng sản phẩm tương ứng
         public void TimKiemSanPham_KhiTimTheoMa_TraVeDungSanPham()
         {
             var bll = new SanPhamBLL(new BanHang_SanPhamDALFake());
@@ -144,7 +144,7 @@ namespace QuanLyBanHang.Tests.BanHang
             Assert.AreEqual("SP001", ketQua[0].MaSanPham);
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra tìm kiếm sản phẩm theo tên chính xác trả về đúng sản phẩm cần tìm
         public void TimKiemSanPham_KhiTimTheoTen_TraVeDungSanPham()
         {
             var bll = new SanPhamBLL(new BanHang_SanPhamDALFake());
@@ -156,7 +156,7 @@ namespace QuanLyBanHang.Tests.BanHang
             Assert.AreEqual("SP001", ketQua[0].MaSanPham);
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra tìm kiếm sản phẩm không phân biệt chữ hoa hay chữ thường
         public void TimKiemSanPham_KhiKhacChuHoaThuong_VanTimThay()
         {
             var bll = new SanPhamBLL(new BanHang_SanPhamDALFake());
@@ -168,7 +168,7 @@ namespace QuanLyBanHang.Tests.BanHang
             Assert.AreEqual("SP001", ketQua[0].MaSanPham);
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra tìm kiếm với từ khóa rỗng trả về nguyên vẹn toàn bộ danh sách
         public void TimKiemSanPham_KhiTuKhoaRong_TraVeToanBoDanhSach()
         {
             var bll = new SanPhamBLL(new BanHang_SanPhamDALFake());
@@ -199,7 +199,7 @@ namespace QuanLyBanHang.Tests.BanHang
             };
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra thêm sản phẩm vào giỏ hàng thành công và tính đúng thành tiền khi số lượng hợp lệ
         public void ThemSanPhamVaoGio_KhiHopLe_ThemThanhCong()
         {
             // Arrange
@@ -217,7 +217,7 @@ namespace QuanLyBanHang.Tests.BanHang
             Assert.AreEqual(300000m, gioHang[0].ThanhTien);
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra ném ngoại lệ InvalidOperationException khi số lượng thêm vượt quá tồn kho khả dụng
         public void ThemSanPhamVaoGio_KhiVuotTonKho_BaoLoi()
         {
             // Arrange
@@ -232,7 +232,7 @@ namespace QuanLyBanHang.Tests.BanHang
             Assert.AreEqual(0, gioHang.Count);
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra xóa sản phẩm khỏi giỏ hàng thành công khi mã sản phẩm tồn tại
         public void XoaSanPhamKhoiGio_KhiSanPhamTonTai_XoaThanhCong()
         {
             // Arrange
@@ -255,7 +255,7 @@ namespace QuanLyBanHang.Tests.BanHang
             Assert.AreEqual(0, gioHang.Count);
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra cập nhật số lượng và tự động tính lại thành tiền thành công khi số lượng hợp lệ
         public void CapNhatSoLuong_KhiHopLe_CapNhatThanhCong()
         {
             // Arrange
@@ -281,7 +281,7 @@ namespace QuanLyBanHang.Tests.BanHang
             Assert.AreEqual(600000m, gioHang[0].ThanhTien);
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra ném ngoại lệ InvalidOperationException và giữ nguyên số lượng cũ khi cập nhật vượt tồn kho
         public void CapNhatSoLuong_KhiVuotTonKho_BaoLoi()
         {
             // Arrange
@@ -307,7 +307,7 @@ namespace QuanLyBanHang.Tests.BanHang
             Assert.AreEqual(2, gioHang[0].SoLuong);
         }
 
-        [TestMethod]
+        [TestMethod] // Kiểm tra tính tổng tiền giỏ hàng chính xác khi chứa nhiều sản phẩm khác nhau
         public void TinhTongTien_KhiCoNhieuSanPham_TraVeChinhXac()
         {
             // Arrange
@@ -337,7 +337,5 @@ namespace QuanLyBanHang.Tests.BanHang
             // Assert
             Assert.AreEqual(900000m, tongTien);
         }
-
-
     }
 }

@@ -1,0 +1,161 @@
+2026-11-03 10:18:57.930 [INF] He thong bat dau khoi dong.
+2026-11-03 10:18:57.992 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-03 10:19:21.050 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 0 đ, HD: 0, SP: 12, KH: 7
+2026-11-03 10:19:21.050 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-03 10:19:21.051 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-03 10:19:21.051 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-03 10:19:24.301 [INF] UI: Chuyen den man hinh Bao Cao Thong Ke.
+2026-11-03 10:21:34.900 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 0 đ, HD: 0, SP: 12, KH: 7
+2026-11-03 10:21:34.900 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-03 10:21:34.900 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-03 10:21:36.418 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-03 10:21:36.419 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-03 10:21:36.446 [INF] Ung dung QuanLyBanHang da dong.
+2026-11-03 10:32:01.829 [INF] He thong bat dau khoi dong.
+2026-11-03 10:32:01.868 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-03 10:32:11.950 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 0 đ, HD: 0, SP: 12, KH: 7
+2026-11-03 10:32:11.950 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-03 10:32:11.951 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-03 10:32:11.951 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-03 10:32:13.444 [INF] UI: Chuyen den man hinh Bao Cao Thong Ke.
+2026-11-03 10:36:34.814 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 0 đ, HD: 0, SP: 12, KH: 7
+2026-11-03 10:36:34.814 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-03 10:36:34.814 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-03 10:36:36.248 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-03 10:36:36.249 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-03 10:36:36.298 [INF] Ung dung QuanLyBanHang da dong.
+2026-11-03 10:41:51.724 [INF] He thong bat dau khoi dong.
+2026-11-03 10:41:51.762 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-03 10:42:01.689 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 0 đ, HD: 0, SP: 12, KH: 7
+2026-11-03 10:42:01.689 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-03 10:42:01.690 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-03 10:42:01.690 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-03 10:42:03.250 [INF] UI: Chuyen den man hinh Bao Cao Thong Ke.
+2026-11-03 10:44:09.212 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 0 đ, HD: 0, SP: 12, KH: 7
+2026-11-03 10:44:09.212 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-03 10:44:09.212 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-03 10:44:16.902 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-03 10:44:16.903 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-03 10:44:16.949 [INF] Ung dung QuanLyBanHang da dong.
+2026-11-03 10:49:47.224 [INF] He thong bat dau khoi dong.
+2026-11-03 10:49:47.271 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-03 10:49:59.800 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 0 đ, HD: 0, SP: 12, KH: 7
+2026-11-03 10:49:59.800 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-03 10:49:59.800 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-03 10:49:59.801 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-03 10:50:01.041 [INF] UI: Chuyen den man hinh Bao Cao Thong Ke.
+2026-11-03 10:50:02.397 [ERR] FrmThongKe - dgvChiTietHoaDon (Cột 2, Dòng 0): Loi he thong.
+System.FormatException: Invalid cast from 'System.String' to 'System.Drawing.Image'.
+ ---> System.InvalidCastException: Invalid cast from 'System.String' to 'System.Drawing.Image'.
+   at System.Convert.DefaultToType(IConvertible value, Type targetType, IFormatProvider provider)
+   at System.Windows.Forms.Formatter.ChangeType(Object value, Type type, IFormatProvider formatInfo)
+   --- End of inner exception stack trace ---
+   at System.Windows.Forms.Formatter.ChangeType(Object value, Type type, IFormatProvider formatInfo)
+   at System.Windows.Forms.Formatter.FormatObject(Object value, Type targetType, TypeConverter sourceConverter, TypeConverter targetConverter, String formatString, IFormatProvider formatInfo, Object formattedNullValue, Object dataSourceNullValue)
+   at System.Windows.Forms.DataGridViewCell.GetFormattedValue(Object value, Int32 rowIndex, DataGridViewCellStyle& cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
+2026-11-03 10:50:05.986 [ERR] FrmThongKe - dgvChiTietHoaDon (Cột 2, Dòng 1): Loi he thong.
+System.FormatException: Invalid cast from 'System.String' to 'System.Drawing.Image'.
+ ---> System.InvalidCastException: Invalid cast from 'System.String' to 'System.Drawing.Image'.
+   at System.Convert.DefaultToType(IConvertible value, Type targetType, IFormatProvider provider)
+   at System.Windows.Forms.Formatter.ChangeType(Object value, Type type, IFormatProvider formatInfo)
+   --- End of inner exception stack trace ---
+   at System.Windows.Forms.Formatter.ChangeType(Object value, Type type, IFormatProvider formatInfo)
+   at System.Windows.Forms.Formatter.FormatObject(Object value, Type targetType, TypeConverter sourceConverter, TypeConverter targetConverter, String formatString, IFormatProvider formatInfo, Object formattedNullValue, Object dataSourceNullValue)
+   at System.Windows.Forms.DataGridViewCell.GetFormattedValue(Object value, Int32 rowIndex, DataGridViewCellStyle& cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
+2026-11-03 10:50:07.080 [ERR] FrmThongKe - dgvChiTietHoaDon (Cột 2, Dòng 2): Loi he thong.
+System.FormatException: Invalid cast from 'System.String' to 'System.Drawing.Image'.
+ ---> System.InvalidCastException: Invalid cast from 'System.String' to 'System.Drawing.Image'.
+   at System.Convert.DefaultToType(IConvertible value, Type targetType, IFormatProvider provider)
+   at System.Windows.Forms.Formatter.ChangeType(Object value, Type type, IFormatProvider formatInfo)
+   --- End of inner exception stack trace ---
+   at System.Windows.Forms.Formatter.ChangeType(Object value, Type type, IFormatProvider formatInfo)
+   at System.Windows.Forms.Formatter.FormatObject(Object value, Type targetType, TypeConverter sourceConverter, TypeConverter targetConverter, String formatString, IFormatProvider formatInfo, Object formattedNullValue, Object dataSourceNullValue)
+   at System.Windows.Forms.DataGridViewCell.GetFormattedValue(Object value, Int32 rowIndex, DataGridViewCellStyle& cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
+2026-11-03 10:50:07.727 [ERR] FrmThongKe - dgvChiTietHoaDon (Cột 2, Dòng 3): Loi he thong.
+System.FormatException: Invalid cast from 'System.String' to 'System.Drawing.Image'.
+ ---> System.InvalidCastException: Invalid cast from 'System.String' to 'System.Drawing.Image'.
+   at System.Convert.DefaultToType(IConvertible value, Type targetType, IFormatProvider provider)
+   at System.Windows.Forms.Formatter.ChangeType(Object value, Type type, IFormatProvider formatInfo)
+   --- End of inner exception stack trace ---
+   at System.Windows.Forms.Formatter.ChangeType(Object value, Type type, IFormatProvider formatInfo)
+   at System.Windows.Forms.Formatter.FormatObject(Object value, Type targetType, TypeConverter sourceConverter, TypeConverter targetConverter, String formatString, IFormatProvider formatInfo, Object formattedNullValue, Object dataSourceNullValue)
+   at System.Windows.Forms.DataGridViewCell.GetFormattedValue(Object value, Int32 rowIndex, DataGridViewCellStyle& cellStyle, TypeConverter valueTypeConverter, TypeConverter formattedValueTypeConverter, DataGridViewDataErrorContexts context)
+2026-11-03 10:50:38.442 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 0 đ, HD: 0, SP: 12, KH: 7
+2026-11-03 10:50:38.442 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-03 10:50:38.442 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-03 10:50:39.719 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-03 10:50:39.719 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-03 10:50:39.749 [INF] Ung dung QuanLyBanHang da dong.
+2026-11-03 10:52:30.103 [INF] He thong bat dau khoi dong.
+2026-11-03 10:52:30.144 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-03 10:52:40.179 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 0 đ, HD: 0, SP: 12, KH: 7
+2026-11-03 10:52:40.179 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-03 10:52:40.181 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-03 10:52:40.181 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-03 10:52:41.634 [INF] UI: Chuyen den man hinh Bao Cao Thong Ke.
+2026-11-03 10:54:11.501 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 0 đ, HD: 0, SP: 12, KH: 7
+2026-11-03 10:54:11.501 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-03 10:54:11.502 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-03 10:54:14.816 [INF] UI: Nguoi dung thoat ung dung tu FrmTrangChu.
+2026-11-03 10:54:14.816 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-03 10:54:14.843 [INF] Ung dung QuanLyBanHang da dong.
+2026-11-03 11:05:28.981 [INF] He thong bat dau khoi dong.
+2026-11-03 11:05:28.981 [INF] He thong bat dau khoi dong.
+2026-11-03 11:05:28.999 [WRN] Them khach hang that bai (Ma: KH999): Tên khách hàng không được để trống.
+2026-11-03 11:05:28.999 [WRN] Them khach hang that bai: Mã khách hàng không được để trống.
+2026-11-03 11:05:29.000 [WRN] Xoa khach hang that bai: Vui lòng chọn khách hàng cần xóa.
+2026-11-03 11:05:29.002 [ERR] Không thể lưu hóa đơn HD001.
+System.Exception: Lỗi cơ sở dữ liệu giả lập khi lưu hóa đơn.
+   at QuanLyBanHang.Tests.BanHang.BanHang_HoaDonDALFake.LuuHoaDon(String maHoaDon, DateTime ngayLap, String maKhachHang, Int32 maTaiKhoan, Decimal tongTien, String phuongThucThanhToan, List`1 chiTiet) in D:\QuanLyBanHang\QuanLyBanHang\QuanLyBanHang.Tests\BanHang\BanHang_HoaDonDALFake.cs:line 37
+   at QuanLyBanHang.BLL.HoaDonBLL.LuuHoaDon(String maHoaDon, DateTime ngayLap, String maKhachHang, Int32 maTaiKhoan, Decimal tongTien, String phuongThucThanhToan, List`1 chiTiet) in D:\QuanLyBanHang\QuanLyBanHang\QuanLyBanHang.BLL\FrmBanHang.BLL\HoaDonBLL.cs:line 46
+2026-11-03 11:05:29.003 [INF] Lưu hóa đơn HD001 thành công.
+2026-11-03 11:05:29.004 [INF] Hủy hóa đơn HD001 thành công.
+2026-11-03 11:05:29.009 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 2
+2026-11-03 11:05:29.009 [ERR] BLL: Không thể lấy danh sách sản phẩm.
+System.Exception: Lỗi giả lập khi lấy sản phẩm.
+   at QuanLyBanHang.Tests.BanHang.BanHang_SanPhamDALFake.LayDanhSachSanPham() in D:\QuanLyBanHang\QuanLyBanHang\QuanLyBanHang.Tests\BanHang\BanHang_SanPhamDALFake.cs:line 19
+   at QuanLyBanHang.BLL.SanPhamBLL.LayDanhSachSanPham() in D:\QuanLyBanHang\QuanLyBanHang\QuanLyBanHang.BLL\FrmBanHang.BLL\SanPhamBLL.cs:line 31
+2026-11-03 11:05:29.009 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 0
+2026-11-03 11:05:29.761 [INF] Lay danh sach khach hang: tuKhoa='', loai='' => tim thay 8 ban ghi.
+2026-11-03 11:05:29.761 [INF] Tao ma khach hang tu dong: KH009
+2026-11-03 11:05:29.761 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 0 đ, HD: 0, SP: 12, KH: 7
+2026-11-03 11:05:29.761 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-03 11:05:29.761 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 0 đ, HD: 0, SP: 12, KH: 7
+2026-11-03 11:05:29.761 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-03 11:05:29.820 [WRN] Xoa khach hang that bai: Không tìm thấy khách hàng mã 'KH_TEST_99' để xóa.
+2026-11-03 11:05:29.820 [INF] Lay danh sach khach hang: tuKhoa='', loai='Khách VIP' => tim thay 2 ban ghi.
+2026-11-03 11:05:29.820 [WRN] Cap nhat khach hang that bai: Không tìm thấy khách hàng mã 'KH_KHONG_TON_TAI' để cập nhật.
+2026-11-03 11:05:29.820 [INF] Lay danh sach khach hang: tuKhoa='Nguyễn Văn An', loai='' => tim thay 1 ban ghi.
+2026-11-03 11:05:29.821 [WRN] Them khach hang that bai: Mã khách hàng 'KH001' đã tồn tại trong hệ thống.
+2026-11-03 11:05:29.825 [INF] Them moi khach hang thanh cong: Ma=KH_TEST_99, Ten=Khách Hàng Test Unit
+2026-11-03 11:05:29.830 [INF] Xoa khach hang thanh cong: Ma=KH_TEST_99
+2026-11-03 11:09:57.381 [INF] He thong bat dau khoi dong.
+2026-11-03 11:09:57.381 [INF] He thong bat dau khoi dong.
+2026-11-03 11:09:57.397 [WRN] Them khach hang that bai: Mã khách hàng không được để trống.
+2026-11-03 11:09:57.397 [WRN] Xoa khach hang that bai: Vui lòng chọn khách hàng cần xóa.
+2026-11-03 11:09:57.399 [INF] Lưu hóa đơn HD001 thành công.
+2026-11-03 11:09:57.399 [ERR] Không thể lưu hóa đơn HD001.
+System.Exception: Lỗi cơ sở dữ liệu giả lập khi lưu hóa đơn.
+   at QuanLyBanHang.Tests.BanHang.BanHang_HoaDonDALFake.LuuHoaDon(String maHoaDon, DateTime ngayLap, String maKhachHang, Int32 maTaiKhoan, Decimal tongTien, String phuongThucThanhToan, List`1 chiTiet) in D:\QuanLyBanHang\QuanLyBanHang\QuanLyBanHang.Tests\BanHang\BanHang_HoaDonDALFake.cs:line 40
+   at QuanLyBanHang.BLL.HoaDonBLL.LuuHoaDon(String maHoaDon, DateTime ngayLap, String maKhachHang, Int32 maTaiKhoan, Decimal tongTien, String phuongThucThanhToan, List`1 chiTiet) in D:\QuanLyBanHang\QuanLyBanHang\QuanLyBanHang.BLL\FrmBanHang.BLL\HoaDonBLL.cs:line 46
+2026-11-03 11:09:57.400 [INF] Hủy hóa đơn HD001 thành công.
+2026-11-03 11:09:57.404 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 0
+2026-11-03 11:09:57.404 [ERR] BLL: Không thể lấy danh sách sản phẩm.
+System.Exception: Lỗi giả lập khi lấy sản phẩm.
+   at QuanLyBanHang.Tests.BanHang.BanHang_SanPhamDALFake.LayDanhSachSanPham() in D:\QuanLyBanHang\QuanLyBanHang\QuanLyBanHang.Tests\BanHang\BanHang_SanPhamDALFake.cs:line 21
+   at QuanLyBanHang.BLL.SanPhamBLL.LayDanhSachSanPham() in D:\QuanLyBanHang\QuanLyBanHang\QuanLyBanHang.BLL\FrmBanHang.BLL\SanPhamBLL.cs:line 31
+2026-11-03 11:09:57.404 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 2
+2026-11-03 11:09:57.411 [WRN] Them khach hang that bai (Ma: KH999): Tên khách hàng không được để trống.
+2026-11-03 11:09:57.520 [INF] Lay danh sach khach hang: tuKhoa='Nguyễn Văn An', loai='' => tim thay 1 ban ghi.
+2026-11-03 11:09:57.520 [WRN] Them khach hang that bai: Mã khách hàng 'KH001' đã tồn tại trong hệ thống.
+2026-11-03 11:09:57.520 [INF] Lay danh sach khach hang: tuKhoa='', loai='Khách VIP' => tim thay 2 ban ghi.
+2026-11-03 11:09:57.520 [INF] Lay danh sach khach hang: tuKhoa='', loai='' => tim thay 8 ban ghi.
+2026-11-03 11:09:57.520 [WRN] Cap nhat khach hang that bai: Không tìm thấy khách hàng mã 'KH_KHONG_TON_TAI' để cập nhật.
+2026-11-03 11:09:57.520 [WRN] Xoa khach hang that bai: Không tìm thấy khách hàng mã 'KH_TEST_99' để xóa.
+2026-11-03 11:09:57.520 [INF] Tao ma khach hang tu dong: KH009
+2026-11-03 11:09:57.520 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 0 đ, HD: 0, SP: 12, KH: 7
+2026-11-03 11:09:57.520 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-03 11:09:57.520 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 0 đ, HD: 0, SP: 12, KH: 7
+2026-11-03 11:09:57.520 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-03 11:09:57.525 [INF] Them moi khach hang thanh cong: Ma=KH_TEST_99, Ten=Khách Hàng Test Unit
+2026-11-03 11:09:57.528 [INF] Xoa khach hang thanh cong: Ma=KH_TEST_99

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Data;
 using Microsoft.Data.SqlClient;
 
@@ -7,7 +6,7 @@ namespace QuanLyBanHang.DAL
 {
     public class ThongKeDAL
     {
-        // Lấy danh sách hóa đơn hoàn thành
+        // Lấy danh sách hóa đơn
         public DataTable LayDanhSachHoaDon(
             DateTime tuNgay,
             DateTime denNgay,
@@ -56,22 +55,17 @@ namespace QuanLyBanHang.DAL
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@TuNgay", tuNgay.Date);
-                    cmd.Parameters.AddWithValue(
-                        "@DenNgay", denNgay.Date.AddDays(1));
+                    cmd.Parameters.AddWithValue("@DenNgay", denNgay.Date.AddDays(1));
 
                     if (!string.IsNullOrWhiteSpace(phuongThucThanhToan)
                         && phuongThucThanhToan != "Tất cả")
                     {
-                        cmd.Parameters.AddWithValue(
-                            "@PhuongThucThanhToan",
-                            phuongThucThanhToan);
+                        cmd.Parameters.AddWithValue("@PhuongThucThanhToan", phuongThucThanhToan);
                     }
 
                     if (!string.IsNullOrWhiteSpace(tuKhoa))
                     {
-                        cmd.Parameters.AddWithValue(
-                            "@TuKhoa",
-                            "%" + tuKhoa.Trim() + "%");
+                        cmd.Parameters.AddWithValue("@TuKhoa", "%" + tuKhoa.Trim() + "%");
                     }
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
@@ -86,10 +80,10 @@ namespace QuanLyBanHang.DAL
 
         // Lấy các chỉ số thống kê
         public DataTable LayThongTinTongQuan(
-    DateTime tuNgay,
-    DateTime denNgay,
-    string phuongThucThanhToan,
-    string tuKhoa)
+            DateTime tuNgay,
+            DateTime denNgay,
+            string phuongThucThanhToan,
+            string tuKhoa)
         {
             DataTable dt = new DataTable();
 
@@ -98,38 +92,9 @@ namespace QuanLyBanHang.DAL
                 conn.Open();
 
                 string sql = @"
-            SELECT
-                COUNT(*) AS SoHoaDon,
+                    SELECT
+                        COUNT(*) AS SoHoaDon,
 
-                ISNULL(
-                    SUM(
-                        CASE
-                            WHEN hd.TrangThai <> N'Đã hủy'
-                                 OR hd.TrangThai IS NULL
-                            THEN hd.TongTien
-                            ELSE 0
-                        END
-                    ), 0
-                ) AS TongDoanhThu,
-
-                SUM(
-                    CASE
-                        WHEN hd.TrangThai = N'Đã hủy'
-                        THEN 1 ELSE 0
-                    END
-                ) AS SoHoaDonHuy,
-
-                CASE
-                    WHEN SUM(
-                        CASE
-                            WHEN hd.TrangThai <> N'Đã hủy'
-                                 OR hd.TrangThai IS NULL
-                            THEN 1 ELSE 0
-                        END
-                    ) = 0
-                    THEN 0
-
-                    ELSE
                         ISNULL(
                             SUM(
                                 CASE
@@ -139,65 +104,84 @@ namespace QuanLyBanHang.DAL
                                     ELSE 0
                                 END
                             ), 0
-                        )
-                        /
+                        ) AS TongDoanhThu,
+
                         SUM(
                             CASE
-                                WHEN hd.TrangThai <> N'Đã hủy'
-                                     OR hd.TrangThai IS NULL
+                                WHEN hd.TrangThai = N'Đã hủy'
                                 THEN 1 ELSE 0
                             END
-                        )
-                END AS TrungBinhDon
+                        ) AS SoHoaDonHuy,
 
-            FROM HoaDon hd
-            LEFT JOIN KhachHang kh
-                ON hd.MaKhachHang = kh.MaKhachHang
-            WHERE hd.NgayLap >= @TuNgay
-              AND hd.NgayLap < @DenNgay";
+                        CASE
+                            WHEN SUM(
+                                CASE
+                                    WHEN hd.TrangThai <> N'Đã hủy'
+                                         OR hd.TrangThai IS NULL
+                                    THEN 1 ELSE 0
+                                END
+                            ) = 0
+                            THEN 0
+                            ELSE
+                                ISNULL(
+                                    SUM(
+                                        CASE
+                                            WHEN hd.TrangThai <> N'Đã hủy'
+                                                 OR hd.TrangThai IS NULL
+                                            THEN hd.TongTien
+                                            ELSE 0
+                                        END
+                                    ), 0
+                                )
+                                /
+                                SUM(
+                                    CASE
+                                        WHEN hd.TrangThai <> N'Đã hủy'
+                                             OR hd.TrangThai IS NULL
+                                        THEN 1 ELSE 0
+                                    END
+                                )
+                        END AS TrungBinhDon
+                    FROM HoaDon hd
+                    LEFT JOIN KhachHang kh
+                        ON hd.MaKhachHang = kh.MaKhachHang
+                    WHERE hd.NgayLap >= @TuNgay
+                      AND hd.NgayLap < @DenNgay";
 
-                // Nếu chọn một phương thức thanh toán cụ thể,
-                // vẫn giữ hóa đơn hủy để thống kê riêng.
                 if (!string.IsNullOrWhiteSpace(phuongThucThanhToan)
                     && phuongThucThanhToan != "Tất cả")
                 {
                     sql += @"
-                AND (
-                    hd.TrangThai = @PhuongThucThanhToan
-                    OR hd.TrangThai = N'Đã hủy'
-                )";
+                        AND (
+                            hd.TrangThai = @PhuongThucThanhToan
+                            OR hd.TrangThai = N'Đã hủy'
+                        )";
                 }
 
-                // Lọc từ khóa
                 if (!string.IsNullOrWhiteSpace(tuKhoa))
                 {
                     sql += @"
-                AND (
-                    hd.MaHoaDon LIKE @TuKhoa
-                    OR hd.MaKhachHang LIKE @TuKhoa
-                    OR kh.TenKhachHang LIKE @TuKhoa
-                )";
+                        AND (
+                            hd.MaHoaDon LIKE @TuKhoa
+                            OR hd.MaKhachHang LIKE @TuKhoa
+                            OR kh.TenKhachHang LIKE @TuKhoa
+                        )";
                 }
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     cmd.Parameters.AddWithValue("@TuNgay", tuNgay.Date);
-                    cmd.Parameters.AddWithValue(
-                        "@DenNgay", denNgay.Date.AddDays(1));
+                    cmd.Parameters.AddWithValue("@DenNgay", denNgay.Date.AddDays(1));
 
                     if (!string.IsNullOrWhiteSpace(phuongThucThanhToan)
                         && phuongThucThanhToan != "Tất cả")
                     {
-                        cmd.Parameters.AddWithValue(
-                            "@PhuongThucThanhToan",
-                            phuongThucThanhToan);
+                        cmd.Parameters.AddWithValue("@PhuongThucThanhToan", phuongThucThanhToan);
                     }
 
                     if (!string.IsNullOrWhiteSpace(tuKhoa))
                     {
-                        cmd.Parameters.AddWithValue(
-                            "@TuKhoa",
-                            "%" + tuKhoa.Trim() + "%");
+                        cmd.Parameters.AddWithValue("@TuKhoa", "%" + tuKhoa.Trim() + "%");
                     }
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
@@ -210,7 +194,7 @@ namespace QuanLyBanHang.DAL
             return dt;
         }
 
-        // Lấy chi tiết sản phẩm trong một hóa đơn
+        // Lấy chi tiết sản phẩm: đã bổ sung sp.DonViTinh và sp.TenSanPham
         public DataTable LayChiTietHoaDon(string maHoaDon)
         {
             DataTable dt = new DataTable();
@@ -221,11 +205,10 @@ namespace QuanLyBanHang.DAL
 
                 string sql = @"
                     SELECT
-                        ROW_NUMBER() OVER (
-                            ORDER BY ct.MaSanPham
-                        ) AS STT,
+                        ROW_NUMBER() OVER (ORDER BY ct.MaSanPham) AS STT,
                         ct.MaSanPham,
                         sp.TenSanPham,
+                        ISNULL(sp.DonViTinh, N'') AS DonViTinh,
                         ct.SoLuong,
                         ct.DonGia,
                         ct.ThanhTien
