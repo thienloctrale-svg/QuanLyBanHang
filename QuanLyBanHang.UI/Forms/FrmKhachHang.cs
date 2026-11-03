@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using QuanLyBanHang.BLL;
 using QuanLyBanHang.DTO;
 using QuanLyBanHang.Logging;
+using QuanLyBanHang.UI.Helpers;
 
 namespace QuanLyBanHang.UI
 {
@@ -18,6 +19,9 @@ namespace QuanLyBanHang.UI
         public FrmKhachHang()
         {
             InitializeComponent();
+            this.KeyPreview = true;
+            this.KeyDown += FrmKhachHang_KeyDown;
+            txtTimKiem.KeyDown += txtTimKiem_KeyDown;
         }
 
         private void FrmKhachHang_Load(object sender, EventArgs e)
@@ -36,7 +40,7 @@ namespace QuanLyBanHang.UI
             catch (Exception ex)
             {
                 AppLogger.Error(ex, "Lỗi khi tải dữ liệu FrmKhachHang.");
-                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu: " + ex.Message, "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ThongBao.LoiHeThong(ex, "Không thể kết nối đến cơ sở dữ liệu. Vui lòng kiểm tra lại dịch vụ SQL Server hoặc liên hệ quản trị viên.", "KhachHang");
             }
         }
 
@@ -57,7 +61,7 @@ namespace QuanLyBanHang.UI
             catch (Exception ex)
             {
                 AppLogger.Error(ex, "Lỗi khi lấy danh sách khách hàng.");
-                MessageBox.Show("Không thể tải danh sách khách hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ThongBao.LoiHeThong(ex, "Đã xảy ra lỗi khi tải danh sách khách hàng. Vui lòng thử lại sau.", "KhachHang");
             }
         }
 
@@ -99,6 +103,90 @@ namespace QuanLyBanHang.UI
             }
         }
 
+        // ================== XỬ LÝ PHÍM TẮT THƯỜNG DÙNG FORM KHÁCH HÀNG ==================
+
+        private void txtTimKiem_KeyDown(object? sender, KeyEventArgs e)
+        {
+            // Nhấn Enter trong ô tìm kiếm để tự động tìm kiếm ngay
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnTimKiem_Click(sender!, EventArgs.Empty);
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void FrmKhachHang_KeyDown(object? sender, KeyEventArgs e)
+        {
+            // F1: Trợ giúp phím tắt
+            if (e.KeyCode == Keys.F1)
+            {
+                HienThiHuongDanPhimTat();
+                e.Handled = true;
+            }
+            // F2 hoặc Ctrl + N: Thêm mới
+            else if (e.KeyCode == Keys.F2 || (e.Control && e.KeyCode == Keys.N))
+            {
+                btnThem_Click(sender!, EventArgs.Empty);
+                e.Handled = true;
+            }
+            // F3 hoặc Ctrl + S: Lưu
+            else if (e.KeyCode == Keys.F3 || (e.Control && e.KeyCode == Keys.S))
+            {
+                btnLuu_Click(sender!, EventArgs.Empty);
+                e.Handled = true;
+            }
+            // F4: Sửa
+            else if (e.KeyCode == Keys.F4)
+            {
+                btnSua_Click(sender!, EventArgs.Empty);
+                e.Handled = true;
+            }
+            // Delete hoặc F5: Xóa
+            else if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.F5)
+            {
+                btnXoa_Click(sender!, EventArgs.Empty);
+                e.Handled = true;
+            }
+            // F6 hoặc Ctrl + R: Làm mới
+            else if (e.KeyCode == Keys.F6 || (e.Control && e.KeyCode == Keys.R))
+            {
+                btnLamMoi_Click(sender!, EventArgs.Empty);
+                e.Handled = true;
+            }
+            // F7 hoặc Ctrl + E: Xuất Excel/CSV
+            else if (e.KeyCode == Keys.F7 || (e.Control && e.KeyCode == Keys.E))
+            {
+                btnXuatExcel_Click(sender!, EventArgs.Empty);
+                e.Handled = true;
+            }
+            // Esc: Đóng form
+            else if (e.KeyCode == Keys.Escape)
+            {
+                btnDong_Click(sender!, EventArgs.Empty);
+                e.Handled = true;
+            }
+        }
+
+        private void HienThiHuongDanPhimTat()
+        {
+            string huongDan =
+                "DANH SÁCH PHÍM TẮT QUẢN LÝ KHÁCH HÀNG:\n\n" +
+                "• [Enter] tại ô tìm kiếm: Thực hiện tìm kiếm nhanh\n" +
+                "• [F1]: Hiển thị hướng dẫn phím tắt này\n" +
+                "• [F2] hoặc [Ctrl + N]: Bật chế độ thêm mới khách hàng\n" +
+                "• [F3] hoặc [Ctrl + S]: Lưu dữ liệu (Thêm mới / Cập nhật)\n" +
+                "• [F4]: Chuyển sang chế độ sửa thông tin\n" +
+                "• [F5] hoặc [Delete]: Xóa khách hàng đang chọn\n" +
+                "• [F6] hoặc [Ctrl + R]: Làm mới danh sách và xóa trắng form\n" +
+                "• [F7] hoặc [Ctrl + E]: Xuất dữ liệu ra tệp CSV (Excel)\n" +
+                "• [Esc]: Đóng cửa sổ Quản lý Khách hàng";
+
+            ThongBao.ThongTin(huongDan, "Trợ giúp phím tắt - Quản lý Khách hàng");
+        }
+
+        // ================== CÁC CHỨC NĂNG NGHIỆP VỤ CRUD ==================
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             _isAdding = true;
@@ -118,14 +206,14 @@ namespace QuanLyBanHang.UI
             dtpNgaySinh.Value = new DateTime(1995, 1, 1);
             txtTenKhachHang.Focus();
 
-            MessageBox.Show("Đã bật chế độ thêm mới. Vui lòng nhập thông tin rồi bấm [Lưu].", "Thêm mới", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ThongBao.ThongTin("Đã bật chế độ thêm mới. Vui lòng nhập thông tin rồi bấm [Lưu] (hoặc F3).", "Thêm mới");
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtMaKhachHang.Text))
             {
-                MessageBox.Show("Vui lòng chọn một khách hàng từ danh sách để sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ThongBao.CanhBao("Vui lòng chọn một khách hàng từ danh sách để sửa thông tin.", "Thông báo");
                 return;
             }
 
@@ -133,7 +221,7 @@ namespace QuanLyBanHang.UI
             txtMaKhachHang.ReadOnly = true;
             txtTenKhachHang.Focus();
 
-            MessageBox.Show("Đã chọn chế độ cập nhật. Bạn có thể sửa thông tin rồi bấm [Lưu].", "Cập nhật", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ThongBao.ThongTin("Đã chọn chế độ cập nhật. Bạn có thể sửa thông tin rồi bấm [Lưu] (hoặc F3).", "Cập nhật");
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -143,14 +231,14 @@ namespace QuanLyBanHang.UI
 
             if (string.IsNullOrWhiteSpace(maKH))
             {
-                MessageBox.Show("Mã khách hàng không được để trống.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ThongBao.CanhBao("Mã khách hàng không được để trống.", "Cảnh báo");
                 txtMaKhachHang.Focus();
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(tenKH))
             {
-                MessageBox.Show("Tên khách hàng không được để trống.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ThongBao.CanhBao("Tên khách hàng không được để trống.", "Cảnh báo");
                 txtTenKhachHang.Focus();
                 return;
             }
@@ -184,7 +272,7 @@ namespace QuanLyBanHang.UI
             if (ketQua)
             {
                 AppLogger.Information($"{( _isAdding ? "Them" : "Cap nhat" )} khach hang {maKH} thanh cong.");
-                MessageBox.Show(thongBao, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ThongBao.ThanhCong(thongBao, "Thông báo");
                 _isAdding = false;
                 txtMaKhachHang.ReadOnly = true;
                 HienThiDanhSachKhachHang();
@@ -192,7 +280,7 @@ namespace QuanLyBanHang.UI
             else
             {
                 AppLogger.Warning($"Loi khi luu khach hang {maKH}: {thongBao}");
-                MessageBox.Show(thongBao, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ThongBao.CanhBao(thongBao, "Không thể lưu");
             }
         }
 
@@ -203,29 +291,27 @@ namespace QuanLyBanHang.UI
 
             if (string.IsNullOrWhiteSpace(maKH))
             {
-                MessageBox.Show("Vui lòng chọn khách hàng cần xóa từ danh sách.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ThongBao.CanhBao("Vui lòng chọn khách hàng cần xóa từ danh sách.", "Thông báo");
                 return;
             }
 
-            var dialogResult = MessageBox.Show(
+            bool xacNhan = ThongBao.XacNhan(
                 $"Bạn có chắc chắn muốn xóa khách hàng '{tenKH}' (Mã: {maKH}) không?",
-                "Xác nhận xóa",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+                "Xác nhận xóa");
 
-            if (dialogResult == DialogResult.Yes)
+            if (xacNhan)
             {
                 bool ketQua = _khachHangBLL.XoaKhachHang(maKH, out string thongBao);
                 if (ketQua)
                 {
                     AppLogger.Information($"Xoa khach hang {maKH} thanh cong.");
-                    MessageBox.Show(thongBao, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ThongBao.ThanhCong(thongBao, "Thông báo");
                     btnLamMoi_Click(sender, e);
                 }
                 else
                 {
                     AppLogger.Warning($"Khong the xoa khach hang {maKH}: {thongBao}");
-                    MessageBox.Show(thongBao, "Không thể xóa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ThongBao.CanhBao(thongBao, "Không thể xóa");
                 }
             }
         }
@@ -257,7 +343,7 @@ namespace QuanLyBanHang.UI
         {
             if (dgvKhachHang.Rows.Count == 0)
             {
-                MessageBox.Show("Không có dữ liệu để xuất.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ThongBao.CanhBao("Không có dữ liệu để xuất.", "Thông báo");
                 return;
             }
 
@@ -309,12 +395,12 @@ namespace QuanLyBanHang.UI
                         File.WriteAllText(sfd.FileName, sb.ToString(), new UTF8Encoding(true));
 
                         AppLogger.Information($"Xuat file CSV thanh cong: {sfd.FileName}");
-                        MessageBox.Show("Xuất dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ThongBao.ThanhCong("Xuất dữ liệu danh sách khách hàng ra tệp thành công!", "Thông báo");
                     }
                     catch (Exception ex)
                     {
                         AppLogger.Error(ex, "Lỗi khi xuất file Excel/CSV.");
-                        MessageBox.Show("Lỗi khi xuất tệp: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ThongBao.LoiHeThong(ex, "Không thể xuất tệp dữ liệu. Vui lòng kiểm tra quyền truy cập thư mục hoặc đóng tệp nếu đang mở.", "KhachHang");
                     }
                 }
             }

@@ -65,6 +65,27 @@ namespace QuanLyBanHang.Tests
         }
 
         [TestMethod]
+        public void DinhDangTienTe_KhiSoTienBangKhong_TraVeKhongDong()
+        {
+            // Act
+            string ketQua = _bll.DinhDangTienTe(0);
+
+            // Assert
+            Assert.AreEqual("0 đ", ketQua);
+        }
+
+        [TestMethod]
+        public void DinhDangTienTe_KhiSoTienAm_TraVeDungDinhDang()
+        {
+            // Act
+            string ketQua = _bll.DinhDangTienTe(-50000);
+
+            // Assert
+            Assert.IsTrue(ketQua.Contains("-50,000") || ketQua.Contains("-50.000"), "Phải giữ lại dấu âm và phân cách hàng nghìn.");
+            Assert.IsTrue(ketQua.EndsWith("đ"), "Đơn vị tiền tệ phải kết thúc bằng 'đ'.");
+        }
+
+        [TestMethod]
         public void DinhDangSoLuong_DinhDangDungDonVi()
         {
             // Arrange
@@ -76,6 +97,16 @@ namespace QuanLyBanHang.Tests
 
             // Assert
             Assert.AreEqual("24 hóa đơn", ketQua);
+        }
+
+        [TestMethod]
+        public void DinhDangSoLuong_KhiSoLuongBangKhong_TraVeDungDinhDang()
+        {
+            // Act
+            string ketQua = _bll.DinhDangSoLuong(0, "sản phẩm");
+
+            // Assert
+            Assert.AreEqual("0 sản phẩm", ketQua);
         }
     }
 }
