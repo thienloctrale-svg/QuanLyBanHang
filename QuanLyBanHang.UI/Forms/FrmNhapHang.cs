@@ -1,5 +1,6 @@
-﻿using QuanLyBanHang.DAL;
-using QuanLyBanHang.UI;
+﻿using QuanLyBanHang.BLL;
+using QuanLyBanHang.DAL;
+using QuanLyBanHang.UI.Helpers; // Khai báo namespace ThongBao
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,8 @@ namespace QuanLyBanHang.UI
 {
     public partial class FrmNhapHang : Form
     {
+        private NhapHangBLL bll = new NhapHangBLL();
+
         public FrmNhapHang()
         {
             InitializeComponent();
@@ -24,8 +27,6 @@ namespace QuanLyBanHang.UI
             dtpNgayNhap.Value = DateTime.Now;
             txtMaPN.Text = "PN" + DateTime.Now.ToString("yyyyMMddHHmmss");
             ChinhSuaGiaoDienNutBấm();
-
-            // Gọi hàm load combobox
             LoadComboBoxData();
         }
 
@@ -60,10 +61,8 @@ namespace QuanLyBanHang.UI
         {
             try
             {
-                NhapHangDAL dal = new NhapHangDAL();
-
-                DataTable dtNCC = dal.LayDanhSachNhaCungCap();
-                DataTable dtSP = dal.LayDanhSachSanPham();
+                DataTable dtNCC = bll.LayDanhSachNhaCungCap();
+                DataTable dtSP = bll.LayDanhSachSanPham();
 
                 cboNhaCungCap.DataSource = dtNCC;
                 cboNhaCungCap.DisplayMember = "TenNCC";
@@ -78,15 +77,15 @@ namespace QuanLyBanHang.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi chi tiết: " + ex.Message, "Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ThongBao.LoiHeThong(ex, "Lỗi tải dữ liệu danh mục cho phiếu nhập.", "FrmNhapHang");
             }
         }
+
         private void btnThemChiTiet_Click(object sender, EventArgs e)
         {
-            // Kiểm tra xem đã chọn sản phẩm, nhập số lượng và giá chưa
             if (cboSanPham.SelectedValue == null || string.IsNullOrWhiteSpace(txtSoLuong.Text) || string.IsNullOrWhiteSpace(txtGiaNhap.Text))
             {
-                MessageBox.Show("Vui lòng chọn sản phẩm, nhập số lượng và giá nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ThongBao.CanhBao("Vui lòng chọn sản phẩm, nhập số lượng và giá nhập!");
                 return;
             }
 
@@ -99,22 +98,19 @@ namespace QuanLyBanHang.UI
 
                 decimal thanhTien = soLuong * giaNhap;
 
-                // Thêm dữ liệu vào dòng mới của DataGridView
                 dgvChiTietNhap.Rows.Add(maSP, tenSP, soLuong, giaNhap.ToString("N0"), thanhTien.ToString("N0"));
-
-                // Tính lại tổng tiền
                 TinhTongTien();
 
-                // Xóa trắng ô nhập liệu để nhập tiếp món khác
                 txtSoLuong.Clear();
                 txtGiaNhap.Clear();
                 cboSanPham.Focus();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Dữ liệu nhập không hợp lệ: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ThongBao.LoiHeThong(ex, "Dữ liệu số lượng hoặc giá nhập không hợp lệ.", "FrmNhapHang");
             }
         }
+
         private void TinhTongTien()
         {
             decimal tongTien = 0;
@@ -131,17 +127,15 @@ namespace QuanLyBanHang.UI
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            // 1. Kiểm tra xem đã có sản phẩm nào trên lưới chưa
             if (dgvChiTietNhap.Rows.Count == 0)
             {
-                MessageBox.Show("Phiếu nhập chưa có sản phẩm nào để lưu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ThongBao.CanhBao("Phiếu nhập chưa có sản phẩm nào để lưu!");
                 return;
             }
 
-            // 2. Kiểm tra xem đã chọn Nhà cung cấp chưa
             if (cboNhaCungCap.SelectedValue == null)
             {
-                MessageBox.Show("Vui lòng chọn nhà cung cấp!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ThongBao.CanhBao("Vui lòng chọn nhà cung cấp!");
                 return;
             }
 
@@ -149,10 +143,9 @@ namespace QuanLyBanHang.UI
             {
                 string maPN = txtMaPN.Text;
                 DateTime ngayNhap = dtpNgayNhap.Value;
-                string maNCC = cboNhaCungCap.SelectedValue.ToString();
-                int maTaiKhoan = 1; // (Hoặc lấy mã tài khoản của nhân viên đang đăng nhập hệ thống)
+                string maNCC = cboNhaCungCap.SelectedValue?.ToString() ?? "";
+                int maTaiKhoan = 1;
 
-                // 3. Đưa dữ liệu từ DataGridView vào một DataTable để truyền xuống DAL
                 DataTable dtChiTiet = new DataTable();
                 dtChiTiet.Columns.Add("MaSanPham", typeof(string));
                 dtChiTiet.Columns.Add("SoLuong", typeof(int));
@@ -161,7 +154,6 @@ namespace QuanLyBanHang.UI
 
                 foreach (DataGridViewRow row in dgvChiTietNhap.Rows)
                 {
-                    // Bỏ qua dòng trống (nếu có)
                     if (row.Cells[0].Value != null)
                     {
                         string maSP = row.Cells[0].Value.ToString();
@@ -173,15 +165,12 @@ namespace QuanLyBanHang.UI
                     }
                 }
 
-                // 4. Gọi hàm từ NhapHangDAL để lưu xuống CSDL và cập nhật tồn kho
-                NhapHangDAL dal = new NhapHangDAL();
-                bool ketQua = dal.ThemPhieuNhap(maPN, ngayNhap, maNCC, maTaiKhoan, dtChiTiet);
+                bool ketQua = bll.ThemPhieuNhap(maPN, ngayNhap, maNCC, maTaiKhoan, dtChiTiet);
 
                 if (ketQua)
                 {
-                    MessageBox.Show("Lưu phiếu nhập và cập nhật tồn kho thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ThongBao.ThanhCong("Lưu phiếu nhập và cập nhật tồn kho thành công!");
 
-                    // Reset form sau khi lưu thành công
                     dgvChiTietNhap.Rows.Clear();
                     txtMaPN.Text = "PN" + DateTime.Now.ToString("yyyyMMddHHmmss");
                     lblTongTien.Text = "Tổng tiền cần thanh toán: 0 VNĐ";
@@ -190,32 +179,30 @@ namespace QuanLyBanHang.UI
                 }
                 else
                 {
-                    MessageBox.Show("Lưu phiếu nhập thất bại, vui lòng kiểm tra lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ThongBao.CanhBao("Lưu phiếu nhập thất bại, vui lòng kiểm tra lại!");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ThongBao.LoiHeThong(ex, "Lỗi hệ thống khi lưu phiếu nhập.", "FrmNhapHang");
             }
         }
+
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
-            // 1. Sinh mã phiếu nhập mới
             txtMaPN.Text = "PN" + DateTime.Now.ToString("yyyyMMddHHmmss");
-
-            // 2. Đặt lại ngày hiện tại
             dtpNgayNhap.Value = DateTime.Now;
-
-            // 3. Bỏ chọn các ComboBox
             cboNhaCungCap.SelectedIndex = -1;
             cboSanPham.SelectedIndex = -1;
-
-            // 4. Xóa trắng các ô nhập liệu
             txtSoLuong.Clear();
             txtGiaNhap.Clear();
-            txtMaNV.Clear();
 
-            // 5. Khôi phục lại các cột nhập chi tiết sản phẩm trên lưới
+            Control[] foundControls = Controls.Find("txtMaNV", true);
+            if (foundControls.Length > 0 && foundControls[0] is TextBox txtMaNV)
+            {
+                txtMaNV.Clear();
+            }
+
             dgvChiTietNhap.DataSource = null;
             dgvChiTietNhap.Columns.Clear();
             dgvChiTietNhap.Columns.Add("MaSP", "Mã SP");
@@ -224,7 +211,6 @@ namespace QuanLyBanHang.UI
             dgvChiTietNhap.Columns.Add("GiaNhap", "Giá nhập");
             dgvChiTietNhap.Columns.Add("ThanhTien", "Thành tiền");
 
-            // 6. Đặt lại tổng tiền về 0
             lblTongTien.Text = "Tổng tiền cần thanh toán: 0 VNĐ";
         }
 
@@ -239,16 +225,13 @@ namespace QuanLyBanHang.UI
         {
             try
             {
-                NhapHangDAL dal = new NhapHangDAL();
-                DataTable dtPhieuNhap = dal.LayDanhSachPhieuNhap();
+                DataTable dtPhieuNhap = bll.LayDanhSachPhieuNhap();
 
                 if (dtPhieuNhap.Rows.Count > 0)
                 {
-                    // ⚠️ Xóa toàn bộ cấu hình cột cũ đi để lưới nhận hoàn toàn cột mới của danh sách phiếu nhập
                     dgvChiTietNhap.Columns.Clear();
                     dgvChiTietNhap.DataSource = dtPhieuNhap;
 
-                    // Đổi lại tiêu đề tiếng Việt cho đẹp
                     if (dgvChiTietNhap.Columns["MaPhieuNhap"] != null)
                         dgvChiTietNhap.Columns["MaPhieuNhap"].HeaderText = "Mã Phiếu Nhập";
                     if (dgvChiTietNhap.Columns["NgayNhap"] != null)
@@ -263,65 +246,55 @@ namespace QuanLyBanHang.UI
                 }
                 else
                 {
-                    MessageBox.Show("Chưa có phiếu nhập nào được lưu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ThongBao.ThongTin("Chưa có phiếu nhập nào được lưu trong hệ thống!");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi hiển thị danh sách: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ThongBao.LoiHeThong(ex, "Lỗi hiển thị danh sách phiếu nhập.", "FrmNhapHang");
             }
         }
 
         private void btnXoaPhieu_Click(object sender, EventArgs e)
         {
-            // Kiểm tra xem người dùng đã chọn dòng nào trên lưới chưa
             if (dgvChiTietNhap.SelectedRows.Count > 0)
             {
                 DataGridViewRow row = dgvChiTietNhap.SelectedRows[0];
 
-                // Kiểm tra xem trên lưới đang hiển thị danh sách phiếu nhập (có cột MaPhieuNhap)
                 if (dgvChiTietNhap.Columns.Contains("MaPhieuNhap") && row.Cells["MaPhieuNhap"].Value != null)
                 {
-                    string maPN = row.Cells["MaPhieuNhap"].Value.ToString();
+                    string maPN = row.Cells["MaPhieuNhap"].Value?.ToString() ?? "";
 
-                    // Hộp thoại xác nhận trước khi xóa trong CSDL
-                    DialogResult dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn XÓA VĨNH VIỄN phiếu nhập [{maPN}] này khỏi cơ sở dữ liệu không?", "Cảnh báo xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                    if (dialogResult == DialogResult.Yes)
+                    if (ThongBao.XacNhan($"Bạn có chắc chắn muốn XÓA VĨNH VIỄN phiếu nhập [{maPN}] này khỏi cơ sở dữ liệu không?", "Cảnh báo xóa"))
                     {
                         try
                         {
-                            NhapHangDAL dal = new NhapHangDAL();
-
-                            // 1. GỌI HÀM XÓA TRONG CƠ SỞ DỮ LIỆU SQL SERVER
-                            bool kq = dal.XoaPhieuNhap(maPN);
+                            bool kq = bll.XoaPhieuNhap(maPN);
 
                             if (kq)
                             {
-                                MessageBox.Show($"Đã xóa thành công phiếu nhập [{maPN}] khỏi hệ thống!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                // 2. TẢI LẠI DANH SÁCH ĐÃ LƯU ĐỂ CẬP NHẬT LƯỚI NGAY LẬP TỨC
+                                ThongBao.ThanhCong($"Đã xóa thành công phiếu nhập [{maPN}] khỏi hệ thống!");
                                 btnXemDanhSach_Click(sender, e);
                             }
                             else
                             {
-                                MessageBox.Show("Xóa phiếu nhập thất bại trong cơ sở dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                ThongBao.CanhBao("Xóa phiếu nhập thất bại trong cơ sở dữ liệu!");
                             }
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Lỗi hệ thống khi xóa: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            ThongBao.LoiHeThong(ex, "Lỗi hệ thống khi xóa phiếu nhập.", "FrmNhapHang");
                         }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng bấm 'Xem danh sách đã lưu' trước, sau đó chọn một phiếu nhập trên bảng để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ThongBao.CanhBao("Vui lòng bấm 'Xem danh sách đã lưu' trước, sau đó chọn một phiếu nhập trên bảng để xóa!");
                 }
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn dòng phiếu nhập cần xóa trên bảng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ThongBao.CanhBao("Vui lòng chọn dòng phiếu nhập cần xóa trên bảng!");
             }
         }
     }
