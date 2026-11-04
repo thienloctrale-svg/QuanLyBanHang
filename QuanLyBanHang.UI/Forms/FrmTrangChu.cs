@@ -29,6 +29,11 @@ namespace QuanLyBanHang.UI
             TaiKhoanDangNhap = taiKhoan;
         }
 
+        // =========================================================================================
+        // [BREAKPOINT 1 - DEMO GIẢNG VIÊN]: Khởi tạo Form Trang Chủ & Kiểm tra quyền người dùng
+        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng kiểm tra tài khoản (dòng dưới)
+        // Mục đích: Xem thông tin tài khoản đăng nhập (Session/DTO), phân quyền và chuẩn bị giao diện
+        // =========================================================================================
         private void FrmTrangChu_Load(object sender, EventArgs e)
         {
             try
@@ -37,7 +42,7 @@ namespace QuanLyBanHang.UI
                 tmrDongHo.Start();
                 CapNhatDongHo();
 
-                // Xác định thông tin tài khoản đăng nhập
+                // [BREAKPOINT 1.1]: Kiểm tra và gắn tài khoản đăng nhập từ SessionManager
                 if (TaiKhoanDangNhap == null)
                 {
                     if (FrmDangNhap.TaiKhoanDangNhap is TaiKhoanDTO tkDangNhap)
@@ -68,6 +73,7 @@ namespace QuanLyBanHang.UI
             }
             catch (Exception ex)
             {
+                // [BREAKPOINT 1.2]: Bắt ngoại lệ khởi động form, ghi log Serilog và thông báo thân thiện
                 AppLogger.Error(ex, "UI: Loi khi khoi dong FrmTrangChu.");
                 ThongBao.LoiHeThong(ex, "Không thể khởi động hoàn tất trang chủ. Vui lòng kiểm tra lại dịch vụ hệ thống.", "TrangChu");
             }
@@ -78,9 +84,11 @@ namespace QuanLyBanHang.UI
             CapNhatDongHo();
         }
 
-        /// <summary>
-        /// Hiển thị thời gian thực chuẩn tiếng Việt (Thứ trong tuần, ngày/tháng/năm giờ:phút:giây)
-        /// </summary>
+        // =========================================================================================
+        // [BREAKPOINT 2 - DEMO GIẢNG VIÊN]: Cập nhật đồng hồ thời gian thực chuẩn Tiếng Việt
+        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng DateTime now = DateTime.Now
+        // Mục đích: Thầy kiểm tra việc định dạng CultureInfo("vi-VN"), hiển thị Thứ và Ngày Giờ tiếng Việt
+        // =========================================================================================
         private void CapNhatDongHo()
         {
             DateTime now = DateTime.Now;
@@ -92,12 +100,19 @@ namespace QuanLyBanHang.UI
             lblDongHo.Text = $"🕒 {thu}, ngày {now:dd/MM/yyyy HH:mm:ss}";
         }
 
+        // =========================================================================================
+        // [BREAKPOINT 3 - DEMO GIẢNG VIÊN]: Nạp số liệu thống kê Dashboard từ tầng BLL -> DAL -> SQL
+        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng _bll.LayThongKeTongQuan()
+        // Mục đích: Thầy kiểm tra luồng lấy số liệu Doanh thu hôm nay, Hóa đơn, Sản phẩm, Khách hàng
+        // =========================================================================================
         public void NapDuLieuThongKe()
         {
             try
             {
+                // [BREAKPOINT 3.1]: Gọi BLL để tính toán số liệu tổng quan
                 TrangChuThongKeDTO thongKe = _bll.LayThongKeTongQuan();
 
+                // [BREAKPOINT 3.2]: Format tiền tệ VND và số lượng theo đơn vị
                 lblCardDoanhThuVal.Text = _bll.DinhDangTienTe(thongKe.DoanhThuHomNay);
                 lblCardHoaDonVal.Text = _bll.DinhDangSoLuong(thongKe.SoHoaDonHomNay, "đơn");
                 lblCardSanPhamVal.Text = _bll.DinhDangSoLuong(thongKe.TongSoSanPham, "SP");
@@ -108,6 +123,7 @@ namespace QuanLyBanHang.UI
             }
             catch (Exception ex)
             {
+                // [BREAKPOINT 3.3]: Xử lý lỗi mất kết nối CSDL, hiển thị fallback an toàn
                 AppLogger.Error(ex, "UI: Khong the tai du lieu thong ke tong quan cho FrmTrangChu.");
                 lblCardDoanhThuVal.Text = "0 đ";
                 lblCardHoaDonVal.Text = "0 đơn";
@@ -117,6 +133,11 @@ namespace QuanLyBanHang.UI
             }
         }
 
+        // =========================================================================================
+        // [BREAKPOINT 4 - DEMO GIẢNG VIÊN]: Điều hướng mở Form chức năng con
+        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng formCon.Show()
+        // Mục đích: Kiểm tra cơ chế ẩn Trang chủ, lắng nghe sự kiện FormClosed để tự động refresh Dashboard
+        // =========================================================================================
         private void MoForm(Form formCon)
         {
             try
@@ -138,12 +159,26 @@ namespace QuanLyBanHang.UI
             }
         }
 
-        // ================== XỬ LÝ PHÍM TẮT THƯỜNG DÙNG TRANG CHỦ ==================
-
+        // =========================================================================================
+        // [BREAKPOINT 5 - DEMO GIẢNG VIÊN]: Xử lý bộ phím tắt thường dùng trên Trang Chủ
+        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại đầu hàm FrmTrangChu_KeyDown
+        // Mục đích: Thầy kiểm tra khả năng bắt phím tắt F1-F8, Esc và đặc biệt Ctrl + L để mở Log demo
+        // =========================================================================================
         private void FrmTrangChu_KeyDown(object? sender, KeyEventArgs e)
         {
+            // [BREAKPOINT 5.1]: Mở file log hôm nay bằng Notepad (Ctrl + L) hoặc mở thư mục log (Ctrl + Shift + L)
+            if (e.Control && e.Shift && e.KeyCode == Keys.L)
+            {
+                AppLogger.MoThuMucLog();
+                e.Handled = true;
+            }
+            else if (e.Control && e.KeyCode == Keys.L)
+            {
+                AppLogger.MoFileLogHomNay();
+                e.Handled = true;
+            }
             // F1: Trợ giúp phím tắt
-            if (e.KeyCode == Keys.F1)
+            else if (e.KeyCode == Keys.F1)
             {
                 HienThiHuongDanPhimTat();
                 e.Handled = true;
@@ -210,6 +245,8 @@ namespace QuanLyBanHang.UI
                 "• [F6] hoặc [Ctrl + N]: Mở Quản lý Nhập hàng\n" +
                 "• [F7] hoặc [Ctrl + T]: Mở Quản lý Tài khoản\n" +
                 "• [F8] hoặc [Ctrl + E]: Mở Báo cáo & Thống kê\n" +
+                "• [Ctrl + L]: Mở nhanh file Log hôm nay bằng Notepad (tiện demo giảng viên)\n" +
+                "• [Ctrl + Shift + L]: Mở thư mục chứa file Log trong Windows Explorer\n" +
                 "• [Esc]: Xác nhận thoát ứng dụng";
 
             ThongBao.ThongTin(huongDan, "Trợ giúp phím tắt - Trang Chủ");
@@ -279,7 +316,7 @@ namespace QuanLyBanHang.UI
                 _isDangXuat = true;
                 AppLogger.Information($"UI: Nguoi dung {TaiKhoanDangNhap?.TenDangNhap ?? "Guest"} da dang xuat.");
 
-                FrmDangNhap.TaiKhoanDangNhap = null;
+                FrmDangNhap.TaiKhoanDangNhap = null!;
                 SessionManager.DangXuat();
 
                 FrmDangNhap login = new FrmDangNhap();

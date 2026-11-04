@@ -11,9 +11,11 @@
 # Test output
 TestResults/
 
-# Temporary files
+# Temporary files & Application Logs
 *.log
 *.tmp
+Logs/
+**/Logs/
 
 # Local configuration / secrets
 .env

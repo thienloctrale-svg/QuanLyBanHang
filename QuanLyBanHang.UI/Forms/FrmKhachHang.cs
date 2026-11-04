@@ -24,6 +24,11 @@ namespace QuanLyBanHang.UI
             txtTimKiem.KeyDown += txtTimKiem_KeyDown;
         }
 
+        // =========================================================================================
+        // [BREAKPOINT 1 - DEMO GIẢNG VIÊN]: Khởi động Form Quản lý Khách hàng & Load dữ liệu từ CSDL
+        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng HienThiDanhSachKhachHang()
+        // Mục đích: Thầy kiểm tra việc thiết lập mặc định ComboBox và truy vấn danh sách ban đầu
+        // =========================================================================================
         private void FrmKhachHang_Load(object sender, EventArgs e)
         {
             try
@@ -34,27 +39,34 @@ namespace QuanLyBanHang.UI
                 if (cboTrangThai.Items.Count > 0) cboTrangThai.SelectedIndex = 0;
                 if (cboLocLoaiKH.Items.Count > 0) cboLocLoaiKH.SelectedIndex = 0;
 
-                // Tải dữ liệu khách hàng từ SQL Server lên DataGridView
+                // [BREAKPOINT 1.1]: Tải dữ liệu khách hàng từ SQL Server lên DataGridView
                 HienThiDanhSachKhachHang();
             }
             catch (Exception ex)
             {
+                // [BREAKPOINT 1.2]: Bắt ngoại lệ nếu không kết nối được CSDL, ghi log và thông báo thân thiện
                 AppLogger.Error(ex, "Lỗi khi tải dữ liệu FrmKhachHang.");
                 ThongBao.LoiHeThong(ex, "Không thể kết nối đến cơ sở dữ liệu. Vui lòng kiểm tra lại dịch vụ SQL Server hoặc liên hệ quản trị viên.", "KhachHang");
             }
         }
 
+        // =========================================================================================
+        // [BREAKPOINT 2 - DEMO GIẢNG VIÊN]: Truy vấn danh sách khách hàng từ BLL -> DAL -> SQL Server
+        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng _khachHangBLL.LayDanhSachKhachHang
+        // Mục đích: Thầy kiểm tra biến DataTable dt, số lượng dòng, từ khóa tìm kiếm và bộ lọc loại KH
+        // =========================================================================================
         private void HienThiDanhSachKhachHang(string tuKhoa = "", string loaiKhachHang = "")
         {
             try
             {
+                // [BREAKPOINT 2.1]: Gọi BLL lấy dữ liệu theo từ khóa và loại khách hàng
                 DataTable dt = _khachHangBLL.LayDanhSachKhachHang(tuKhoa, loaiKhachHang);
                 dgvKhachHang.DataSource = dt;
                 lblTongSoKhachHang.Text = $"Tổng cộng: {dt.Rows.Count} khách hàng";
 
                 if (dt.Rows.Count > 0 && !_isAdding)
                 {
-                    // Tự động load dòng đầu tiên lên controls
+                    // [BREAKPOINT 2.2]: Hiển thị dòng đầu tiên lên các ô nhập liệu
                     HienThiChiTietDong(0);
                 }
             }
@@ -103,19 +115,27 @@ namespace QuanLyBanHang.UI
             }
         }
 
-        // ================== XỬ LÝ PHÍM TẮT THƯỜNG DÙNG FORM KHÁCH HÀNG ==================
-
+        // =========================================================================================
+        // [BREAKPOINT 3 - DEMO GIẢNG VIÊN]: Tìm kiếm khách hàng bằng phím [Enter] hoặc nút [Tìm kiếm]
+        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng if (e.KeyCode == Keys.Enter)
+        // Mục đích: Thầy kiểm tra UX/UI gõ Enter tìm kiếm ngay lập tức mà không cần dùng chuột
+        // =========================================================================================
         private void txtTimKiem_KeyDown(object? sender, KeyEventArgs e)
         {
-            // Nhấn Enter trong ô tìm kiếm để tự động tìm kiếm ngay
             if (e.KeyCode == Keys.Enter)
             {
+                // [BREAKPOINT 3.1]: Kích hoạt tìm kiếm ngay khi gõ phím Enter
                 btnTimKiem_Click(sender!, EventArgs.Empty);
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }
         }
 
+        // =========================================================================================
+        // [BREAKPOINT 4 - DEMO GIẢNG VIÊN]: Xử lý bộ phím tắt nhanh trên Form Khách Hàng (F1 - F7, Esc)
+        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại đầu hàm FrmKhachHang_KeyDown
+        // Mục đích: Thầy kiểm tra phím tắt F2 (Thêm), F3 (Lưu), F4 (Sửa), F5/Del (Xóa), F6 (Làm mới), F7 (Xuất)
+        // =========================================================================================
         private void FrmKhachHang_KeyDown(object? sender, KeyEventArgs e)
         {
             // F1: Trợ giúp phím tắt
@@ -185,13 +205,17 @@ namespace QuanLyBanHang.UI
             ThongBao.ThongTin(huongDan, "Trợ giúp phím tắt - Quản lý Khách hàng");
         }
 
-        // ================== CÁC CHỨC NĂNG NGHIỆP VỤ CRUD ==================
-
+        // =========================================================================================
+        // [BREAKPOINT 5 - DEMO GIẢNG VIÊN]: Sinh mã khách hàng tự động (Auto-increment format KHxxx)
+        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng _khachHangBLL.TaoMaKhachHangTuDong()
+        // Mục đích: Thầy kiểm tra thuật toán tìm MAX mã khách hàng trong CSDL và cộng 1 tự động
+        // =========================================================================================
         private void btnThem_Click(object sender, EventArgs e)
         {
             _isAdding = true;
 
             txtMaKhachHang.ReadOnly = false;
+            // [BREAKPOINT 5.1]: Sinh mã tự động
             txtMaKhachHang.Text = _khachHangBLL.TaoMaKhachHangTuDong();
             txtTenKhachHang.Clear();
             txtSoDienThoai.Clear();
@@ -224,11 +248,17 @@ namespace QuanLyBanHang.UI
             ThongBao.ThongTin("Đã chọn chế độ cập nhật. Bạn có thể sửa thông tin rồi bấm [Lưu] (hoặc F3).", "Cập nhật");
         }
 
+        // =========================================================================================
+        // [BREAKPOINT 6 - DEMO GIẢNG VIÊN]: Lưu khách hàng (Validation nghiệp vụ -> Gọi BLL Thêm/Sửa)
+        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng if (string.IsNullOrWhiteSpace(maKH))
+        // Mục đích: Thầy kiểm tra luồng validate dữ liệu trống, đóng gói DTO và phân nhánh Thêm/Sửa
+        // =========================================================================================
         private void btnLuu_Click(object sender, EventArgs e)
         {
             string maKH = txtMaKhachHang.Text.Trim();
             string tenKH = txtTenKhachHang.Text.Trim();
 
+            // [BREAKPOINT 6.1]: Kiểm tra các trường bắt buộc
             if (string.IsNullOrWhiteSpace(maKH))
             {
                 ThongBao.CanhBao("Mã khách hàng không được để trống.", "Cảnh báo");
@@ -243,6 +273,7 @@ namespace QuanLyBanHang.UI
                 return;
             }
 
+            // [BREAKPOINT 6.2]: Đóng gói đối tượng KhachHangDTO
             var kh = new KhachHangDTO
             {
                 MaKhachHang = maKH,
@@ -260,6 +291,7 @@ namespace QuanLyBanHang.UI
             bool ketQua;
             string thongBao;
 
+            // [BREAKPOINT 6.3]: Phân nhánh Thêm mới hoặc Cập nhật qua BLL
             if (_isAdding)
             {
                 ketQua = _khachHangBLL.ThemKhachHang(kh, out thongBao);
@@ -284,6 +316,11 @@ namespace QuanLyBanHang.UI
             }
         }
 
+        // =========================================================================================
+        // [BREAKPOINT 7 - DEMO GIẢNG VIÊN]: Xóa khách hàng & Ràng buộc toàn vẹn khóa ngoại (Hóa đơn)
+        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng _khachHangBLL.XoaKhachHang
+        // Mục đích: Thầy kiểm tra bảo vệ toàn vẹn: Không cho xóa nếu KH đã có Hóa đơn trong CSDL
+        // =========================================================================================
         private void btnXoa_Click(object sender, EventArgs e)
         {
             string maKH = txtMaKhachHang.Text.Trim();
@@ -301,6 +338,7 @@ namespace QuanLyBanHang.UI
 
             if (xacNhan)
             {
+                // [BREAKPOINT 7.1]: Gọi BLL xóa và kiểm tra ràng buộc hóa đơn
                 bool ketQua = _khachHangBLL.XoaKhachHang(maKH, out string thongBao);
                 if (ketQua)
                 {
@@ -310,6 +348,7 @@ namespace QuanLyBanHang.UI
                 }
                 else
                 {
+                    // [BREAKPOINT 7.2]: Báo lỗi ràng buộc nếu khách hàng đã phát sinh hóa đơn
                     AppLogger.Warning($"Khong the xoa khach hang {maKH}: {thongBao}");
                     ThongBao.CanhBao(thongBao, "Không thể xóa");
                 }
@@ -339,6 +378,11 @@ namespace QuanLyBanHang.UI
             HienThiDanhSachKhachHang();
         }
 
+        // =========================================================================================
+        // [BREAKPOINT 8 - DEMO GIẢNG VIÊN]: Xuất danh sách khách hàng ra tệp CSV kèm UTF-8 BOM
+        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng File.WriteAllText
+        // Mục đích: Thầy kiểm tra việc xuất dữ liệu tiếng Việt có dấu mở bằng Excel không bị lỗi font
+        // =========================================================================================
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
             if (dgvKhachHang.Rows.Count == 0)
@@ -391,7 +435,7 @@ namespace QuanLyBanHang.UI
                             sb.AppendLine($"{stt},{ma},{ten},{gt},{ns},{sdt},{email},{loai},{diaChi},{tt},{gc}");
                         }
 
-                        // Lưu file với UTF-8 kèm BOM để Excel mở không bị lỗi font tiếng Việt
+                        // [BREAKPOINT 8.1]: Lưu file với UTF-8 kèm BOM (byte order mark) để Excel mở tiếng Việt chuẩn
                         File.WriteAllText(sfd.FileName, sb.ToString(), new UTF8Encoding(true));
 
                         AppLogger.Information($"Xuat file CSV thanh cong: {sfd.FileName}");
