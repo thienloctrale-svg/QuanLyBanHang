@@ -42,6 +42,15 @@ namespace QuanLyBanHang.UI
             LoadDataGrid();
             isLoaded = true;
 
+            // Gắn sự kiện Enter tuần tự cho các ô nhập liệu thông tin
+            txttendn.KeyDown += txttendn_KeyDown;
+            txthoten.KeyDown += txthoten_KeyDown;
+            txtmk.KeyDown += txtmk_KeyDown;
+            txtsdt.KeyDown += txtsdt_KeyDown;
+            txtmail.KeyDown += txtmail_KeyDown;
+
+            // Gắn sự kiện định dạng dữ liệu cho DataGridView
+            dgvTaiKhoan.CellFormatting += dgvTaiKhoan_CellFormatting;
         }
         private void FrmTaiKhoan_Load(object sender, EventArgs e)
         {
@@ -68,7 +77,71 @@ namespace QuanLyBanHang.UI
             LoadComboBoxVaiTro();
             LoadDataGrid();
             isLoaded = true;
+
+            // Gắn sự kiện Enter tuần tự cho các ô nhập liệu thông tin
+            txttendn.KeyDown += txttendn_KeyDown;
+            txthoten.KeyDown += txthoten_KeyDown;
+            txtmk.KeyDown += txtmk_KeyDown;
+            txtsdt.KeyDown += txtsdt_KeyDown;
+            txtmail.KeyDown += txtmail_KeyDown;
         }
+        private void txttendn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txthoten.Focus();          // Nhảy sang ô Họ tên
+                e.SuppressKeyPress = true; // Chặn tiếng bíp
+            }
+        }
+
+        private void txthoten_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtmk.Focus();             // Nhảy sang ô Mật khẩu
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtmk_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtsdt.Focus();            // Nhảy sang ô Số điện thoại
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtsdt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtmail.Focus();           // Nhảy sang ô Email
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                cbvaitro.Focus();          // Nhảy tiếp sang ComboBox Vai trò (hoặc đổi thành btnthem.Focus() nếu muốn nhảy thẳng xuống nút Thêm)
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        // mã hoá mk
+        private void dgvTaiKhoan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Kiểm tra xem có đúng là cột Mật Khẩu không (Giả sử cột Mật khẩu nằm ở Index = 2 hoặc bạn có thể check theo tên cột)
+            // Nếu trong SQL cột tên là "MatKhau" hoặc "Password", bạn có thể kiểm tra: dgvTaiKhoan.Columns[e.ColumnIndex].Name == "MatKhau"
+            if (e.ColumnIndex == 2 && e.Value != null) // Thay số 2 bằng index cột mật khẩu của bạn nếu khác
+            {
+                e.Value = "••••••••"; // Hiển thị dấu chấm hoặc "******"
+                e.FormattingApplied = true;
+            }
+        }
+
         private void TimKiemTaiKhoan()
         {
             if (!isLoaded) return;
