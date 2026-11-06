@@ -310,15 +310,20 @@ namespace QuanLyBanHang.UI
                 return;
             }
 
-            if (bll.ThemTaiKhoan(username, pass, hoTen, email, sdt, vaiTro, trangThai))
+            // Thêm cảnh báo xác nhận trước khi thêm
+            DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn thêm tài khoản [{username}] không?", "Xác nhận thêm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
             {
-                MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadDataGrid();
-                ResetForm();
-            }
-            else
-            {
-                MessageBox.Show("Thêm thất bại (Tên đăng nhập đã tồn tại hoặc lỗi CSDL).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (bll.ThemTaiKhoan(username, pass, hoTen, email, sdt, vaiTro, trangThai))
+                {
+                    MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadDataGrid();
+                    ResetForm();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm thất bại (Tên đăng nhập đã tồn tại hoặc lỗi CSDL).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -330,23 +335,28 @@ namespace QuanLyBanHang.UI
                 return;
             }
 
-            int maTK = int.Parse(txtma.Text);
-            string hoTen = txthoten.Text.Trim();
-            string pass = txtmk.Text.Trim();
-            string email = txtmail.Text.Trim();
-            string sdt = txtsdt.Text.Trim();
-            string vaiTro = cbvaitro.Text;
-            string trangThai = checktrangthai.Checked ? "Đang hoạt động" : "Đã khóa";
+            // Thêm cảnh báo xác nhận trước khi sửa
+            DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn cập nhật thông tin cho tài khoản có mã [{txtma.Text}] không?", "Xác nhận sửa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                int maTK = int.Parse(txtma.Text);
+                string hoTen = txthoten.Text.Trim();
+                string pass = txtmk.Text.Trim();
+                string email = txtmail.Text.Trim();
+                string sdt = txtsdt.Text.Trim();
+                string vaiTro = cbvaitro.Text;
+                string trangThai = checktrangthai.Checked ? "Đang hoạt động" : "Đã khóa";
 
-            if (bll.SuaTaiKhoan(maTK, hoTen, pass, email, sdt, vaiTro, trangThai))
-            {
-                MessageBox.Show("Cập nhật thông tin tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadDataGrid();
-                ResetForm();
-            }
-            else
-            {
-                MessageBox.Show("Cập nhật thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (bll.SuaTaiKhoan(maTK, hoTen, pass, email, sdt, vaiTro, trangThai))
+                {
+                    MessageBox.Show("Cập nhật thông tin tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadDataGrid();
+                    ResetForm();
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -358,30 +368,39 @@ namespace QuanLyBanHang.UI
                 return;
             }
 
-            int maTK = int.Parse(txtma.Text);
-
-            // Đảo ngược trạng thái CheckBox
             bool trangThaiMoi = !checktrangthai.Checked;
             string trangThaiText = trangThaiMoi ? "Đang hoạt động" : "Đã khóa";
 
-            if (bll.CapNhatTrangThai(maTK, trangThaiText))
+            // Thêm cảnh báo xác nhận trước khi khóa/mở khóa
+            DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn chuyển trạng thái tài khoản mã [{txtma.Text}] thành [{trangThaiText}] không?", "Xác nhận đổi trạng thái", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
             {
-                checktrangthai.Checked = trangThaiMoi; // Cập nhật checkbox
-                MessageBox.Show($"Đã đổi trạng thái tài khoản thành: [{trangThaiText}]!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadDataGrid(); // Đồng bộ lại DataGridView
-            }
-            else
-            {
-                MessageBox.Show("Lỗi cập nhật trạng thái.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                int maTK = int.Parse(txtma.Text);
+
+                if (bll.CapNhatTrangThai(maTK, trangThaiText))
+                {
+                    checktrangthai.Checked = trangThaiMoi; // Cập nhật checkbox
+                    MessageBox.Show($"Đã đổi trạng thái tài khoản thành: [{trangThaiText}]!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadDataGrid(); // Đồng bộ lại DataGridView
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi cập nhật trạng thái.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void btnlammoi_Click(object sender, EventArgs e)
         {
-            txttk.Clear(); // Xóa ô tìm kiếm
-            cbhd.Checked = true; // Đưa checkbox hoạt động về mặc định
-            ResetForm();
-            LoadDataGrid(); // Hiện dữ liệu mới nhất trong DataGridView
+            // Thêm cảnh báo xác nhận trước khi làm mới (nếu muốn reset dữ liệu đang nhập dở)
+            DialogResult dr = MessageBox.Show("Bạn có muốn làm mới lại form và hủy các thông tin đang nhập?", "Xác nhận làm mới", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                txttk.Clear(); // Xóa ô tìm kiếm
+                cbhd.Checked = true; // Đưa checkbox hoạt động về mặc định
+                ResetForm();
+                LoadDataGrid(); // Hiện dữ liệu mới nhất trong DataGridView
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -393,7 +412,7 @@ namespace QuanLyBanHang.UI
                 return;
             }
 
-            // Hiển thị hộp thoại cảnh báo trước khi xoá để tránh bấm nhầm
+            // Hộp thoại cảnh báo xác nhận trước khi xoá (đã có sẵn từ trước của bạn)
             DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn xoá tài khoản có mã [{txtma.Text}] không?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (dr == DialogResult.Yes)
