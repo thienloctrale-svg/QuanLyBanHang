@@ -25,6 +25,12 @@ namespace QuanLyBanHang.UI
             {
                 bll = new TaiKhoanBLL();
             }
+            txtacc.Focus();
+
+            // Gắn sự kiện Enter cho ô tài khoản (nhảy sang ô mật khẩu)
+            txtacc.KeyDown += txtacc_KeyDown;
+
+            txtpass.KeyDown += txtpass_KeyDown;
         }
         private void FrmDangNhap_Load(object sender, EventArgs e)
         {
@@ -51,7 +57,24 @@ namespace QuanLyBanHang.UI
         {
             txtpass.UseSystemPasswordChar = !checkhienmatkhau.Checked;
         }
-
+        private void txtacc_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Kiểm tra nếu phím được nhấn là phím Enter
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtpass.Focus();          // Chuyển con trỏ chuột sang ô mật khẩu
+                e.SuppressKeyPress = true; // Chặn tiếng kêu "bíp" khó chịu của Windows
+            }
+        }
+        private void txtpass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Gọi trực tiếp sự kiện click của nút đăng nhập
+                button1_Click(sender, e);
+                e.SuppressKeyPress = true; // Chặn tiếng kêu "bíp" của Windows
+            }
+        }
         private void button1_Click(object sender, EventArgs e)// đăng nhập
         {
             string user = txtacc.Text.Trim();
