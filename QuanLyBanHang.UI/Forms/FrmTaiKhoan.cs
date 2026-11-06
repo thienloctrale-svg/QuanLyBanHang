@@ -14,9 +14,33 @@ namespace QuanLyBanHang.UI
     public partial class FrmTaiKhoan : Form
     {
         private TaiKhoanBLL bll = new TaiKhoanBLL();
+        private bool isLoaded = false;
         public FrmTaiKhoan()
         {
             InitializeComponent();
+            ResetForm();
+            txtmk.UseSystemPasswordChar = true;
+            checkmk.Checked = false;
+
+            // Đặt mặc định checkbox "Hoạt động" luôn bật sẵn khi mở form
+            cbhd.Checked = true;
+
+            // GẮN TRỰC TIẾP CÁC SỰ KIỆN TÌM KIẾM BẰNG CODE (Tránh lỗi chưa kết nối trong Designer)
+            txttk.TextChanged -= txttk_TextChanged;
+            txttk.TextChanged += txttk_TextChanged; ;
+
+            txttk.KeyDown -= txttk_KeyDown;
+            txttk.KeyDown += txttk_KeyDown;
+
+            cbhd.CheckedChanged -= cbhd_CheckedChanged;
+            cbhd.CheckedChanged += cbhd_CheckedChanged;
+
+            btntim.Click -= btntim_Click;
+            btntim.Click += btntim_Click;
+
+            LoadComboBoxVaiTro();
+            LoadDataGrid();
+            isLoaded = true;
 
         }
         private void FrmTaiKhoan_Load(object sender, EventArgs e)
