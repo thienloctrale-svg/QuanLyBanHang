@@ -605,7 +605,7 @@
             Controls.Add(btnthem);
             Controls.Add(gbtk);
             Name = "FrmTaiKhoan";
-            Text = "FrmTaiKhoan";
+            Text = "Quản Lý Tài Khoản";
             gbtk.ResumeLayout(false);
             gbtk.PerformLayout();
             gbtths.ResumeLayout(false);

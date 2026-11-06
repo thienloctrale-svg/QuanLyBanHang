@@ -37,10 +37,10 @@
             txtpass = new TextBox();
             checkhienmatkhau = new CheckBox();
             btndangnhap = new Button();
-            btnhuy = new Button();
-            groupBox1 = new GroupBox();
             dn = new ImageList(components);
+            btnhuy = new Button();
             huy = new ImageList(components);
+            groupBox1 = new GroupBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -120,6 +120,13 @@
             btndangnhap.UseVisualStyleBackColor = false;
             btndangnhap.Click += button1_Click;
             // 
+            // dn
+            // 
+            dn.ColorDepth = ColorDepth.Depth32Bit;
+            dn.ImageStream = (ImageListStreamer)resources.GetObject("dn.ImageStream");
+            dn.TransparentColor = Color.Transparent;
+            dn.Images.SetKeyName(0, "dnn.jpg");
+            // 
             // btnhuy
             // 
             btnhuy.BackColor = Color.Red;
@@ -137,6 +144,13 @@
             btnhuy.UseVisualStyleBackColor = false;
             btnhuy.Click += btnhuy_Click;
             // 
+            // huy
+            // 
+            huy.ColorDepth = ColorDepth.Depth32Bit;
+            huy.ImageStream = (ImageListStreamer)resources.GetObject("huy.ImageStream");
+            huy.TransparentColor = Color.Transparent;
+            huy.Images.SetKeyName(0, "xoa.png");
+            // 
             // groupBox1
             // 
             groupBox1.BackColor = Color.OldLace;
@@ -146,20 +160,6 @@
             groupBox1.Size = new Size(867, 161);
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
-            // 
-            // dn
-            // 
-            dn.ColorDepth = ColorDepth.Depth32Bit;
-            dn.ImageStream = (ImageListStreamer)resources.GetObject("dn.ImageStream");
-            dn.TransparentColor = Color.Transparent;
-            dn.Images.SetKeyName(0, "dnn.jpg");
-            // 
-            // huy
-            // 
-            huy.ColorDepth = ColorDepth.Depth32Bit;
-            huy.ImageStream = (ImageListStreamer)resources.GetObject("huy.ImageStream");
-            huy.TransparentColor = Color.Transparent;
-            huy.Images.SetKeyName(0, "xoa.png");
             // 
             // FrmDangNhap
             // 
@@ -176,8 +176,11 @@
             Controls.Add(lblpass);
             Controls.Add(lblacc);
             Name = "FrmDangNhap";
-            Text = "FrmDangNhap";
+            Text = "Đăng Nhập";
             Load += FrmDangNhap_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ResumeLayout(false);
             PerformLayout();
         }
 
