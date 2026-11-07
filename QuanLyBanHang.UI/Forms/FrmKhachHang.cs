@@ -25,9 +25,8 @@ namespace QuanLyBanHang.UI
         }
 
         // =========================================================================================
-        // [BREAKPOINT 1 - DEMO GIẢNG VIÊN]: Khởi động Form Quản lý Khách hàng & Load dữ liệu từ CSDL
-        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng HienThiDanhSachKhachHang()
-        // Mục đích: Thầy kiểm tra việc thiết lập mặc định ComboBox và truy vấn danh sách ban đầu
+        // [BREAKPOINT 1]: Khởi động Form Quản lý Khách hàng & Load dữ liệu từ CSDL
+        // Mục đích: Thiết lập mặc định ComboBox và truy vấn danh sách ban đầu
         // =========================================================================================
         private void FrmKhachHang_Load(object sender, EventArgs e)
         {
@@ -51,9 +50,8 @@ namespace QuanLyBanHang.UI
         }
 
         // =========================================================================================
-        // [BREAKPOINT 2 - DEMO GIẢNG VIÊN]: Truy vấn danh sách khách hàng từ BLL -> DAL -> SQL Server
-        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng _khachHangBLL.LayDanhSachKhachHang
-        // Mục đích: Thầy kiểm tra biến DataTable dt, số lượng dòng, từ khóa tìm kiếm và bộ lọc loại KH
+        // [BREAKPOINT 2]: Truy vấn danh sách khách hàng từ BLL -> DAL -> SQL Server
+        // Mục đích: Kiểm tra biến DataTable dt, số lượng dòng, từ khóa tìm kiếm và bộ lọc loại KH
         // =========================================================================================
         private void HienThiDanhSachKhachHang(string tuKhoa = "", string loaiKhachHang = "")
         {
@@ -116,9 +114,8 @@ namespace QuanLyBanHang.UI
         }
 
         // =========================================================================================
-        // [BREAKPOINT 3 - DEMO GIẢNG VIÊN]: Tìm kiếm khách hàng bằng phím [Enter] hoặc nút [Tìm kiếm]
-        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng if (e.KeyCode == Keys.Enter)
-        // Mục đích: Thầy kiểm tra UX/UI gõ Enter tìm kiếm ngay lập tức mà không cần dùng chuột
+        // [BREAKPOINT 3]: Tìm kiếm khách hàng bằng phím [Enter] hoặc nút [Tìm kiếm]
+        // Mục đích: Kiểm tra UX/UI gõ Enter tìm kiếm ngay lập tức mà không cần dùng chuột
         // =========================================================================================
         private void txtTimKiem_KeyDown(object? sender, KeyEventArgs e)
         {
@@ -132,9 +129,8 @@ namespace QuanLyBanHang.UI
         }
 
         // =========================================================================================
-        // [BREAKPOINT 4 - DEMO GIẢNG VIÊN]: Xử lý bộ phím tắt nhanh trên Form Khách Hàng (F1 - F7, Esc)
-        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại đầu hàm FrmKhachHang_KeyDown
-        // Mục đích: Thầy kiểm tra phím tắt F2 (Thêm), F3 (Lưu), F4 (Sửa), F5/Del (Xóa), F6 (Làm mới), F7 (Xuất)
+        // [BREAKPOINT 4]: Xử lý bộ phím tắt nhanh trên Form Khách Hàng (F1 - F7, Esc)
+        // Mục đích: Kiểm tra phím tắt F2 (Thêm), F3 (Lưu), F4 (Sửa), F5/Del (Xóa), F6 (Làm mới), F7 (Xuất)
         // =========================================================================================
         private void FrmKhachHang_KeyDown(object? sender, KeyEventArgs e)
         {
@@ -206,9 +202,8 @@ namespace QuanLyBanHang.UI
         }
 
         // =========================================================================================
-        // [BREAKPOINT 5 - DEMO GIẢNG VIÊN]: Sinh mã khách hàng tự động (Auto-increment format KHxxx)
-        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng _khachHangBLL.TaoMaKhachHangTuDong()
-        // Mục đích: Thầy kiểm tra thuật toán tìm MAX mã khách hàng trong CSDL và cộng 1 tự động
+        // [BREAKPOINT 5]: Sinh mã khách hàng tự động (Auto-increment format KHxxx)
+        // Mục đích: Kiểm tra thuật toán tìm MAX mã khách hàng trong CSDL và cộng 1 tự động
         // =========================================================================================
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -249,9 +244,8 @@ namespace QuanLyBanHang.UI
         }
 
         // =========================================================================================
-        // [BREAKPOINT 6 - DEMO GIẢNG VIÊN]: Lưu khách hàng (Validation nghiệp vụ -> Gọi BLL Thêm/Sửa)
-        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng if (string.IsNullOrWhiteSpace(maKH))
-        // Mục đích: Thầy kiểm tra luồng validate dữ liệu trống, đóng gói DTO và phân nhánh Thêm/Sửa
+        // [BREAKPOINT 6]: Lưu khách hàng (Validation nghiệp vụ -> Gọi BLL Thêm/Sửa)
+        // Mục đích: Kiểm tra luồng validate dữ liệu trống, đóng gói DTO và phân nhánh Thêm/Sửa
         // =========================================================================================
         private void btnLuu_Click(object sender, EventArgs e)
         {
@@ -317,9 +311,8 @@ namespace QuanLyBanHang.UI
         }
 
         // =========================================================================================
-        // [BREAKPOINT 7 - DEMO GIẢNG VIÊN]: Xóa khách hàng & Ràng buộc toàn vẹn khóa ngoại (Hóa đơn)
-        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng _khachHangBLL.XoaKhachHang
-        // Mục đích: Thầy kiểm tra bảo vệ toàn vẹn: Không cho xóa nếu KH đã có Hóa đơn trong CSDL
+        // [BREAKPOINT 7]: Xóa khách hàng & Ràng buộc toàn vẹn khóa ngoại (Hóa đơn)
+        // Mục đích: Bảo vệ toàn vẹn: Không cho xóa nếu KH đã có Hóa đơn trong CSDL
         // =========================================================================================
         private void btnXoa_Click(object sender, EventArgs e)
         {
@@ -379,9 +372,8 @@ namespace QuanLyBanHang.UI
         }
 
         // =========================================================================================
-        // [BREAKPOINT 8 - DEMO GIẢNG VIÊN]: Xuất danh sách khách hàng ra tệp CSV kèm UTF-8 BOM
-        // Gợi ý F9 trong Visual Studio: Đặt breakpoint tại dòng File.WriteAllText
-        // Mục đích: Thầy kiểm tra việc xuất dữ liệu tiếng Việt có dấu mở bằng Excel không bị lỗi font
+        // [BREAKPOINT 8]: Xuất danh sách khách hàng ra tệp CSV kèm UTF-8 BOM
+        // Mục đích: Xuất dữ liệu tiếng Việt có dấu mở bằng Excel không bị lỗi font
         // =========================================================================================
         private void btnXuatExcel_Click(object sender, EventArgs e)
         {
