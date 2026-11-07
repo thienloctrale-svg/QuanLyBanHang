@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using QuanLyBanHang.BLL;
+using QuanLyBanHang.Logging;
 
 namespace QuanLyBanHang.UI
 {
@@ -19,6 +20,8 @@ namespace QuanLyBanHang.UI
         public FrmDangNhap()
         {
             InitializeComponent();
+
+            AppLogger.Information("Khoi tao Form Dang Nhap.");
 
             txtpass.UseSystemPasswordChar = true;
             checkhienmatkhau.Checked = false;
@@ -57,6 +60,7 @@ namespace QuanLyBanHang.UI
         {
             txtpass.UseSystemPasswordChar = !checkhienmatkhau.Checked;
         }
+
         private void txtacc_KeyDown(object sender, KeyEventArgs e)
         {
             // Kiểm tra nếu phím được nhấn là phím Enter
@@ -66,6 +70,7 @@ namespace QuanLyBanHang.UI
                 e.SuppressKeyPress = true; // Chặn tiếng kêu "bíp" khó chịu của Windows
             }
         }
+
         private void txtpass_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -75,14 +80,18 @@ namespace QuanLyBanHang.UI
                 e.SuppressKeyPress = true; // Chặn tiếng kêu "bíp" của Windows
             }
         }
+
         private void button1_Click(object sender, EventArgs e)// đăng nhập
         {
             string user = txtacc.Text.Trim();
             string pass = txtpass.Text.Trim();
 
+            AppLogger.Information($"Nguoi dung nhan nut Dang nhap voi tai khoan: '{user}'");
+
             // 1. Kiểm tra đầu vào
             if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
             {
+                AppLogger.Warning("Dang nhap that bai: Chua nhap day du tai khoan hoac mat khau.");
                 MessageBox.Show("Vui lòng nhập đầy đủ tài khoản và mật khẩu!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -94,6 +103,8 @@ namespace QuanLyBanHang.UI
 
             if (tk != null)
             {
+                AppLogger.Information($"Dang nhap thanh cong voi tai khoan: '{user}'.");
+
                 // Lưu vào biến static toàn cục
                 TaiKhoanDangNhap = tk;
 
@@ -104,12 +115,17 @@ namespace QuanLyBanHang.UI
                 FrmTrangChu mainForm = new FrmTrangChu();
 
                 // Đảm bảo khi tắt Form Trang Chủ thì toàn bộ ứng dụng sẽ thoát hẳn
-                mainForm.FormClosed += (s, args) => Application.Exit();
+                mainForm.FormClosed += (s, args) =>
+                {
+                    AppLogger.Information("Dong Form Trang Chu, thoat ung dung.");
+                    Application.Exit();
+                };
 
                 mainForm.Show();
             }
             else
             {
+                AppLogger.Warning($"Dang nhap that bai: Sai ten tai khoan hoac mat khau cho '{user}'.");
                 MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtpass.Clear();
                 txtpass.Focus();
@@ -121,6 +137,7 @@ namespace QuanLyBanHang.UI
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát ứng dụng không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                AppLogger.Information("Nguoi dung xac nhan thoat ung dung tu Form Dang Nhap.");
                 Application.Exit();
             }
         }

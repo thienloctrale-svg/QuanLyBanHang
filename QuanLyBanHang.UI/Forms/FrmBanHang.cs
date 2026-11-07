@@ -27,6 +27,7 @@ namespace QuanLyBanHang.UI
         {
             InitializeComponent();
             KhoiTaoSuKien();
+            AppLogger.Information("Khoi tao FrmBanHang (che do mac dinh).");
         }
 
         public FrmBanHang(TaiKhoanDTO taiKhoan)
@@ -36,6 +37,7 @@ namespace QuanLyBanHang.UI
 
             taiKhoanDangNhap = taiKhoan;
             lblHoTen.Text = taiKhoanDangNhap.HoTen;
+            AppLogger.Information($"Khoi tao FrmBanHang cho nhan vien: '{taiKhoanDangNhap.HoTen}' (MaTK: {taiKhoanDangNhap.MaTaiKhoan}).");
         }
 
         private void KhoiTaoSuKien()
@@ -96,16 +98,12 @@ namespace QuanLyBanHang.UI
                 LoadKhachHang();
                 HienThiGioHang();
 
-                AppLogger.Information("Form bán hàng: mở form thành công.");
+                AppLogger.Information($"Form ban hang: mo form thanh cong voi MaHoaDon: '{txtMaHoaDon.Text}'.");
             }
             catch (Exception ex)
             {
-                AppLogger.Error(ex, "Form bán hàng: không thể tải dữ liệu.");
-                MessageBox.Show(
-                    "Không thể tải danh sách sản phẩm.\nVui lòng kiểm tra kết nối cơ sở dữ liệu.\n\n" + ex.Message,
-                    "Lỗi",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                AppLogger.Error(ex, "Form ban hang: khong the tai du lieu.");
+                ThongBao.LoiHeThong(ex, "Không thể tải danh sách sản phẩm. Vui lòng kiểm tra lại kết nối cơ sở dữ liệu!", "FrmBanHang - Load");
             }
         }
 
@@ -170,6 +168,7 @@ namespace QuanLyBanHang.UI
         {
             string tuKhoa = txtTimSanPham.Text.Trim();
             List<SanPhamDTO> ketQua = sanPhamBLL.TimKiemSanPham(danhSachSanPham, tuKhoa);
+            AppLogger.Debug($"Tim kiem san pham voi tu khoa: '{tuKhoa}' - Ket qua: {ketQua.Count} san pham.");
             HienThiDanhSachSanPham(ketQua);
         }
 
@@ -177,7 +176,8 @@ namespace QuanLyBanHang.UI
         {
             if (dgvSanPham.CurrentRow == null)
             {
-                MessageBox.Show("Vui lòng chọn sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                AppLogger.Warning("Them san pham that bai: Chua chon san pham tren danh sach.");
+                ThongBao.CanhBao("Vui lòng chọn sản phẩm cần thêm vào giỏ hàng.");
                 return;
             }
 
@@ -186,7 +186,8 @@ namespace QuanLyBanHang.UI
 
             if (sp == null)
             {
-                MessageBox.Show("Không tìm thấy sản phẩm đã chọn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AppLogger.Warning($"Them san pham that bai: Khong tim thay thong tin san pham ma '{maSP}'.");
+                ThongBao.CanhBao("Không tìm thấy thông tin sản phẩm đã chọn.");
                 return;
             }
 
@@ -197,11 +198,12 @@ namespace QuanLyBanHang.UI
                 gioHangBLL.ThemSanPham(danhSachGioHang, sp, soLuongThem);
                 HienThiGioHang();
                 numSoLuong.Value = 1;
-                AppLogger.Information("Form bán hàng: thêm sản phẩm vào giỏ.");
+                AppLogger.Information($"Form ban hang: them san pham vao gio - MaSP: '{sp.MaSanPham}', TenSP: '{sp.TenSanPham}', SoLuong: {soLuongThem}.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AppLogger.Warning($"Them san pham that bai: {ex.Message}");
+                ThongBao.CanhBao(ex.Message);
             }
         }
 
@@ -209,7 +211,8 @@ namespace QuanLyBanHang.UI
         {
             if (dgvGioHang.CurrentRow == null)
             {
-                MessageBox.Show("Vui lòng chọn sản phẩm cần xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                AppLogger.Warning("Xoa san pham khoi gio that bai: Chua chon san pham can xoa.");
+                ThongBao.CanhBao("Vui lòng chọn sản phẩm trong giỏ hàng cần xóa.");
                 return;
             }
 
@@ -219,10 +222,12 @@ namespace QuanLyBanHang.UI
             {
                 gioHangBLL.XoaSanPham(danhSachGioHang, maSP);
                 HienThiGioHang();
+                AppLogger.Information($"Form ban hang: da xoa san pham '{maSP}' khoi gio hang.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AppLogger.Warning($"Xoa san pham khoi gio that bai: {ex.Message}");
+                ThongBao.CanhBao(ex.Message);
             }
         }
 
@@ -230,7 +235,8 @@ namespace QuanLyBanHang.UI
         {
             if (dgvGioHang.CurrentRow == null)
             {
-                MessageBox.Show("Vui lòng chọn sản phẩm trong giỏ hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                AppLogger.Warning("Cap nhat so luong that bai: Chua chon san pham trong gio.");
+                ThongBao.CanhBao("Vui lòng chọn sản phẩm trong giỏ hàng để cập nhật số lượng.");
                 return;
             }
 
@@ -238,7 +244,10 @@ namespace QuanLyBanHang.UI
             SanPhamDTO? sp = danhSachSanPham.FirstOrDefault(x => x.MaSanPham == maSP);
 
             if (sp == null)
+            {
+                AppLogger.Warning($"Cap nhat so luong that bai: Khong tim thay ma san pham '{maSP}'.");
                 return;
+            }
 
             int soLuongMoi = (int)numSoLuong.Value;
 
@@ -247,15 +256,18 @@ namespace QuanLyBanHang.UI
                 gioHangBLL.CapNhatSoLuong(danhSachGioHang, sp, soLuongMoi);
                 HienThiGioHang();
                 numSoLuong.Value = 1;
+                AppLogger.Information($"Form ban hang: cap nhat so luong cho MaSP: '{maSP}' thanh {soLuongMoi}.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AppLogger.Warning($"Cap nhat so luong that bai: {ex.Message}");
+                ThongBao.CanhBao(ex.Message);
             }
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
+            AppLogger.Information("Nguoi dung nhan nut Lam moi hoa don.");
             TaoHoaDonMoi();
         }
 
@@ -281,6 +293,7 @@ namespace QuanLyBanHang.UI
             rdoQuetThe.Checked = false;
 
             LoadKhachHang();
+            AppLogger.Information($"Da tao hoa don moi: MaHoaDon: '{txtMaHoaDon.Text}'.");
         }
 
         private void btnHuyHoaDon_Click(object sender, EventArgs e)
@@ -289,20 +302,18 @@ namespace QuanLyBanHang.UI
             {
                 if (danhSachGioHang.Count == 0)
                 {
-                    MessageBox.Show("Giỏ hàng đang trống, không có hóa đơn để hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    AppLogger.Warning("Huy hoa don that bai: Gio hang dang trong.");
+                    ThongBao.CanhBao("Giỏ hàng đang trống, không có hóa đơn để hủy.");
                     return;
                 }
 
                 string maHoaDon = txtMaHoaDon.Text.Trim();
 
-                DialogResult xacNhan = MessageBox.Show(
-                    $"Bạn có chắc chắn muốn hủy hóa đơn này không?\n\nMã hóa đơn: {maHoaDon}\nTổng tiền: {lblTongTien.Text}\n\nThông tin hóa đơn sẽ được lưu vào hệ thống với trạng thái Đã hủy.",
-                    "Xác nhận hủy hóa đơn",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (xacNhan != DialogResult.Yes)
+                if (!ThongBao.XacNhan($"Bạn có chắc chắn muốn hủy hóa đơn {maHoaDon} không?\nTổng tiền: {lblTongTien.Text}", "Xác nhận hủy hóa đơn"))
+                {
+                    AppLogger.Information($"Nguoi dung da huy thao tac xac nhan huy hoa don '{maHoaDon}'.");
                     return;
+                }
 
                 string? maKhachHang = null;
                 if (cboKhachHang.SelectedItem is KhachHangDTO kh && !string.IsNullOrWhiteSpace(kh.MaKhachHang))
@@ -320,17 +331,20 @@ namespace QuanLyBanHang.UI
                     tongTien,
                     danhSachGioHang);
 
-                MessageBox.Show(
-                    $"Hóa đơn đã bị hủy!\n\nMã hóa đơn: {maHoaDon}\nTổng tiền: {tongTien:N0} VNĐ\nTrạng thái: Đã hủy",
-                    "Thông báo",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                AppLogger.Warning($"Huy hoa don thanh cong: MaHD: '{maHoaDon}', TongTien: {tongTien:N0}, SoMatHang: {danhSachGioHang.Count}.");
+                ThongBao.ThongTin($"Hóa đơn {maHoaDon} đã được chuyển sang trạng thái Đã hủy.");
 
                 TaoHoaDonMoi();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Không thể hủy hóa đơn.\nChi tiết: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AppLogger.Error(ex, $"Loi khi huy hoa don '{txtMaHoaDon.Text}'.");
+                // Thay thế bằng hàm này:
+                ThongBao.LoiHeThong(
+                    ex,
+                    "Không thể lưu hóa đơn. Vui lòng kiểm tra lại thông tin hoặc mã hóa đơn!",
+                    "FrmBanHang - LuuHoaDon"
+                );
             }
         }
 
@@ -340,7 +354,8 @@ namespace QuanLyBanHang.UI
             {
                 if (danhSachGioHang.Count == 0)
                 {
-                    MessageBox.Show("Giỏ hàng chưa có sản phẩm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    AppLogger.Warning("Luu hoa don that bai: Gio hang chua co san pham.");
+                    ThongBao.CanhBao("Giỏ hàng chưa có sản phẩm. Vui lòng thêm sản phẩm trước khi thanh toán.");
                     return;
                 }
 
@@ -350,12 +365,14 @@ namespace QuanLyBanHang.UI
                 else if (rdoQuetThe.Checked) phuongThucThanhToan = "Quẹt thẻ";
                 else
                 {
-                    MessageBox.Show("Vui lòng chọn phương thức thanh toán.");
+                    AppLogger.Warning("Luu hoa don that bai: Chua chon phuong thuc thanh toan.");
+                    ThongBao.CanhBao("Vui lòng chọn phương thức thanh toán (Tiền mặt, Chuyển khoản hoặc Quẹt thẻ).");
                     return;
                 }
 
                 if (cboKhachHang.SelectedItem is not KhachHangDTO khachHang || string.IsNullOrWhiteSpace(khachHang.MaKhachHang))
                 {
+                    AppLogger.Warning("Luu hoa don that bai: Chua chon khach hang.");
                     ThongBao.CanhBao("Chưa chọn khách hàng.");
                     cboKhachHang.Focus();
                     return;
@@ -374,17 +391,21 @@ namespace QuanLyBanHang.UI
                     phuongThucThanhToan,
                     danhSachGioHang);
 
-                MessageBox.Show(
-                    $"Lưu hóa đơn thành công!\n\nMã hóa đơn: {maHoaDon}\nPhương thức thanh toán: {phuongThucThanhToan}\nTổng tiền: {tongTien:N0} VNĐ",
-                    "Thành công",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                AppLogger.Information($"Thanh toan & Luu hoa don thanh cong: MaHD: '{maHoaDon}', MaKH: '{maKhachHang}', MaNV: {taiKhoanDangNhap.MaTaiKhoan}, TongTien: {tongTien:N0} VND, PTTT: '{phuongThucThanhToan}', SoMatHang: {danhSachGioHang.Count}.");
+
+                ThongBao.ThanhCong($"Lưu hóa đơn {maHoaDon} thành công!\nTổng tiền: {tongTien:N0} VNĐ ({phuongThucThanhToan})");
 
                 TaoHoaDonMoi();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Không thể lưu hóa đơn.\nChi tiết: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AppLogger.Error(ex, $"Loi khi luu hoa don '{txtMaHoaDon.Text}'.");
+                // Thay thế bằng hàm này:
+                ThongBao.LoiHeThong(
+                    ex,
+                    "Không thể lưu hóa đơn. Vui lòng kiểm tra lại thông tin hoặc mã hóa đơn!",
+                    "FrmBanHang - LuuHoaDon"
+                );
             }
         }
 
@@ -454,11 +475,13 @@ namespace QuanLyBanHang.UI
 
         private void btnDong_Click(object sender, EventArgs e)
         {
+            AppLogger.Information("Dong FrmBanHang.");
             Close();
         }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
+            AppLogger.Information("Dieu huong ve FrmTrangChu tu FrmBanHang.");
             FrmTrangChu home = new FrmTrangChu();
             home.Show();
             Close();

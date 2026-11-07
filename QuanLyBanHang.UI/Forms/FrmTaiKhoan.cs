@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyBanHang.BLL;
+using QuanLyBanHang.Logging;
 
 namespace QuanLyBanHang.UI
 {
@@ -18,6 +19,7 @@ namespace QuanLyBanHang.UI
         public FrmTaiKhoan()
         {
             InitializeComponent();
+            AppLogger.Information("Khoi tao FrmTaiKhoan.");
             ResetForm();
             txtmk.UseSystemPasswordChar = true;
             checkmk.Checked = false;
@@ -54,6 +56,7 @@ namespace QuanLyBanHang.UI
         }
         private void FrmTaiKhoan_Load(object sender, EventArgs e)
         {
+            AppLogger.Information("Tai giao dien FrmTaiKhoan_Load.");
             ResetForm();
             txtmk.UseSystemPasswordChar = true;
             checkmk.Checked = false;
@@ -179,6 +182,8 @@ namespace QuanLyBanHang.UI
                     // Gộp các điều kiện lại bằng từ khóa AND
                     string finalFilter = string.Join(" AND ", conditions);
 
+                    AppLogger.Debug($"Loc danh sach tai khoan voi tu khoa: '{keyword}', LocHoatDong: {filterHoatDong}, Filter: '{finalFilter}'");
+
                     // Áp dụng bộ lọc cho DataView của DataTable
                     DataView dv = dt.DefaultView;
                     dv.RowFilter = finalFilter;
@@ -189,6 +194,7 @@ namespace QuanLyBanHang.UI
             }
             catch (Exception ex)
             {
+                AppLogger.Error(ex, "Loi tim kiem tai khoan.");
                 MessageBox.Show("Lỗi tìm kiếm: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -210,9 +216,11 @@ namespace QuanLyBanHang.UI
             {
                 dgvTaiKhoan.AutoGenerateColumns = true; // dòng này để bảng tự động tạo cột chuẩn theo SQL
                 dgvTaiKhoan.DataSource = bll.LayDanhSachTaiKhoan();
+                AppLogger.Information("Tai danh sach tai khoan len DataGridView thanh cong.");
             }
             catch (Exception ex)
             {
+                AppLogger.Error(ex, "Loi tai du lieu danh sach tai khoan len DataGridView.");
                 MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -220,6 +228,7 @@ namespace QuanLyBanHang.UI
         // Reset toàn bộ các ô nhập liệu
         private void ResetForm()
         {
+            AppLogger.Debug("Reset form thong tin tai khoan.");
             txtma.Clear();
             txttendn.Clear();
             txthoten.Clear();
@@ -280,6 +289,7 @@ namespace QuanLyBanHang.UI
                 }
 
                 txttendn.Enabled = false;
+                AppLogger.Information($"Chon tai khoan ma: [{txtma.Text}], TenDangNhap: [{txttendn.Text}] tu danh sach.");
             }
         }
         private void lblma_Click(object sender, EventArgs e)
@@ -359,6 +369,7 @@ namespace QuanLyBanHang.UI
 
         private void btntrangchu_Click(object sender, EventArgs e)
         {
+            AppLogger.Information("Dieu huong ve FrmTrangChu tu FrmTaiKhoan.");
             // 1. Mở Form Trang Chủ lên
             FrmTrangChu frmHome = new FrmTrangChu();
             frmHome.Show();
@@ -377,8 +388,11 @@ namespace QuanLyBanHang.UI
             string vaiTro = cbvaitro.Text;
             string trangThai = checktrangthai.Checked ? "Đang hoạt động" : "Đã khóa";
 
+            AppLogger.Information($"Nguoi dung nhan nut Them tai khoan: '{username}'.");
+
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(pass) || string.IsNullOrEmpty(hoTen))
             {
+                AppLogger.Warning("Them tai khoan that bai: Thieu TenDangNhap, MatKhau hoac HoTen.");
                 MessageBox.Show("Vui lòng điền đầy đủ Tên đăng nhập, Mật khẩu và Họ tên!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -389,14 +403,20 @@ namespace QuanLyBanHang.UI
             {
                 if (bll.ThemTaiKhoan(username, pass, hoTen, email, sdt, vaiTro, trangThai))
                 {
+                    AppLogger.Information($"Them tai khoan [{username}] thanh cong.");
                     MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadDataGrid();
                     ResetForm();
                 }
                 else
                 {
+                    AppLogger.Warning($"Them tai khoan [{username}] that bai tu tang BLL/CSDL.");
                     MessageBox.Show("Thêm thất bại (Tên đăng nhập đã tồn tại hoặc lỗi CSDL).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            else
+            {
+                AppLogger.Information($"Nguoi dung da huy thao tac them tai khoan [{username}].");
             }
         }
 
@@ -404,9 +424,12 @@ namespace QuanLyBanHang.UI
         {
             if (string.IsNullOrEmpty(txtma.Text))
             {
+                AppLogger.Warning("Sua tai khoan that bai: Chua chon dong tai khoan can sua.");
                 MessageBox.Show("Vui lòng chọn một dòng tài khoản từ danh sách để sửa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            AppLogger.Information($"Nguoi dung nhan nut Sua tai khoan ma: [{txtma.Text}].");
 
             // Thêm cảnh báo xác nhận trước khi sửa
             DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn cập nhật thông tin cho tài khoản có mã [{txtma.Text}] không?", "Xác nhận sửa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -422,14 +445,20 @@ namespace QuanLyBanHang.UI
 
                 if (bll.SuaTaiKhoan(maTK, hoTen, pass, email, sdt, vaiTro, trangThai))
                 {
+                    AppLogger.Information($"Cap nhat thong tin tai khoan ma [{maTK}] thanh cong.");
                     MessageBox.Show("Cập nhật thông tin tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadDataGrid();
                     ResetForm();
                 }
                 else
                 {
+                    AppLogger.Warning($"Cap nhat thong tin tai khoan ma [{maTK}] that bai tu tang BLL/CSDL.");
                     MessageBox.Show("Cập nhật thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            else
+            {
+                AppLogger.Information($"Nguoi dung da huy thao tac sua tai khoan ma [{txtma.Text}].");
             }
         }
 
@@ -437,12 +466,15 @@ namespace QuanLyBanHang.UI
         {
             if (string.IsNullOrEmpty(txtma.Text))
             {
+                AppLogger.Warning("Doi trang thai that bai: Chua chon tai khoan.");
                 MessageBox.Show("Vui lòng chọn tài khoản cần thay đổi trạng thái!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             bool trangThaiMoi = !checktrangthai.Checked;
             string trangThaiText = trangThaiMoi ? "Đang hoạt động" : "Đã khóa";
+
+            AppLogger.Information($"Nguoi dung nhan nut Doi trang thai tai khoan ma: [{txtma.Text}] sang [{trangThaiText}].");
 
             // Thêm cảnh báo xác nhận trước khi khóa/mở khóa
             DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn chuyển trạng thái tài khoản mã [{txtma.Text}] thành [{trangThaiText}] không?", "Xác nhận đổi trạng thái", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -453,26 +485,38 @@ namespace QuanLyBanHang.UI
                 if (bll.CapNhatTrangThai(maTK, trangThaiText))
                 {
                     checktrangthai.Checked = trangThaiMoi; // Cập nhật checkbox
+                    AppLogger.Information($"Doi trang thai tai khoan ma [{maTK}] thanh cong sang [{trangThaiText}].");
                     MessageBox.Show($"Đã đổi trạng thái tài khoản thành: [{trangThaiText}]!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadDataGrid(); // Đồng bộ lại DataGridView
                 }
                 else
                 {
+                    AppLogger.Warning($"Doi trang thai tai khoan ma [{maTK}] that bai tu tang BLL/CSDL.");
                     MessageBox.Show("Lỗi cập nhật trạng thái.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            else
+            {
+                AppLogger.Information($"Nguoi dung da huy thao tac doi trang thai tai khoan ma [{txtma.Text}].");
             }
         }
 
         private void btnlammoi_Click(object sender, EventArgs e)
         {
+            AppLogger.Information("Nguoi dung nhan nut Lam moi Form.");
             // Thêm cảnh báo xác nhận trước khi làm mới (nếu muốn reset dữ liệu đang nhập dở)
             DialogResult dr = MessageBox.Show("Bạn có muốn làm mới lại form và hủy các thông tin đang nhập?", "Xác nhận làm mới", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
+                AppLogger.Information("Xac nhan lam moi du lieu tren FrmTaiKhoan.");
                 txttk.Clear(); // Xóa ô tìm kiếm
                 cbhd.Checked = true; // Đưa checkbox hoạt động về mặc định
                 ResetForm();
                 LoadDataGrid(); // Hiện dữ liệu mới nhất trong DataGridView
+            }
+            else
+            {
+                AppLogger.Information("Nguoi dung da huy thao tac lam moi.");
             }
         }
 
@@ -481,9 +525,12 @@ namespace QuanLyBanHang.UI
             // Kiểm tra xem đã chọn dòng nào trên bảng chưa (dựa vào ô Mã tài khoản)
             if (string.IsNullOrEmpty(txtma.Text))
             {
+                AppLogger.Warning("Xoa tai khoan that bai: Chua chon tai khoan tu danh sach.");
                 MessageBox.Show("Vui lòng chọn tài khoản cần xoá từ danh sách bên dưới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            AppLogger.Information($"Nguoi dung nhan nut Xoa tai khoan ma: [{txtma.Text}].");
 
             // Hộp thoại cảnh báo xác nhận trước khi xoá (đã có sẵn từ trước của bạn)
             DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn xoá tài khoản có mã [{txtma.Text}] không?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -497,6 +544,7 @@ namespace QuanLyBanHang.UI
 
                     if (ketQua)
                     {
+                        AppLogger.Information($"Xoa tai khoan ma [{maTK}] thanh cong.");
                         MessageBox.Show("Xoá tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         // Cập nhật lại DataGridView và làm sạch form
@@ -505,13 +553,19 @@ namespace QuanLyBanHang.UI
                     }
                     else
                     {
+                        AppLogger.Warning($"Xoa tai khoan ma [{maTK}] that bai tu tang BLL/CSDL.");
                         MessageBox.Show("Xoá tài khoản thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
+                    AppLogger.Error(ex, $"Loi he thong khi xoa tai khoan ma [{txtma.Text}].");
                     MessageBox.Show("Lỗi hệ thống: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+            else
+            {
+                AppLogger.Information($"Nguoi dung da huy thao tac xoa tai khoan ma [{txtma.Text}].");
             }
         }
 
