@@ -19,6 +19,8 @@ namespace QuanLyBanHang.UI
         {
             InitializeComponent();
 
+            AppLogger.Information("Khoi tao FrmThongKe.");
+
             KhoiTaoGiaoDien();
             GanSuKien();
             ThucHienThongKe();
@@ -72,6 +74,8 @@ namespace QuanLyBanHang.UI
             DataGridView dgv = sender as DataGridView;
             string tenBang = dgv != null ? dgv.Name : "DataGridView";
 
+            AppLogger.Error(e.Exception, $"Loi hien thi du lieu tai bang {tenBang} (Cot: {e.ColumnIndex}, Dong: {e.RowIndex}).");
+
             ThongBao.LoiHeThong(
                 e.Exception,
                 "Không thể hiển thị một số dữ liệu trên bảng. Vui lòng thử lại!",
@@ -93,6 +97,8 @@ namespace QuanLyBanHang.UI
                 loaiLoc = LoaiLocThoiGian.BaMuoiNgayGanNhat;
             else
                 return;
+
+            AppLogger.Debug($"Chon bo loc thoi gian nhanh: {loaiLoc}.");
 
             // Gọi logic tính toán từ BLL
             var khoangNgay = thongKeBLL.TinhKhoangThoiGian(loaiLoc, DateTime.Now);
@@ -168,11 +174,13 @@ namespace QuanLyBanHang.UI
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
+            AppLogger.Information("Nguoi dung nhan nut Thong ke.");
             ThucHienThongKe();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            AppLogger.Information("Nguoi dung nhan nut Lam moi/Dat lai bo loc thong ke.");
             rdoHomNay.Checked = false;
             rdo7NgayGanNhat.Checked = false;
             rdo30NgayGanNhat.Checked = false;
@@ -230,6 +238,7 @@ namespace QuanLyBanHang.UI
         {
             if (dgvHoaDon.Rows.Count == 0)
             {
+                AppLogger.Warning("Xuat bao cao that bai: Khong co du lieu hoa don tren bang.");
                 ThongBao.ThongTin("Không có dữ liệu hóa đơn để xuất.");
                 return;
             }
@@ -239,7 +248,11 @@ namespace QuanLyBanHang.UI
                 saveDialog.Filter = "Excel CSV (*.csv)|*.csv";
                 saveDialog.FileName = "BaoCaoThongKe_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv";
 
-                if (saveDialog.ShowDialog() != DialogResult.OK) return;
+                if (saveDialog.ShowDialog() != DialogResult.OK)
+                {
+                    AppLogger.Debug("Nguoi dung da huy hop thoai chon file luu bao cao CSV.");
+                    return;
+                }
 
                 try
                 {
@@ -269,6 +282,7 @@ namespace QuanLyBanHang.UI
 
         private void btnDong_Click(object sender, EventArgs e)
         {
+            AppLogger.Information("Dong FrmThongKe.");
             Close();
         }
 
@@ -276,6 +290,7 @@ namespace QuanLyBanHang.UI
         {
             try
             {
+                AppLogger.Information("Dieu huong ve FrmTrangChu tu FrmThongKe.");
                 FrmTrangChu frmHome = new FrmTrangChu();
                 frmHome.FormClosed += (s, args) => this.Close();
                 this.Hide();
@@ -283,6 +298,7 @@ namespace QuanLyBanHang.UI
             }
             catch (Exception ex)
             {
+                AppLogger.Error(ex, "Loi khi dieu huong ve FrmTrangChu tu FrmThongKe.");
                 ThongBao.LoiHeThong(ex, "Không thể chuyển về Trang Chủ.", "FrmThongKe - btnHome_Click");
                 this.Show();
             }
