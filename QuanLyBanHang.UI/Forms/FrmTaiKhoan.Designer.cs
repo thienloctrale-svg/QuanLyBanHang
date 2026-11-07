@@ -171,6 +171,8 @@
             // 
             // dtngaytao
             // 
+            dtngaytao.CustomFormat = "";
+            dtngaytao.Format = DateTimePickerFormat.Short;
             dtngaytao.Location = new Point(149, 98);
             dtngaytao.Name = "dtngaytao";
             dtngaytao.Size = new Size(286, 30);

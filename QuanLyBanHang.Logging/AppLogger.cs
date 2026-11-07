@@ -52,5 +52,6 @@ namespace QuanLyBanHang.Logging
         {
             Log.CloseAndFlush();
         }
+
     }
 }

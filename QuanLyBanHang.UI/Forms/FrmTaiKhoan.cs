@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuanLyBanHang.BLL;
+using QuanLyBanHang.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using QuanLyBanHang.BLL;
 
 namespace QuanLyBanHang.UI
 {
@@ -84,6 +85,7 @@ namespace QuanLyBanHang.UI
             txtmk.KeyDown += txtmk_KeyDown;
             txtsdt.KeyDown += txtsdt_KeyDown;
             txtmail.KeyDown += txtmail_KeyDown;
+            AppLogger.Information("Người dùng đã mở chức năng quản lý tài khoản.");
         }
         private void txttendn_KeyDown(object sender, KeyEventArgs e)
         {
@@ -142,54 +144,58 @@ namespace QuanLyBanHang.UI
             }
         }
 
-        private void TimKiemTaiKhoan()
+        private void TimKiemTaiKhoan(bool ghiLog = false)
         {
             if (!isLoaded) return;
 
             try
             {
-                // Lấy dữ liệu gốc từ BLL
                 DataTable dt = bll.LayDanhSachTaiKhoan();
+
                 if (dt != null)
                 {
-                    string keyword = txttk.Text.Trim().Replace("'", "''"); // Tránh lỗi cú pháp SQL nếu gõ dấu nháy
+                    string keyword = txttk.Text.Trim().Replace("'", "''");
                     bool filterHoatDong = cbhd.Checked;
 
-                    // Tạo danh sách các điều kiện lọc (RowFilter)
                     List<string> conditions = new List<string>();
 
-                    // 1. Điều kiện tìm kiếm theo từ khóa (kiểm tra cả TenDangNhap và HoTen)
                     if (!string.IsNullOrEmpty(keyword))
                     {
-                        conditions.Add($"(TenDangNhap LIKE '%{keyword}%' OR HoTen LIKE '%{keyword}%')");
+                        conditions.Add(
+                            $"(TenDangNhap LIKE '%{keyword}%' OR HoTen LIKE '%{keyword}%')");
                     }
 
-                    // 2. Điều kiện lọc theo trạng thái hoạt động dựa vào checkbox cbhd
                     if (filterHoatDong)
                     {
-                        // Khi checkbox BẬT (Checked): Chỉ hiện tài khoản đang hoạt động
                         conditions.Add("(TrangThai = 'Đang hoạt động' OR TrangThai = 'Hoạt động' OR TrangThai = 'True' OR TrangThai = '1')");
                     }
                     else
                     {
-                        // Khi checkbox TẮT (Unchecked): Chỉ hiện tài khoản không hoạt động / đã khóa
                         conditions.Add("(TrangThai = 'Đã khóa' OR TrangThai = 'Khóa' OR TrangThai = 'False' OR TrangThai = '0')");
                     }
 
-                    // Gộp các điều kiện lại bằng từ khóa AND
                     string finalFilter = string.Join(" AND ", conditions);
 
-                    // Áp dụng bộ lọc cho DataView của DataTable
                     DataView dv = dt.DefaultView;
                     dv.RowFilter = finalFilter;
 
-                    // Gán lại lên DataGridView
                     dgvTaiKhoan.DataSource = dv;
+
+                    if (ghiLog)
+                    {
+                        AppLogger.Information("Thực hiện tìm kiếm tài khoản thành công.");
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi tìm kiếm: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AppLogger.Error(ex, "Lỗi khi tìm kiếm tài khoản.");
+
+                MessageBox.Show(
+                    "Lỗi tìm kiếm: " + ex.Message,
+                    "Lỗi",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
         // Load ComboBox Vai Trò
@@ -208,12 +214,20 @@ namespace QuanLyBanHang.UI
         {
             try
             {
-                dgvTaiKhoan.AutoGenerateColumns = true; // dòng này để bảng tự động tạo cột chuẩn theo SQL
+                dgvTaiKhoan.AutoGenerateColumns = true;
                 dgvTaiKhoan.DataSource = bll.LayDanhSachTaiKhoan();
+
+                AppLogger.Information("Tải danh sách tài khoản thành công.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AppLogger.Error(ex, "Lỗi khi tải danh sách tài khoản.");
+
+                MessageBox.Show(
+                    "Lỗi tải dữ liệu: " + ex.Message,
+                    "Lỗi",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
@@ -375,28 +389,54 @@ namespace QuanLyBanHang.UI
             string email = txtmail.Text.Trim();
             string sdt = txtsdt.Text.Trim();
             string vaiTro = cbvaitro.Text;
-            string trangThai = checktrangthai.Checked ? "Đang hoạt động" : "Đã khóa";
+            string trangThai = checktrangthai.Checked
+                ? "Đang hoạt động"
+                : "Đã khóa";
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(pass) || string.IsNullOrEmpty(hoTen))
+            if (string.IsNullOrEmpty(username) ||
+                string.IsNullOrEmpty(pass) ||
+                string.IsNullOrEmpty(hoTen))
             {
-                MessageBox.Show("Vui lòng điền đầy đủ Tên đăng nhập, Mật khẩu và Họ tên!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AppLogger.Warning("Thêm tài khoản thất bại do thiếu thông tin bắt buộc.");
+
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
                 return;
             }
 
-            // Thêm cảnh báo xác nhận trước khi thêm
-            DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn thêm tài khoản [{username}] không?", "Xác nhận thêm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dr == DialogResult.Yes)
+            DialogResult dr = MessageBox.Show(
+                $"Bạn có chắc chắn muốn thêm tài khoản [{username}] không?",
+                "Xác nhận thêm",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (dr != DialogResult.Yes) return;
+
+            try
             {
-                if (bll.ThemTaiKhoan(username, pass, hoTen, email, sdt, vaiTro, trangThai))
+                if (bll.ThemTaiKhoan(
+                    username, pass, hoTen, email, sdt, vaiTro, trangThai))
                 {
-                    MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    AppLogger.Information(
+                        $"Thêm tài khoản thành công: [{username}], vai trò: [{vaiTro}].");
+
+                    MessageBox.Show("Thêm tài khoản thành công!");
+
                     LoadDataGrid();
                     ResetForm();
                 }
                 else
                 {
-                    MessageBox.Show("Thêm thất bại (Tên đăng nhập đã tồn tại hoặc lỗi CSDL).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AppLogger.Warning(
+                        $"Thêm tài khoản thất bại: [{username}].");
+
+                    MessageBox.Show("Thêm tài khoản thất bại!");
                 }
+            }
+            catch (Exception ex)
+            {
+                AppLogger.Error(ex, "Lỗi hệ thống khi thêm tài khoản.");
+
+                MessageBox.Show("Lỗi hệ thống: " + ex.Message);
             }
         }
 
@@ -408,7 +448,6 @@ namespace QuanLyBanHang.UI
                 return;
             }
 
-            // Thêm cảnh báo xác nhận trước khi sửa
             DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn cập nhật thông tin cho tài khoản có mã [{txtma.Text}] không?", "Xác nhận sửa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
@@ -422,12 +461,15 @@ namespace QuanLyBanHang.UI
 
                 if (bll.SuaTaiKhoan(maTK, hoTen, pass, email, sdt, vaiTro, trangThai))
                 {
+                    AppLogger.Information($"Cập nhật thông tin tài khoản ID [{maTK}] thành công.");
+
                     MessageBox.Show("Cập nhật thông tin tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadDataGrid();
                     ResetForm();
                 }
                 else
                 {
+                    AppLogger.Warning($"Cập nhật thất bại tài khoản ID [{maTK}].");
                     MessageBox.Show("Cập nhật thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -444,7 +486,6 @@ namespace QuanLyBanHang.UI
             bool trangThaiMoi = !checktrangthai.Checked;
             string trangThaiText = trangThaiMoi ? "Đang hoạt động" : "Đã khóa";
 
-            // Thêm cảnh báo xác nhận trước khi khóa/mở khóa
             DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn chuyển trạng thái tài khoản mã [{txtma.Text}] thành [{trangThaiText}] không?", "Xác nhận đổi trạng thái", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
@@ -452,12 +493,15 @@ namespace QuanLyBanHang.UI
 
                 if (bll.CapNhatTrangThai(maTK, trangThaiText))
                 {
-                    checktrangthai.Checked = trangThaiMoi; // Cập nhật checkbox
+                    AppLogger.Information($"Đổi trạng thái tài khoản ID [{maTK}] thành: [{trangThaiText}]");
+
+                    checktrangthai.Checked = trangThaiMoi;
                     MessageBox.Show($"Đã đổi trạng thái tài khoản thành: [{trangThaiText}]!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadDataGrid(); // Đồng bộ lại DataGridView
+                    LoadDataGrid();
                 }
                 else
                 {
+                    AppLogger.Error($"Lỗi khi cập nhật trạng thái tài khoản ID [{maTK}].");
                     MessageBox.Show("Lỗi cập nhật trạng thái.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -478,14 +522,12 @@ namespace QuanLyBanHang.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Kiểm tra xem đã chọn dòng nào trên bảng chưa (dựa vào ô Mã tài khoản)
             if (string.IsNullOrEmpty(txtma.Text))
             {
                 MessageBox.Show("Vui lòng chọn tài khoản cần xoá từ danh sách bên dưới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Hộp thoại cảnh báo xác nhận trước khi xoá (đã có sẵn từ trước của bạn)
             DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn xoá tài khoản có mã [{txtma.Text}] không?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (dr == DialogResult.Yes)
@@ -497,19 +539,21 @@ namespace QuanLyBanHang.UI
 
                     if (ketQua)
                     {
-                        MessageBox.Show("Xoá tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        AppLogger.Information($"Xóa thành công tài khoản mã ID: [{txtma.Text}]");
 
-                        // Cập nhật lại DataGridView và làm sạch form
+                        MessageBox.Show("Xoá tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadDataGrid();
                         ResetForm();
                     }
                     else
                     {
+                        AppLogger.Warning($"Xóa tài khoản thất bại mã ID: [{txtma.Text}]");
                         MessageBox.Show("Xoá tài khoản thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
+                    AppLogger.Error(ex, "Lỗi hệ thống khi xóa tài khoản: " + ex.Message);
                     MessageBox.Show("Lỗi hệ thống: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -524,23 +568,27 @@ namespace QuanLyBanHang.UI
         {
             TimKiemTaiKhoan(); // Tìm kiếm ngay trong lúc gõ
         }
+
+        // Nhấn Enter: ghi log
         private void txttk_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                TimKiemTaiKhoan(); // Tìm kiếm khi nhấn Enter
-                e.SuppressKeyPress = true; // Chặn tiếng kêu "bíp" của Windows
+                TimKiemTaiKhoan(true);
+                e.SuppressKeyPress = true;
             }
         }
+
+        // Thay đổi checkbox: không ghi log
         private void cbhd_CheckedChanged(object sender, EventArgs e)
         {
-            TimKiemTaiKhoan(); // Lọc lại danh sách ngay khi thay đổi trạng thái checkbox "Hoạt động"
-
+            TimKiemTaiKhoan();
         }
 
+        // Nhấn nút tìm kiếm: ghi log
         private void btntim_Click(object sender, EventArgs e)
         {
-            TimKiemTaiKhoan(); // Tìm kiếm khi bấm nút "Tìm"
+            TimKiemTaiKhoan(true);
         }
     }
 }

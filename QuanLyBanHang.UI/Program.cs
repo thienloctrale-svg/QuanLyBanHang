@@ -12,36 +12,36 @@ namespace QuanLyBanHang.UI
         [STAThread]
         static void Main()
         {
-            // Khoi tao he thong ghi log
+            // Khởi tạo hệ thống ghi log
             AppLogger.Initialize();
 
             try
             {
-                // Cau hinh ung dung WinForms
+                // Cấu hình ứng dụng WinForms
                 ApplicationConfiguration.Initialize();
 
-                // Ghi log khi ung dung khoi dong
+                // Ghi log khi ứng dụng khởi động
                 AppLogger.Information(
-                    "Ung dung QuanLyBanHang da khoi dong.");
+                    "Ứng dụng QuanLyBanHang đã khởi động.");
 
-                // Mo man hinh chinh
-                Application.Run(new FrmDangNhap());
+                // Mở màn hình chính
+                Application.Run(new FrmTaiKhoan());
             }
             catch (Exception ex)
             {
-                // Ghi log neu ung dung gap loi nghiem trong
+                // Ghi log nếu ứng dụng gặp lỗi nghiêm trọng
                 AppLogger.Error(
-                    ex, "Ung dung gap loi nghiem trong.");
+                    ex, "Ứng dụng gặp lỗi nghiêm trọng.");
 
                 throw;
             }
             finally
             {
-                // Ghi log khi ung dung ket thuc
+                // Ghi log khi ứng dụng kết thúc
                 AppLogger.Information(
-                    "Ung dung QuanLyBanHang da dong.");
+                    "Ứng dụng QuanLyBanHang đã đóng.");
 
-                // Dong he thong ghi log va ghi het du lieu con lai
+                // Đóng hệ thống ghi log
                 AppLogger.CloseAndFlush();
             }
         }
