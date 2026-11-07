@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using QuanLyBanHang.BLL;
 using QuanLyBanHang.UI.Helpers;
+using QuanLyBanHang.Logging;
 
 namespace QuanLyBanHang.UI
 {
@@ -111,6 +112,7 @@ namespace QuanLyBanHang.UI
                 // Gọi validation từ BLL
                 if (!thongKeBLL.KiemTraKhoangNgayHopLe(tuNgay, denNgay, out string thongBaoLoi))
                 {
+                    AppLogger.Warning($"Thong ke that bai: Khoang ngay khong hop le (Tu {tuNgay:dd/MM/yyyy} den {denNgay:dd/MM/yyyy}). Ly do: {thongBaoLoi}");
                     ThongBao.CanhBao(thongBaoLoi);
                     return;
                 }
@@ -149,12 +151,17 @@ namespace QuanLyBanHang.UI
                     lblTongDoanhThu.Text = tongDoanhThu.ToString("N0") + " VNĐ";
                     lblSoHoaDonHuy.Text = soHoaDonHuy.ToString("N0");
                     lblGiaTriTrungBinh.Text = trungBinhDon.ToString("N0") + " VNĐ";
+
+                    // Ghi nhận log truy vấn thành công
+                    AppLogger.Information($"Tai du lieu thong ke thanh cong: Tu {tuNgay:dd/MM/yyyy} den {denNgay:dd/MM/yyyy} | Tong HD: {soHoaDon} | Tong DT: {tongDoanhThu:N0} VND");
                 }
 
                 dgvChiTietHoaDon.Rows.Clear();
             }
             catch (Exception ex)
             {
+                // Ghi log lỗi chi tiết kèm stack trace
+                AppLogger.Error(ex, "Loi ngoai le khi thuc hien thong ke doanh thu.");
                 ThongBao.LoiHeThong(ex, "Không thể tải dữ liệu thống kê. Vui lòng thử lại sau!", "FrmThongKe - ThucHienThongKe");
             }
         }
@@ -208,9 +215,13 @@ namespace QuanLyBanHang.UI
                     dgvChiTietHoaDon.Rows[index].Cells["colCT_ThanhTien"].Value =
                         Convert.ToDecimal(row["ThanhTien"]).ToString("N0");
                 }
+
+                // Ghi log khi nhân viên tra cứu hóa đơn cụ thể
+                AppLogger.Debug($"Nguoi dung xem chi tiet hoa don: {maHoaDon} ({chiTiet.Rows.Count} san pham).");
             }
             catch (Exception ex)
             {
+                AppLogger.Error(ex, "Loi khi tai chi tiet hoa don tai FrmThongKe.");
                 ThongBao.LoiHeThong(ex, "Không thể tải chi tiết hóa đơn này.", "FrmThongKe - dgvHoaDon_CellClick");
             }
         }
@@ -243,10 +254,14 @@ namespace QuanLyBanHang.UI
 
                     File.WriteAllText(saveDialog.FileName, noiDungCsv, new UTF8Encoding(true));
 
+                    // Ghi log xuất file thành công
+                    AppLogger.Information($"Xuat bao cao CSV thanh cong: {Path.GetFileName(saveDialog.FileName)} voi {dsHoaDon.Rows.Count} hoa don.");
+
                     ThongBao.ThanhCong("Xuất báo cáo doanh thu thành công!");
                 }
                 catch (Exception ex)
                 {
+                    AppLogger.Error(ex, "Loi khi xuat file bao cao thong ke CSV.");
                     ThongBao.LoiHeThong(ex, "Không thể lưu file báo cáo. Vui lòng kiểm tra quyền truy cập thư mục!", "FrmThongKe - btnXuatBaoCao_Click");
                 }
             }

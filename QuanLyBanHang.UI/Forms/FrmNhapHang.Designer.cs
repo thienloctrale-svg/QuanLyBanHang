@@ -361,6 +361,7 @@
             Controls.Add(groupBox1);
             Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
             Name = "FrmNhapHang";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmNhapHang";
             Load += FrmNhapHang_Load;
             groupBox1.ResumeLayout(false);

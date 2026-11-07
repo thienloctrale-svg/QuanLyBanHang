@@ -376,6 +376,7 @@
             Controls.Add(btnTimKiem);
             Controls.Add(groupBox1);
             Name = "FrmSanPham";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmSanPham";
             Load += FrmSanPham_Load;
             Click += btnThem_Click;

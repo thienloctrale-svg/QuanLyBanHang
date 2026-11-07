@@ -605,6 +605,7 @@
             Controls.Add(btnthem);
             Controls.Add(gbtk);
             Name = "FrmTaiKhoan";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản Lý Tài Khoản";
             gbtk.ResumeLayout(false);
             gbtk.PerformLayout();
