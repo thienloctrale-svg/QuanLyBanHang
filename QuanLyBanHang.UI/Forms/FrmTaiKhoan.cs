@@ -14,40 +14,195 @@ namespace QuanLyBanHang.UI
     public partial class FrmTaiKhoan : Form
     {
         private TaiKhoanBLL bll = new TaiKhoanBLL();
+        private bool isLoaded = false;
         public FrmTaiKhoan()
         {
             InitializeComponent();
-
-            // Mặc định ẩn mật khẩu
+            ResetForm();
             txtmk.UseSystemPasswordChar = true;
             checkmk.Checked = false;
 
-            // Gọi trực tiếp các hàm load ở đây để chắc chắn nó chạy 100%
+            // Đặt mặc định checkbox "Hoạt động" luôn bật sẵn khi mở form
+            cbhd.Checked = true;
+
+            // GẮN TRỰC TIẾP CÁC SỰ KIỆN TÌM KIẾM BẰNG CODE (Tránh lỗi chưa kết nối trong Designer)
+            txttk.TextChanged -= txttk_TextChanged;
+            txttk.TextChanged += txttk_TextChanged; ;
+
+            txttk.KeyDown -= txttk_KeyDown;
+            txttk.KeyDown += txttk_KeyDown;
+
+            cbhd.CheckedChanged -= cbhd_CheckedChanged;
+            cbhd.CheckedChanged += cbhd_CheckedChanged;
+
+            btntim.Click -= btntim_Click;
+            btntim.Click += btntim_Click;
+
             LoadComboBoxVaiTro();
             LoadDataGrid();
-            ResetForm();
+            isLoaded = true;
 
+            // Gắn sự kiện Enter tuần tự cho các ô nhập liệu thông tin
+            txttendn.KeyDown += txttendn_KeyDown;
+            txthoten.KeyDown += txthoten_KeyDown;
+            txtmk.KeyDown += txtmk_KeyDown;
+            txtsdt.KeyDown += txtsdt_KeyDown;
+            txtmail.KeyDown += txtmail_KeyDown;
+
+            // Gắn sự kiện định dạng dữ liệu cho DataGridView
+            dgvTaiKhoan.CellFormatting += dgvTaiKhoan_CellFormatting;
         }
         private void FrmTaiKhoan_Load(object sender, EventArgs e)
         {
-            // Thiết lập ẩn mật khẩu ban đầu
+            ResetForm();
             txtmk.UseSystemPasswordChar = true;
             checkmk.Checked = false;
 
-            // Nạp dữ liệu ComboBox Vai trò & CSDL
+            // Đặt mặc định checkbox "Hoạt động" luôn bật sẵn khi mở form
+            cbhd.Checked = true;
+
+            // GẮN TRỰC TIẾP CÁC SỰ KIỆN TÌM KIẾM BẰNG CODE (Tránh lỗi chưa kết nối trong Designer)
+            txttk.TextChanged -= txttk_TextChanged;
+            txttk.TextChanged += txttk_TextChanged; ;
+
+            txttk.KeyDown -= txttk_KeyDown;
+            txttk.KeyDown += txttk_KeyDown;
+
+            cbhd.CheckedChanged -= cbhd_CheckedChanged;
+            cbhd.CheckedChanged += cbhd_CheckedChanged;
+
+            btntim.Click -= btntim_Click;
+            btntim.Click += btntim_Click;
+
             LoadComboBoxVaiTro();
             LoadDataGrid();
-            ResetForm();
+            isLoaded = true;
+
+            // Gắn sự kiện Enter tuần tự cho các ô nhập liệu thông tin
+            txttendn.KeyDown += txttendn_KeyDown;
+            txthoten.KeyDown += txthoten_KeyDown;
+            txtmk.KeyDown += txtmk_KeyDown;
+            txtsdt.KeyDown += txtsdt_KeyDown;
+            txtmail.KeyDown += txtmail_KeyDown;
+        }
+        private void txttendn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txthoten.Focus();          // Nhảy sang ô Họ tên
+                e.SuppressKeyPress = true; // Chặn tiếng bíp
+            }
         }
 
+        private void txthoten_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtmk.Focus();             // Nhảy sang ô Mật khẩu
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtmk_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtsdt.Focus();            // Nhảy sang ô Số điện thoại
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtsdt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtmail.Focus();           // Nhảy sang ô Email
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void txtmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                cbvaitro.Focus();          // Nhảy tiếp sang ComboBox Vai trò (hoặc đổi thành btnthem.Focus() nếu muốn nhảy thẳng xuống nút Thêm)
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        // mã hoá mk
+        private void dgvTaiKhoan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Kiểm tra xem có đúng là cột Mật Khẩu không (Giả sử cột Mật khẩu nằm ở Index = 2 hoặc bạn có thể check theo tên cột)
+            // Nếu trong SQL cột tên là "MatKhau" hoặc "Password", bạn có thể kiểm tra: dgvTaiKhoan.Columns[e.ColumnIndex].Name == "MatKhau"
+            if (e.ColumnIndex == 2 && e.Value != null) // Thay số 2 bằng index cột mật khẩu của bạn nếu khác
+            {
+                e.Value = "••••••••"; // Hiển thị dấu chấm hoặc "******"
+                e.FormattingApplied = true;
+            }
+        }
+
+        private void TimKiemTaiKhoan()
+        {
+            if (!isLoaded) return;
+
+            try
+            {
+                // Lấy dữ liệu gốc từ BLL
+                DataTable dt = bll.LayDanhSachTaiKhoan();
+                if (dt != null)
+                {
+                    string keyword = txttk.Text.Trim().Replace("'", "''"); // Tránh lỗi cú pháp SQL nếu gõ dấu nháy
+                    bool filterHoatDong = cbhd.Checked;
+
+                    // Tạo danh sách các điều kiện lọc (RowFilter)
+                    List<string> conditions = new List<string>();
+
+                    // 1. Điều kiện tìm kiếm theo từ khóa (kiểm tra cả TenDangNhap và HoTen)
+                    if (!string.IsNullOrEmpty(keyword))
+                    {
+                        conditions.Add($"(TenDangNhap LIKE '%{keyword}%' OR HoTen LIKE '%{keyword}%')");
+                    }
+
+                    // 2. Điều kiện lọc theo trạng thái hoạt động dựa vào checkbox cbhd
+                    if (filterHoatDong)
+                    {
+                        // Khi checkbox BẬT (Checked): Chỉ hiện tài khoản đang hoạt động
+                        conditions.Add("(TrangThai = 'Đang hoạt động' OR TrangThai = 'Hoạt động' OR TrangThai = 'True' OR TrangThai = '1')");
+                    }
+                    else
+                    {
+                        // Khi checkbox TẮT (Unchecked): Chỉ hiện tài khoản không hoạt động / đã khóa
+                        conditions.Add("(TrangThai = 'Đã khóa' OR TrangThai = 'Khóa' OR TrangThai = 'False' OR TrangThai = '0')");
+                    }
+
+                    // Gộp các điều kiện lại bằng từ khóa AND
+                    string finalFilter = string.Join(" AND ", conditions);
+
+                    // Áp dụng bộ lọc cho DataView của DataTable
+                    DataView dv = dt.DefaultView;
+                    dv.RowFilter = finalFilter;
+
+                    // Gán lại lên DataGridView
+                    dgvTaiKhoan.DataSource = dv;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tìm kiếm: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         // Load ComboBox Vai Trò
         private void LoadComboBoxVaiTro()
         {
             cbvaitro.Items.Clear();
             cbvaitro.Items.Add("Quản trị viên");
-            cbvaitro.Items.Add("Nhóm trưởng");
             cbvaitro.Items.Add("Nhân viên");
-            cbvaitro.SelectedIndex = 2; // Mặc định 'Nhân viên'
+
+            if (cbvaitro.Items.Count > 1)
+            {
+                cbvaitro.SelectedIndex = 1; // Mặc định 'Nhân viên'
+            }
         }
         private void LoadDataGrid()
         {
@@ -79,20 +234,17 @@ namespace QuanLyBanHang.UI
             txtmk.UseSystemPasswordChar = true;
 
             txttendn.Enabled = true;
-            cbvaitro.SelectedIndex = 2;
+            LoadComboBoxVaiTro();
             txttendn.Focus();
         }
 
         // 2. Click chọn dòng trên DataGridView -> Hiện thông tin đầy đủ lên trên
         private void dgvTaiKhoan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Kiểm tra click dòng hợp lệ (tránh click vào tiêu đề)
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgvTaiKhoan.Rows[e.RowIndex];
 
-                // Lấy dữ liệu theo thứ tự cột chuẩn từ SQL:
-                // 0: MaTaiKhoan, 1: TenDangNhap, 2: MatKhau, 3: HoTen, 4: Email, 5: SoDienThoai, 6: VaiTro, 7: TrangThai, 8: NgayTao
                 txtma.Text = row.Cells[0].Value?.ToString() ?? "";
                 txttendn.Text = row.Cells[1].Value?.ToString() ?? "";
                 txtmk.Text = row.Cells[2].Value?.ToString() ?? "";
@@ -100,10 +252,18 @@ namespace QuanLyBanHang.UI
                 txtmail.Text = row.Cells[4].Value?.ToString() ?? "";
                 txtsdt.Text = row.Cells[5].Value?.ToString() ?? "";
 
-                // Vai trò (ComboBox)
+                // Fix chuẩn cho ComboBox dạng DropDownList: Chọn trực tiếp bằng giá trị chuỗi
                 if (row.Cells[6].Value != null)
                 {
-                    cbvaitro.Text = row.Cells[6].Value.ToString();
+                    string vaiTro = row.Cells[6].Value.ToString().Trim();
+                    cbvaitro.SelectedItem = vaiTro;
+
+                    // Phòng hờ nếu chuỗi không khớp chính xác 100% thì gán cứng theo index an toàn
+                    if (cbvaitro.SelectedIndex == -1)
+                    {
+                        if (vaiTro.Contains("Quản trị")) cbvaitro.SelectedIndex = 0;
+                        else cbvaitro.SelectedIndex = 1;
+                    }
                 }
 
                 // Trạng thái (CheckBox)
@@ -119,7 +279,6 @@ namespace QuanLyBanHang.UI
                     dtngaytao.Value = Convert.ToDateTime(row.Cells[8].Value);
                 }
 
-                // Khóa tên đăng nhập không cho sửa khi đang chọn dòng cập nhật
                 txttendn.Enabled = false;
             }
         }
@@ -195,41 +354,7 @@ namespace QuanLyBanHang.UI
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Kiểm tra xem người dùng có click vào dòng hợp lệ không (tránh click nhấp vào tiêu đề cột)
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dgvTaiKhoan.Rows[e.RowIndex];
-
-                // Đổ dữ liệu từ các cột lên các control tương ứng
-                txtma.Text = row.Cells["MaTaiKhoan"].Value?.ToString() ?? "";
-                txttendn.Text = row.Cells["TenDangNhap"].Value?.ToString() ?? "";
-                txthoten.Text = row.Cells["HoTen"].Value?.ToString() ?? "";
-                txtmk.Text = row.Cells["MatKhau"].Value?.ToString() ?? "";
-                txtsdt.Text = row.Cells["SoDienThoai"].Value?.ToString() ?? "";
-                txtmail.Text = row.Cells["Email"].Value?.ToString() ?? "";
-
-                // ComboBox Vai trò
-                if (row.Cells["VaiTro"].Value != null)
-                {
-                    cbvaitro.Text = row.Cells["VaiTro"].Value.ToString();
-                }
-
-                // CheckBox Trạng thái (Giả sử trong SQL lưu chữ "Đang hoạt động" hoặc tương tự)
-                if (row.Cells["VaiTro"].Value != null)
-                {
-                    string trangThai = row.Cells["TrangThai"].Value.ToString();
-                    checktrangthai.Checked = (trangThai.Contains("Hoạt động") || trangThai == "True");
-                }
-
-                // DateTimePicker Ngày tạo
-                if (row.Cells["NgayTao"].Value != null && row.Cells["NgayTao"].Value != DBNull.Value)
-                {
-                    dtngaytao.Value = Convert.ToDateTime(row.Cells["NgayTao"].Value);
-                }
-
-                // Khóa không cho sửa tên đăng nhập hoặc mã nếu đang chọn dòng để sửa
-                txttendn.Enabled = false;
-            }
+            dgvTaiKhoan_CellClick(sender, e);
         }
 
         private void btntrangchu_Click(object sender, EventArgs e)
@@ -258,15 +383,20 @@ namespace QuanLyBanHang.UI
                 return;
             }
 
-            if (bll.ThemTaiKhoan(username, pass, hoTen, email, sdt, vaiTro, trangThai))
+            // Thêm cảnh báo xác nhận trước khi thêm
+            DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn thêm tài khoản [{username}] không?", "Xác nhận thêm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
             {
-                MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadDataGrid();
-                ResetForm();
-            }
-            else
-            {
-                MessageBox.Show("Thêm thất bại (Tên đăng nhập đã tồn tại hoặc lỗi CSDL).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (bll.ThemTaiKhoan(username, pass, hoTen, email, sdt, vaiTro, trangThai))
+                {
+                    MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadDataGrid();
+                    ResetForm();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm thất bại (Tên đăng nhập đã tồn tại hoặc lỗi CSDL).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -278,23 +408,28 @@ namespace QuanLyBanHang.UI
                 return;
             }
 
-            int maTK = int.Parse(txtma.Text);
-            string hoTen = txthoten.Text.Trim();
-            string pass = txtmk.Text.Trim();
-            string email = txtmail.Text.Trim();
-            string sdt = txtsdt.Text.Trim();
-            string vaiTro = cbvaitro.Text;
-            string trangThai = checktrangthai.Checked ? "Đang hoạt động" : "Đã khóa";
+            // Thêm cảnh báo xác nhận trước khi sửa
+            DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn cập nhật thông tin cho tài khoản có mã [{txtma.Text}] không?", "Xác nhận sửa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                int maTK = int.Parse(txtma.Text);
+                string hoTen = txthoten.Text.Trim();
+                string pass = txtmk.Text.Trim();
+                string email = txtmail.Text.Trim();
+                string sdt = txtsdt.Text.Trim();
+                string vaiTro = cbvaitro.Text;
+                string trangThai = checktrangthai.Checked ? "Đang hoạt động" : "Đã khóa";
 
-            if (bll.SuaTaiKhoan(maTK, hoTen, pass, email, sdt, vaiTro, trangThai))
-            {
-                MessageBox.Show("Cập nhật thông tin tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadDataGrid();
-                ResetForm();
-            }
-            else
-            {
-                MessageBox.Show("Cập nhật thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (bll.SuaTaiKhoan(maTK, hoTen, pass, email, sdt, vaiTro, trangThai))
+                {
+                    MessageBox.Show("Cập nhật thông tin tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadDataGrid();
+                    ResetForm();
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -306,28 +441,39 @@ namespace QuanLyBanHang.UI
                 return;
             }
 
-            int maTK = int.Parse(txtma.Text);
-
-            // Đảo ngược trạng thái CheckBox
             bool trangThaiMoi = !checktrangthai.Checked;
             string trangThaiText = trangThaiMoi ? "Đang hoạt động" : "Đã khóa";
 
-            if (bll.CapNhatTrangThai(maTK, trangThaiText))
+            // Thêm cảnh báo xác nhận trước khi khóa/mở khóa
+            DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn chuyển trạng thái tài khoản mã [{txtma.Text}] thành [{trangThaiText}] không?", "Xác nhận đổi trạng thái", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
             {
-                checktrangthai.Checked = trangThaiMoi; // Cập nhật checkbox
-                MessageBox.Show($"Đã đổi trạng thái tài khoản thành: [{trangThaiText}]!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadDataGrid(); // Đồng bộ lại DataGridView
-            }
-            else
-            {
-                MessageBox.Show("Lỗi cập nhật trạng thái.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                int maTK = int.Parse(txtma.Text);
+
+                if (bll.CapNhatTrangThai(maTK, trangThaiText))
+                {
+                    checktrangthai.Checked = trangThaiMoi; // Cập nhật checkbox
+                    MessageBox.Show($"Đã đổi trạng thái tài khoản thành: [{trangThaiText}]!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadDataGrid(); // Đồng bộ lại DataGridView
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi cập nhật trạng thái.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void btnlammoi_Click(object sender, EventArgs e)
         {
-            ResetForm();
-            LoadDataGrid(); // Hiện dữ liệu mới nhất trong DataGridView
+            // Thêm cảnh báo xác nhận trước khi làm mới (nếu muốn reset dữ liệu đang nhập dở)
+            DialogResult dr = MessageBox.Show("Bạn có muốn làm mới lại form và hủy các thông tin đang nhập?", "Xác nhận làm mới", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                txttk.Clear(); // Xóa ô tìm kiếm
+                cbhd.Checked = true; // Đưa checkbox hoạt động về mặc định
+                ResetForm();
+                LoadDataGrid(); // Hiện dữ liệu mới nhất trong DataGridView
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -339,7 +485,7 @@ namespace QuanLyBanHang.UI
                 return;
             }
 
-            // Hiển thị hộp thoại cảnh báo trước khi xoá để tránh bấm nhầm
+            // Hộp thoại cảnh báo xác nhận trước khi xoá (đã có sẵn từ trước của bạn)
             DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn xoá tài khoản có mã [{txtma.Text}] không?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (dr == DialogResult.Yes)
@@ -367,6 +513,34 @@ namespace QuanLyBanHang.UI
                     MessageBox.Show("Lỗi hệ thống: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void lblhoten_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txttk_TextChanged(object sender, EventArgs e)
+        {
+            TimKiemTaiKhoan(); // Tìm kiếm ngay trong lúc gõ
+        }
+        private void txttk_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                TimKiemTaiKhoan(); // Tìm kiếm khi nhấn Enter
+                e.SuppressKeyPress = true; // Chặn tiếng kêu "bíp" của Windows
+            }
+        }
+        private void cbhd_CheckedChanged(object sender, EventArgs e)
+        {
+            TimKiemTaiKhoan(); // Lọc lại danh sách ngay khi thay đổi trạng thái checkbox "Hoạt động"
+
+        }
+
+        private void btntim_Click(object sender, EventArgs e)
+        {
+            TimKiemTaiKhoan(); // Tìm kiếm khi bấm nút "Tìm"
         }
     }
 }

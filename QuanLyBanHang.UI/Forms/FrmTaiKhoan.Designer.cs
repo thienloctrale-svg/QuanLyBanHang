@@ -28,7 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTaiKhoan));
             gbtk = new GroupBox();
+            btntim = new Button();
+            tim = new ImageList(components);
+            cbhd = new CheckBox();
+            txttk = new TextBox();
+            label1 = new Label();
             gbtths = new GroupBox();
             dtngaytao = new DateTimePicker();
             checktrangthai = new CheckBox();
@@ -51,10 +58,15 @@
             lblmk = new Label();
             lblhoten = new Label();
             btnthem = new Button();
+            t = new ImageList(components);
             btnsua = new Button();
+            s = new ImageList(components);
             btnkhoa = new Button();
+            k = new ImageList(components);
             btnlammoi = new Button();
+            lm = new ImageList(components);
             btntrangchu = new Button();
+            tc = new ImageList(components);
             dgvTaiKhoan = new DataGridView();
             MaTaiKhoan = new DataGridViewTextBoxColumn();
             TenDangNhap = new DataGridViewTextBoxColumn();
@@ -66,6 +78,7 @@
             TrangThai = new DataGridViewTextBoxColumn();
             NgayTao = new DataGridViewTextBoxColumn();
             button1 = new Button();
+            x = new ImageList(components);
             gbtk.SuspendLayout();
             gbtths.SuspendLayout();
             gbthongtinngoai.SuspendLayout();
@@ -74,15 +87,70 @@
             // 
             // gbtk
             // 
+            gbtk.Controls.Add(btntim);
+            gbtk.Controls.Add(cbhd);
+            gbtk.Controls.Add(txttk);
+            gbtk.Controls.Add(label1);
             gbtk.Controls.Add(gbtths);
             gbtk.Controls.Add(gbthongtinngoai);
             gbtk.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            gbtk.Location = new Point(27, 29);
+            gbtk.Location = new Point(27, 32);
             gbtk.Name = "gbtk";
-            gbtk.Size = new Size(1074, 341);
+            gbtk.Size = new Size(1074, 338);
             gbtk.TabIndex = 0;
             gbtk.TabStop = false;
             gbtk.Text = "Thông Tin Tài Khoản";
+            // 
+            // btntim
+            // 
+            btntim.BackColor = Color.SkyBlue;
+            btntim.FlatStyle = FlatStyle.Popup;
+            btntim.ImageAlign = ContentAlignment.MiddleLeft;
+            btntim.ImageKey = "tk.jpg";
+            btntim.ImageList = tim;
+            btntim.Location = new Point(687, 31);
+            btntim.Name = "btntim";
+            btntim.Size = new Size(128, 30);
+            btntim.TabIndex = 13;
+            btntim.Text = "Tìm";
+            btntim.UseVisualStyleBackColor = false;
+            btntim.Click += btntim_Click;
+            // 
+            // tim
+            // 
+            tim.ColorDepth = ColorDepth.Depth32Bit;
+            tim.ImageStream = (ImageListStreamer)resources.GetObject("tim.ImageStream");
+            tim.TransparentColor = Color.Transparent;
+            tim.Images.SetKeyName(0, "images (3).png");
+            tim.Images.SetKeyName(1, "tk.jpg");
+            // 
+            // cbhd
+            // 
+            cbhd.AutoSize = true;
+            cbhd.Location = new Point(551, 33);
+            cbhd.Name = "cbhd";
+            cbhd.Size = new Size(120, 27);
+            cbhd.TabIndex = 12;
+            cbhd.Text = "Hoạt Động";
+            cbhd.UseVisualStyleBackColor = true;
+            cbhd.CheckedChanged += cbhd_CheckedChanged;
+            // 
+            // txttk
+            // 
+            txttk.Location = new Point(178, 31);
+            txttk.Name = "txttk";
+            txttk.Size = new Size(343, 30);
+            txttk.TabIndex = 11;
+            txttk.TextChanged += txttk_TextChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(32, 34);
+            label1.Name = "label1";
+            label1.Size = new Size(142, 23);
+            label1.TabIndex = 10;
+            label1.Text = "Tìm Kiếm          :";
             // 
             // gbtths
             // 
@@ -94,9 +162,9 @@
             gbtths.Controls.Add(lvltrangthai);
             gbtths.Controls.Add(lblvaitro);
             gbtths.Controls.Add(lblma);
-            gbtths.Location = new Point(592, 29);
+            gbtths.Location = new Point(592, 70);
             gbtths.Name = "gbtths";
-            gbtths.Size = new Size(459, 290);
+            gbtths.Size = new Size(459, 265);
             gbtths.TabIndex = 9;
             gbtths.TabStop = false;
             gbtths.Text = "Thông Tin Hồ Sơ";
@@ -187,9 +255,9 @@
             gbthongtinngoai.Controls.Add(lblmail);
             gbthongtinngoai.Controls.Add(lblmk);
             gbthongtinngoai.Controls.Add(lblhoten);
-            gbthongtinngoai.Location = new Point(25, 29);
+            gbthongtinngoai.Location = new Point(25, 70);
             gbthongtinngoai.Name = "gbthongtinngoai";
-            gbthongtinngoai.Size = new Size(528, 289);
+            gbthongtinngoai.Size = new Size(528, 265);
             gbthongtinngoai.TabIndex = 8;
             gbthongtinngoai.TabStop = false;
             gbthongtinngoai.Text = "Thông Tin Cơ Bản";
@@ -198,7 +266,7 @@
             // checkmk
             // 
             checkmk.AutoSize = true;
-            checkmk.Location = new Point(427, 146);
+            checkmk.Location = new Point(427, 131);
             checkmk.Name = "checkmk";
             checkmk.Size = new Size(69, 27);
             checkmk.TabIndex = 13;
@@ -208,7 +276,7 @@
             // 
             // txtmail
             // 
-            txtmail.Location = new Point(153, 241);
+            txtmail.Location = new Point(153, 226);
             txtmail.Name = "txtmail";
             txtmail.Size = new Size(343, 30);
             txtmail.TabIndex = 12;
@@ -216,7 +284,7 @@
             // 
             // txtsdt
             // 
-            txtsdt.Location = new Point(153, 191);
+            txtsdt.Location = new Point(153, 176);
             txtsdt.Name = "txtsdt";
             txtsdt.Size = new Size(343, 30);
             txtsdt.TabIndex = 11;
@@ -224,7 +292,7 @@
             // 
             // txtmk
             // 
-            txtmk.Location = new Point(153, 142);
+            txtmk.Location = new Point(153, 127);
             txtmk.Name = "txtmk";
             txtmk.Size = new Size(250, 30);
             txtmk.TabIndex = 10;
@@ -233,7 +301,7 @@
             // 
             // txthoten
             // 
-            txthoten.Location = new Point(153, 94);
+            txthoten.Location = new Point(153, 79);
             txthoten.Name = "txthoten";
             txthoten.Size = new Size(343, 30);
             txthoten.TabIndex = 9;
@@ -241,7 +309,7 @@
             // 
             // txttendn
             // 
-            txttendn.Location = new Point(153, 48);
+            txttendn.Location = new Point(153, 33);
             txttendn.Name = "txttendn";
             txttendn.Size = new Size(343, 30);
             txttendn.TabIndex = 8;
@@ -250,7 +318,7 @@
             // lbltendn
             // 
             lbltendn.AutoSize = true;
-            lbltendn.Location = new Point(6, 51);
+            lbltendn.Location = new Point(6, 36);
             lbltendn.Name = "lbltendn";
             lbltendn.Size = new Size(143, 23);
             lbltendn.TabIndex = 1;
@@ -259,105 +327,161 @@
             // lblsdt
             // 
             lblsdt.AutoSize = true;
-            lblsdt.Location = new Point(6, 194);
+            lblsdt.Location = new Point(6, 179);
             lblsdt.Name = "lblsdt";
-            lblsdt.Size = new Size(136, 23);
+            lblsdt.Size = new Size(141, 23);
             lblsdt.TabIndex = 6;
-            lblsdt.Text = "Số Điện Thoại  :";
+            lblsdt.Text = "Số Điện Thoại   :";
             // 
             // lblmail
             // 
             lblmail.AutoSize = true;
-            lblmail.Location = new Point(6, 244);
+            lblmail.Location = new Point(6, 229);
             lblmail.Name = "lblmail";
-            lblmail.Size = new Size(134, 23);
+            lblmail.Size = new Size(139, 23);
             lblmail.TabIndex = 7;
-            lblmail.Text = "Email               :";
+            lblmail.Text = "Email                :";
             lblmail.Click += lblmail_Click;
             // 
             // lblmk
             // 
             lblmk.AutoSize = true;
-            lblmk.Location = new Point(6, 149);
+            lblmk.Location = new Point(6, 134);
             lblmk.Name = "lblmk";
-            lblmk.Size = new Size(137, 23);
+            lblmk.Size = new Size(142, 23);
             lblmk.TabIndex = 3;
-            lblmk.Text = "Mật Khẩu         :";
+            lblmk.Text = "Mật Khẩu          :";
             lblmk.Click += lblmk_Click;
             // 
             // lblhoten
             // 
             lblhoten.AutoSize = true;
-            lblhoten.Location = new Point(6, 101);
+            lblhoten.Location = new Point(6, 86);
             lblhoten.Name = "lblhoten";
             lblhoten.Size = new Size(140, 23);
             lblhoten.TabIndex = 2;
             lblhoten.Text = "Họ Tên              :";
+            lblhoten.Click += lblhoten_Click;
             // 
             // btnthem
             // 
             btnthem.BackColor = Color.LimeGreen;
+            btnthem.FlatStyle = FlatStyle.Popup;
             btnthem.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnthem.ForeColor = Color.White;
+            btnthem.ImageAlign = ContentAlignment.MiddleLeft;
+            btnthem.ImageKey = "thêm .png";
+            btnthem.ImageList = t;
             btnthem.Location = new Point(279, 376);
             btnthem.Name = "btnthem";
             btnthem.Size = new Size(125, 57);
             btnthem.TabIndex = 1;
-            btnthem.Text = "➕Thêm";
+            btnthem.Text = "Thêm";
             btnthem.UseVisualStyleBackColor = false;
             btnthem.Click += btnthem_Click;
+            // 
+            // t
+            // 
+            t.ColorDepth = ColorDepth.Depth32Bit;
+            t.ImageStream = (ImageListStreamer)resources.GetObject("t.ImageStream");
+            t.TransparentColor = Color.Transparent;
+            t.Images.SetKeyName(0, "thêm .png");
             // 
             // btnsua
             // 
             btnsua.BackColor = Color.DarkGoldenrod;
+            btnsua.FlatStyle = FlatStyle.Popup;
             btnsua.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnsua.ForeColor = Color.White;
+            btnsua.ImageAlign = ContentAlignment.MiddleLeft;
+            btnsua.ImageKey = "cn.png";
+            btnsua.ImageList = s;
             btnsua.Location = new Point(442, 376);
             btnsua.Name = "btnsua";
             btnsua.Size = new Size(125, 57);
             btnsua.TabIndex = 2;
-            btnsua.Text = "🛠️ Sửa";
+            btnsua.Text = "Sửa";
             btnsua.UseVisualStyleBackColor = false;
             btnsua.Click += btnsua_Click;
+            // 
+            // s
+            // 
+            s.ColorDepth = ColorDepth.Depth32Bit;
+            s.ImageStream = (ImageListStreamer)resources.GetObject("s.ImageStream");
+            s.TransparentColor = Color.Transparent;
+            s.Images.SetKeyName(0, "cn.png");
             // 
             // btnkhoa
             // 
             btnkhoa.BackColor = Color.FromArgb(192, 0, 192);
+            btnkhoa.FlatStyle = FlatStyle.Popup;
             btnkhoa.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnkhoa.ForeColor = Color.White;
+            btnkhoa.ImageAlign = ContentAlignment.MiddleLeft;
+            btnkhoa.ImageKey = "khoá.png";
+            btnkhoa.ImageList = k;
             btnkhoa.Location = new Point(758, 376);
             btnkhoa.Name = "btnkhoa";
             btnkhoa.Size = new Size(190, 57);
             btnkhoa.TabIndex = 3;
-            btnkhoa.Text = "🔐 Khoá/Mở Khoá";
+            btnkhoa.Text = "Khoá/Mở Khoá";
             btnkhoa.UseVisualStyleBackColor = false;
             btnkhoa.Click += btnkhoa_Click;
+            // 
+            // k
+            // 
+            k.ColorDepth = ColorDepth.Depth32Bit;
+            k.ImageStream = (ImageListStreamer)resources.GetObject("k.ImageStream");
+            k.TransparentColor = Color.Transparent;
+            k.Images.SetKeyName(0, "khoá.png");
             // 
             // btnlammoi
             // 
             btnlammoi.BackColor = Color.DarkTurquoise;
+            btnlammoi.FlatStyle = FlatStyle.Popup;
             btnlammoi.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnlammoi.ForeColor = Color.White;
+            btnlammoi.ImageAlign = ContentAlignment.MiddleLeft;
+            btnlammoi.ImageKey = "làm mới.png";
+            btnlammoi.ImageList = lm;
             btnlammoi.Location = new Point(967, 376);
             btnlammoi.Name = "btnlammoi";
             btnlammoi.Size = new Size(134, 57);
             btnlammoi.TabIndex = 5;
-            btnlammoi.Text = "🔁 Làm mới";
+            btnlammoi.Text = "Làm mới";
             btnlammoi.UseVisualStyleBackColor = false;
             btnlammoi.Click += btnlammoi_Click;
+            // 
+            // lm
+            // 
+            lm.ColorDepth = ColorDepth.Depth32Bit;
+            lm.ImageStream = (ImageListStreamer)resources.GetObject("lm.ImageStream");
+            lm.TransparentColor = Color.Transparent;
+            lm.Images.SetKeyName(0, "làm mới.png");
             // 
             // btntrangchu
             // 
             btntrangchu.BackColor = Color.RoyalBlue;
+            btntrangchu.FlatStyle = FlatStyle.Popup;
             btntrangchu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btntrangchu.ForeColor = Color.White;
+            btntrangchu.ImageAlign = ContentAlignment.MiddleLeft;
+            btntrangchu.ImageKey = "tc.png";
+            btntrangchu.ImageList = tc;
             btntrangchu.Location = new Point(27, 376);
             btntrangchu.Name = "btntrangchu";
             btntrangchu.Size = new Size(152, 57);
             btntrangchu.TabIndex = 6;
-            btntrangchu.Text = "⌂ Trang Chủ";
+            btntrangchu.Text = "Trang Chủ";
             btntrangchu.UseVisualStyleBackColor = false;
             btntrangchu.Click += btntrangchu_Click;
+            // 
+            // tc
+            // 
+            tc.ColorDepth = ColorDepth.Depth32Bit;
+            tc.ImageStream = (ImageListStreamer)resources.GetObject("tc.ImageStream");
+            tc.TransparentColor = Color.Transparent;
+            tc.Images.SetKeyName(0, "tc.png");
             // 
             // dgvTaiKhoan
             // 
@@ -446,15 +570,26 @@
             // button1
             // 
             button1.BackColor = Color.Red;
+            button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.White;
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.ImageKey = "xoa.png";
+            button1.ImageList = x;
             button1.Location = new Point(599, 376);
             button1.Name = "button1";
             button1.Size = new Size(123, 57);
             button1.TabIndex = 8;
-            button1.Text = "❌Xoá";
+            button1.Text = "Xoá";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
+            // 
+            // x
+            // 
+            x.ColorDepth = ColorDepth.Depth32Bit;
+            x.ImageStream = (ImageListStreamer)resources.GetObject("x.ImageStream");
+            x.TransparentColor = Color.Transparent;
+            x.Images.SetKeyName(0, "xoa.png");
             // 
             // FrmTaiKhoan
             // 
@@ -470,8 +605,9 @@
             Controls.Add(btnthem);
             Controls.Add(gbtk);
             Name = "FrmTaiKhoan";
-            Text = "FrmTaiKhoan";
+            Text = "Quản Lý Tài Khoản";
             gbtk.ResumeLayout(false);
+            gbtk.PerformLayout();
             gbtths.ResumeLayout(false);
             gbtths.PerformLayout();
             gbthongtinngoai.ResumeLayout(false);
@@ -520,5 +656,16 @@
         private DataGridViewTextBoxColumn TrangThai;
         private DataGridViewTextBoxColumn NgayTao;
         private Button button1;
+        private ImageList tc;
+        private ImageList t;
+        private ImageList s;
+        private ImageList x;
+        private ImageList k;
+        private ImageList lm;
+        private Label label1;
+        private Button btntim;
+        private ImageList tim;
+        private CheckBox cbhd;
+        private TextBox txttk;
     }
 }
