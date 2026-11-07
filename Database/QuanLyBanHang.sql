@@ -135,11 +135,11 @@ GO
 -- 4. NẠP DỮ LIỆU MẪU (SEED DATA)
 -- =============================================================
 
--- 4.1. Nạp Tài khoản
+-- 4.1. Nạp Tài khoản (Mật khẩu mã hóa SHA-256 cho tiepdm và loctlt; Mật khẩu gốc: 1234567)
 INSERT INTO TaiKhoan (TenDangNhap, MatKhau, HoTen, Email, SoDienThoai, VaiTro, TrangThai)
 VALUES 
-('tiepdm', '123456', N'Đỗ Minh Tiệp', 'tiep.dm@gmail.com', '0912345601', N'Quản trị viên', N'Đang hoạt động'),
-('loctlt', '123456', N'Trà Lê Thiên Lộc', 'thienloctrale@gmail.com', '0912345602', N'Nhóm trưởng', N'Đang hoạt động'),
+('tiepdm', '8BB0CF6EB9B17D0F7D22B456F121257DC1254E1F01665370476383EA776DF414', N'Đỗ Minh Tiệp', 'tiep.dm@gmail.com', '0912345601', N'Quản trị viên', N'Đang hoạt động'),
+('loctlt', '8BB0CF6EB9B17D0F7D22B456F121257DC1254E1F01665370476383EA776DF414', N'Trà Lê Thiên Lộc', 'thienloctrale@gmail.com', '0912345602', N'Nhóm trưởng', N'Đang hoạt động'),
 ('lienvt', '123456', N'Võ Thuỷ Liên', 'lien.vt@gmail.com', '0912345603', N'Nhân viên', N'Đang hoạt động'),
 ('nghialtt', '123456', N'Lê Tấn Trọng Nghĩa', 'nghia.ltt@gmail.com', '0912345604', N'Nhân viên', N'Đang hoạt động');
 GO
