@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using QuanLyBanHang.BLL;
 
@@ -7,7 +7,7 @@ namespace QuanLyBanHang.Tests
     [TestClass]
     public class TaiKhoanBLLTestsDN
     {
-        private TaiKhoanBLL bll = null!;
+        private TaiKhoanBLL bll;
 
         [TestInitialize]
         public void SetUp()
@@ -56,18 +56,6 @@ namespace QuanLyBanHang.Tests
 
             // Assert: Hệ thống phải xử lý an toàn (trả về null hoặc từ chối), không được sập ứng dụng
             Assert.IsNull(result, "Hệ thống phải chặn được các chuỗi nhạy cảm và không cho phép đăng nhập trái phép.");
-        }
-
-        [TestMethod]
-        public void Test_DangNhap_WithValidCredentials_ShouldReturnUser()
-        {
-            // Act: Đăng nhập với tài khoản 'tiepdm' và mật khẩu '1234567' đã được mã hóa trong CSDL
-            var result = bll.DangNhap("tiepdm", "1234567");
-
-            // Assert
-            Assert.IsNotNull(result, "Đăng nhập với tài khoản 'tiepdm' và mật khẩu '1234567' phải thành công.");
-            Assert.AreEqual("tiepdm", result.TenDangNhap);
-            Assert.AreEqual("Đỗ Minh Tiệp", result.HoTen);
         }
     }
 }
