@@ -176,6 +176,7 @@
             Controls.Add(lblpass);
             Controls.Add(lblacc);
             Name = "FrmDangNhap";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Đăng Nhập";
             Load += FrmDangNhap_Load;
             groupBox1.ResumeLayout(false);
