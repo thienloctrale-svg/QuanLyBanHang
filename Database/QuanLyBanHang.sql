@@ -144,7 +144,7 @@ VALUES
 ('nghialtt', '123456', N'Lê Tấn Trọng Nghĩa', 'nghia.ltt@gmail.com', '0912345604', N'Nhân viên', N'Đang hoạt động');
 GO
 
--- 4.2. Nạp Khách hàng
+-- 4.2. Nạp Khách hàng mẫu
 INSERT INTO KhachHang (MaKhachHang, TenKhachHang, GioiTinh, NgaySinh, SoDienThoai, Email, LoaiKhachHang, DiaChi, TrangThai, GhiChu)
 VALUES
 ('KH001', N'Nguyễn Văn An', N'Nam', '1990-05-15', '0901234567', 'an.nguyen@gmail.com', N'Khách VIP', N'123 Lê Lợi, Phường Bến Nghé, Quận 1, TP.HCM', N'Đang hoạt động', N'Khách hàng thân thiết nhiều năm'),
@@ -152,9 +152,17 @@ VALUES
 ('KH003', N'Lê Hoàng Nam', N'Nam', '1988-12-10', '0923456789', 'nam.le@gmail.com', N'Khách thường', N'789 Cách Mạng Tháng 8, Quận 10, TP.HCM', N'Đang hoạt động', N'Khách lẻ vãng lai'),
 ('KH004', N'Phạm Thanh Thảo', N'Nữ', '1992-03-25', '0934567890', 'thao.pham@gmail.com', N'Khách VIP', N'12 Nguyễn Thị Minh Khai, Quận 1, TP.HCM', N'Đang hoạt động', N'Ưu tiên giao hàng nhanh'),
 ('KH005', N'Huỳnh Quốc Bảo', N'Nam', '1985-07-04', '0945678901', 'bao.huynh@gmail.com', N'Khách sỉ', N'88 Hùng Vương, Quận 5, TP.HCM', N'Đang hoạt động', N'Lấy sỉ hàng tuần'),
-('KH006', N'Hoàng Mỹ Linh', N'Nữ', '1998-11-18', '0956789012', 'linh.hoang@gmail.com', N'Khách thường', N'54 Nguyễn Trãi, Quận 5, TP.HCM', N'Đang hoạt động', N''),
+('KH006', N'Hoàng Mỹ Linh', N'Nữ', '1998-11-18', '0956789012', 'linh.hoang@gmail.com', N'Khách thường', N'54 Nguyễn Trãi, Quận 5, TP.HCM', N'Đang hoạt động', N'Khách hàng sinh viên'),
 ('KH007', N'Đặng Gia Huy', N'Nam', '1993-09-09', '0967890123', 'huy.dang@gmail.com', N'Khách thân thiết', N'102 Trần Hưng Đạo, Quận 1, TP.HCM', N'Đang hoạt động', N'Thanh toán qua chuyển khoản'),
-('KH008', N'Vũ Bích Ngọc', N'Nữ', '1996-01-30', '0978901234', 'ngoc.vu@gmail.com', N'Khách thường', N'204 Điện Biên Phủ, Quận Bình Thạnh, TP.HCM', N'Tạm ngừng', N'Khách chuyển chỗ ở');
+('KH008', N'Vũ Bích Ngọc', N'Nữ', '1996-01-30', '0978901234', 'ngoc.vu@gmail.com', N'Khách thường', N'204 Điện Biên Phủ, Quận Bình Thạnh, TP.HCM', N'Tạm ngừng', N'Khách chuyển chỗ ở'),
+('KH009', N'Bùi Tiến Dũng', N'Nam', '1991-04-12', '0981234567', 'dung.bui@gmail.com', N'Khách VIP', N'34 Lê Duẩn, Phường Bến Nghé, Quận 1, TP.HCM', N'Đang hoạt động', N'Khách VIP doanh nghiệp lớn'),
+('KH010', N'Lê Thị Thu Thảo', N'Nữ', '1997-10-05', '0982345678', 'thao.le@gmail.com', N'Khách thân thiết', N'156 Nguyễn Đình Chiểu, Phường 6, Quận 3, TP.HCM', N'Đang hoạt động', N'Tích điểm đổi quà thường xuyên'),
+('KH011', N'Phan Thanh Tùng', N'Nam', '1989-08-22', '0983456789', 'tung.phan@gmail.com', N'Khách sỉ', N'72 Ba Tháng Hai, Phường 12, Quận 10, TP.HCM', N'Đang hoạt động', N'Đại lý phân phối tạp hóa khu vực'),
+('KH012', N'Ngô Quỳnh Anh', N'Nữ', '2000-03-14', '0984567890', 'anh.ngo@gmail.com', N'Khách thường', N'250 Bạch Đằng, Phường 24, Quận Bình Thạnh, TP.HCM', N'Đang hoạt động', N'Khách mua online qua hotline'),
+('KH013', N'Trịnh Hoài Nam', N'Nam', '1994-06-18', '0985678901', 'nam.trinh@gmail.com', N'Khách VIP', N'89 Nguyễn Hữu Cảnh, Phường 22, Quận Bình Thạnh, TP.HCM', N'Đang hoạt động', N'Hạn mức thanh toán cao'),
+('KH014', N'Đỗ Phương Thảo', N'Nữ', '1999-12-03', '0986789012', 'thao.do@gmail.com', N'Khách thân thiết', N'45 Nam Kỳ Khởi Nghĩa, Phường 7, Quận 3, TP.HCM', N'Đang hoạt động', N'Ưu tiên mã giảm giá sinh nhật'),
+('KH015', N'Nguyễn Minh Khôi', N'Nam', '1987-11-27', '0987890123', 'khoi.nguyen@gmail.com', N'Khách sỉ', N'18 Nguyễn Tri Phương, Phường 6, Quận 5, TP.HCM', N'Đang hoạt động', N'Nhập hàng định kỳ đầu tháng'),
+('KH016', N'Phạm Ngọc Lan', N'Nữ', '1993-07-19', '0988901234', 'lan.pham@gmail.com', N'Khách thường', N'63 Võ Văn Tần, Phường 6, Quận 3, TP.HCM', N'Đang hoạt động', N'Khách văn phòng gần cửa hàng');
 GO
 
 -- 4.3. Nạp Loại sản phẩm
