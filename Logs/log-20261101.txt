@@ -1,0 +1,323 @@
+2026-11-01 17:33:26.548 [INF] He thong bat dau khoi dong.
+2026-11-01 17:33:26.583 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-01 17:33:37.479 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 17:33:37.480 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 17:33:37.481 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 17:33:37.481 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 17:33:39.064 [INF] UI: Chuyen den man hinh Ban Hang (POS).
+2026-11-01 17:33:39.148 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 17:33:39.148 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 17:33:39.191 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 17:33:39.191 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 17:33:39.205 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 17:33:39.205 [INF] Form bán hàng: mở form thành công.
+2026-11-01 17:33:40.413 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 17:33:40.413 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 17:33:40.413 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 17:33:44.486 [INF] UI: Nguoi dung loctlt da dang xuat.
+2026-11-01 17:33:44.521 [INF] Ung dung QuanLyBanHang da dong.
+2026-11-01 17:34:13.592 [INF] He thong bat dau khoi dong.
+2026-11-01 17:34:13.622 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-01 17:34:24.384 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 17:34:24.385 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 17:34:24.386 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 17:34:24.386 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 17:34:25.469 [INF] UI: Chuyen den man hinh Ban Hang (POS).
+2026-11-01 17:34:25.549 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 17:34:25.549 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 17:34:25.556 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 17:34:25.556 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 17:34:25.568 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 17:34:25.568 [INF] Form bán hàng: mở form thành công.
+2026-11-01 17:38:12.207 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 17:38:12.207 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 17:38:12.207 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 17:38:15.742 [INF] UI: Nguoi dung thoat ung dung tu FrmTrangChu.
+2026-11-01 17:38:15.742 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 17:38:15.789 [INF] Ung dung QuanLyBanHang da dong.
+2026-11-01 17:49:27.039 [INF] He thong bat dau khoi dong.
+2026-11-01 17:49:27.075 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-01 17:49:36.832 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 17:49:36.832 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 17:49:36.833 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 17:49:36.833 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 17:49:38.710 [INF] UI: Chuyen den man hinh Ban Hang (POS).
+2026-11-01 17:49:38.791 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 17:49:38.791 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 17:49:38.798 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 17:49:38.798 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 17:49:38.812 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 17:49:38.812 [INF] Form bán hàng: mở form thành công.
+2026-11-01 17:49:42.468 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 17:49:42.469 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 17:49:42.469 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 17:49:45.201 [INF] UI: Nguoi dung thoat ung dung tu FrmTrangChu.
+2026-11-01 17:49:45.202 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 17:49:45.227 [INF] Ung dung QuanLyBanHang da dong.
+2026-11-01 17:50:33.500 [INF] He thong bat dau khoi dong.
+2026-11-01 17:50:33.537 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-01 17:50:44.363 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 17:50:44.363 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 17:50:44.365 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 17:50:44.365 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 17:50:45.440 [INF] UI: Chuyen den man hinh Ban Hang (POS).
+2026-11-01 17:50:45.524 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 17:50:45.524 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 17:50:45.531 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 17:50:45.531 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 17:50:45.543 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 17:50:45.543 [INF] Form bán hàng: mở form thành công.
+2026-11-01 17:51:08.851 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 17:51:08.851 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 17:51:08.851 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 17:51:10.156 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 17:51:10.156 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 17:51:10.184 [INF] Ung dung QuanLyBanHang da dong.
+2026-11-01 17:58:25.786 [INF] He thong bat dau khoi dong.
+2026-11-01 17:58:25.823 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-01 17:58:34.273 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 17:58:34.273 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 17:58:34.274 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 17:58:34.274 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 17:58:35.994 [INF] UI: Chuyen den man hinh Ban Hang (POS).
+2026-11-01 17:58:36.073 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 17:58:36.074 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 17:58:36.079 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 17:58:36.079 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 17:58:36.093 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 17:58:36.093 [INF] Form bán hàng: mở form thành công.
+2026-11-01 18:00:20.041 [INF] He thong bat dau khoi dong.
+2026-11-01 18:00:20.080 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-01 18:00:28.788 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 18:00:28.788 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 18:00:28.790 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 18:00:28.790 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 18:00:30.640 [INF] UI: Chuyen den man hinh Ban Hang (POS).
+2026-11-01 18:00:30.720 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 18:00:30.720 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 18:00:30.726 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 18:00:30.726 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 18:00:30.738 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 18:00:30.738 [INF] Form bán hàng: mở form thành công.
+2026-11-01 18:00:55.942 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 18:00:56.587 [WRN] Canh bao nguoi dung: Chưa chọn khách hàng.
+2026-11-01 18:01:20.789 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 18:01:20.789 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 18:01:20.789 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 18:01:22.040 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 18:01:22.041 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 18:01:22.070 [INF] Ung dung QuanLyBanHang da dong.
+2026-11-01 18:05:36.821 [INF] He thong bat dau khoi dong.
+2026-11-01 18:05:36.862 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-01 18:05:50.259 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 18:05:50.259 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 18:05:50.261 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 18:05:50.261 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 18:05:51.500 [INF] UI: Chuyen den man hinh Ban Hang (POS).
+2026-11-01 18:05:51.576 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 18:05:51.577 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 18:05:51.585 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 18:05:51.585 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 18:05:51.597 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 18:05:51.597 [INF] Form bán hàng: mở form thành công.
+2026-11-01 18:06:09.614 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 18:06:11.034 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 18:06:12.408 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 18:06:12.408 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 18:06:12.413 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 18:06:14.089 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 18:06:14.089 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 18:06:14.089 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 18:06:26.443 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 18:06:26.443 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 18:06:26.493 [INF] Ung dung QuanLyBanHang da dong.
+2026-11-01 18:08:48.799 [INF] He thong bat dau khoi dong.
+2026-11-01 18:08:48.840 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-01 18:08:59.948 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 18:08:59.949 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 18:08:59.950 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 18:08:59.950 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 18:09:02.280 [INF] UI: Chuyen den man hinh Ban Hang (POS).
+2026-11-01 18:09:02.357 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 18:09:02.357 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 18:09:02.362 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 18:09:02.362 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 18:09:02.376 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 18:09:02.376 [INF] Form bán hàng: mở form thành công.
+2026-11-01 18:09:18.651 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 18:09:22.058 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 18:09:22.058 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 18:09:22.058 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 18:09:23.006 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 18:09:23.007 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 18:09:23.039 [INF] Ung dung QuanLyBanHang da dong.
+2026-11-01 18:11:25.529 [INF] He thong bat dau khoi dong.
+2026-11-01 18:11:25.567 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-01 18:11:34.274 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 18:11:34.274 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 18:11:34.276 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 18:11:34.276 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 18:11:35.494 [INF] UI: Chuyen den man hinh Ban Hang (POS).
+2026-11-01 18:11:35.573 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 18:11:35.573 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 18:11:35.581 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 18:11:35.581 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 18:11:35.594 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 18:11:35.594 [INF] Form bán hàng: mở form thành công.
+2026-11-01 18:11:41.923 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 18:12:12.029 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 18:13:34.239 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 18:13:34.239 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 18:13:34.239 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 18:13:35.159 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 18:13:35.160 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 18:13:35.217 [INF] Ung dung QuanLyBanHang da dong.
+2026-11-01 18:15:49.604 [INF] He thong bat dau khoi dong.
+2026-11-01 18:15:49.682 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-01 18:15:59.807 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 18:15:59.808 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 18:15:59.809 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 18:15:59.809 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 18:16:01.009 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 18:16:01.010 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 18:16:01.010 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 18:16:04.304 [INF] UI: Chuyen den man hinh Ban Hang (POS).
+2026-11-01 18:16:04.378 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 18:16:04.378 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 18:16:04.387 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 18:16:04.387 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 18:16:04.399 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 18:16:04.399 [INF] Form bán hàng: mở form thành công.
+2026-11-01 18:16:10.822 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 18:16:19.376 [WRN] Canh bao nguoi dung: Số lượng phải lớn hơn 0.
+2026-11-01 18:16:27.573 [WRN] Canh bao nguoi dung: Số lượng phải lớn hơn 0.
+2026-11-01 18:16:29.937 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 18:16:29.937 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 18:16:29.937 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 18:16:31.339 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 18:16:31.339 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 18:16:31.364 [INF] Ung dung QuanLyBanHang da dong.
+2026-11-01 19:49:07.276 [INF] He thong bat dau khoi dong.
+2026-11-01 19:49:07.312 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-01 19:49:37.211 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 19:49:37.212 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 19:49:37.214 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 19:49:37.214 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 19:49:38.916 [INF] UI: Chuyen den man hinh Quan Ly San Pham.
+2026-11-01 19:49:53.596 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 19:49:53.596 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 19:49:53.596 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 19:49:57.653 [INF] UI: Chuyen den man hinh Quan Ly San Pham.
+2026-11-01 19:50:06.521 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 284,500 đ, HD: 3, SP: 12, KH: 7
+2026-11-01 19:50:06.521 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 19:50:06.522 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 19:50:06.522 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 19:50:07.761 [INF] UI: Chuyen den man hinh Ban Hang (POS).
+2026-11-01 19:50:07.840 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 19:50:07.841 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 19:50:07.847 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 19:50:07.847 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 19:50:07.854 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 19:50:07.854 [INF] Form bán hàng: mở form thành công.
+2026-11-01 19:50:11.423 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 19:50:16.007 [INF] Lưu hóa đơn HD010 thành công.
+2026-11-01 19:50:17.459 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 19:50:17.459 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 19:50:19.130 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 294,500 đ, HD: 4, SP: 12, KH: 7
+2026-11-01 19:50:19.130 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 19:50:19.131 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 19:50:19.131 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 19:50:19.150 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 294,500 đ, HD: 4, SP: 12, KH: 7
+2026-11-01 19:50:19.150 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 19:50:19.150 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 19:50:21.097 [INF] UI: Chuyen den man hinh Quan Ly San Pham.
+2026-11-01 19:50:33.632 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 294,500 đ, HD: 4, SP: 12, KH: 7
+2026-11-01 19:50:33.632 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 19:50:33.633 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 19:50:33.633 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 19:50:35.068 [INF] UI: Chuyen den man hinh Ban Hang (POS).
+2026-11-01 19:50:35.103 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 19:50:35.103 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 19:50:35.107 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 19:50:35.107 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 19:50:35.110 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 19:50:35.110 [INF] Form bán hàng: mở form thành công.
+2026-11-01 19:50:55.275 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 294,500 đ, HD: 4, SP: 12, KH: 7
+2026-11-01 19:50:55.275 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 19:50:55.275 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 19:50:59.774 [INF] UI: Nguoi dung thoat ung dung tu FrmTrangChu.
+2026-11-01 19:50:59.775 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 19:50:59.775 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 19:50:59.775 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 19:50:59.775 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 19:50:59.785 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 294,500 đ, HD: 4, SP: 12, KH: 7
+2026-11-01 19:50:59.785 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 19:50:59.786 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 19:50:59.799 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 294,500 đ, HD: 4, SP: 12, KH: 7
+2026-11-01 19:50:59.799 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 19:50:59.799 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 19:50:59.840 [INF] Ung dung QuanLyBanHang da dong.
+2026-11-01 21:44:34.914 [INF] He thong bat dau khoi dong.
+2026-11-01 21:44:34.914 [INF] He thong bat dau khoi dong.
+2026-11-01 21:44:34.930 [WRN] Xoa khach hang that bai: Vui lòng chọn khách hàng cần xóa.
+2026-11-01 21:44:34.930 [WRN] Them khach hang that bai: Mã khách hàng không được để trống.
+2026-11-01 21:44:34.930 [WRN] Them khach hang that bai (Ma: KH999): Tên khách hàng không được để trống.
+2026-11-01 21:44:35.644 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 294,500 đ, HD: 4, SP: 12, KH: 7
+2026-11-01 21:44:35.644 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 21:44:35.644 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 294,500 đ, HD: 4, SP: 12, KH: 7
+2026-11-01 21:44:35.644 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 21:44:35.646 [INF] Tao ma khach hang tu dong: KH009
+2026-11-01 21:44:35.682 [INF] Lay danh sach khach hang: tuKhoa='', loai='' => tim thay 8 ban ghi.
+2026-11-01 21:44:35.686 [WRN] Xoa khach hang that bai: Không tìm thấy khách hàng mã 'KH_TEST_99' để xóa.
+2026-11-01 21:44:35.686 [INF] Lay danh sach khach hang: tuKhoa='', loai='Khách VIP' => tim thay 2 ban ghi.
+2026-11-01 21:44:35.686 [WRN] Cap nhat khach hang that bai: Không tìm thấy khách hàng mã 'KH_KHONG_TON_TAI' để cập nhật.
+2026-11-01 21:44:35.686 [WRN] Them khach hang that bai: Mã khách hàng 'KH001' đã tồn tại trong hệ thống.
+2026-11-01 21:44:35.687 [INF] Lay danh sach khach hang: tuKhoa='Nguyễn Văn An', loai='' => tim thay 1 ban ghi.
+2026-11-01 21:44:35.690 [INF] Them moi khach hang thanh cong: Ma=KH_TEST_99, Ten=Khách Hàng Test Unit
+2026-11-01 21:44:35.695 [INF] Xoa khach hang thanh cong: Ma=KH_TEST_99
+2026-11-01 22:25:50.402 [INF] He thong bat dau khoi dong.
+2026-11-01 22:25:50.430 [INF] Ung dung QuanLyBanHang da khoi dong.
+2026-11-01 22:26:03.390 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 294,500 đ, HD: 4, SP: 12, KH: 7
+2026-11-01 22:26:03.390 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 22:26:03.391 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 22:26:03.391 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 22:26:05.586 [INF] UI: Chuyen den man hinh Ban Hang (POS).
+2026-11-01 22:26:05.676 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 22:26:05.676 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 22:26:05.683 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 22:26:05.683 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 22:26:05.694 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 22:26:05.696 [INF] Form bán hàng: mở form thành công.
+2026-11-01 22:26:26.803 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 22:26:29.704 [WRN] Canh bao nguoi dung: Không được nhập số âm.
+2026-11-01 22:26:33.177 [WRN] Canh bao nguoi dung: Không được nhập số âm.
+2026-11-01 22:26:38.101 [WRN] Canh bao nguoi dung: Chưa chọn khách hàng.
+2026-11-01 22:26:45.913 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 22:26:47.985 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 22:26:50.671 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 22:27:06.523 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 22:27:06.523 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 22:27:06.533 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 22:27:06.533 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 22:27:06.538 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 22:27:17.587 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 22:27:19.987 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 22:27:25.464 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 22:27:28.894 [INF] Form bán hàng: thêm sản phẩm vào giỏ.
+2026-11-01 22:27:32.313 [INF] Lưu hóa đơn HD011 thành công.
+2026-11-01 22:27:33.302 [INF] Đọc danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 22:27:33.311 [INF] BLL: Lấy danh sách sản phẩm thành công. Số lượng: 12
+2026-11-01 22:27:33.321 [INF] DAL: Đọc danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 22:27:33.322 [INF] BLL: Lấy danh sách khách hàng thành công. Số lượng: 7
+2026-11-01 22:27:33.327 [INF] Form bán hàng: tải 7 khách hàng.
+2026-11-01 22:27:36.303 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 524,500 đ, HD: 5, SP: 12, KH: 7
+2026-11-01 22:27:36.303 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 22:27:36.304 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 22:27:36.304 [INF] UI: Khoi dong FrmTrangChu thanh cong. Nguoi dung: loctlt
+2026-11-01 22:27:36.326 [INF] DAL: Lay thong ke tong quan trang chu thanh cong. Doanh thu: 524,500 đ, HD: 5, SP: 12, KH: 7
+2026-11-01 22:27:36.326 [INF] BLL: Lay thong ke tong quan trang chu thanh cong.
+2026-11-01 22:27:36.327 [INF] UI: Cap nhat du lieu thong ke len Dashboard Trang chu thanh cong.
+2026-11-01 22:27:46.204 [INF] UI: Nguoi dung thoat ung dung tu FrmTrangChu.
+2026-11-01 22:27:46.205 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 22:27:46.205 [INF] UI: Dong ung dung qua FrmTrangChu_FormClosing.
+2026-11-01 22:27:46.236 [INF] Ung dung QuanLyBanHang da dong.

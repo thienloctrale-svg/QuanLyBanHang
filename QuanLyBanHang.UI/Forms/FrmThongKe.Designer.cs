@@ -30,6 +30,9 @@
         {
             lblTieuDeForm = new Label();
             grpBoLoc = new GroupBox();
+            rdo30NgayGanNhat = new RadioButton();
+            rdo7NgayGanNhat = new RadioButton();
+            rdoHomNay = new RadioButton();
             button1 = new Button();
             btnThongKe = new Button();
             txtTimKiem = new TextBox();
@@ -54,7 +57,7 @@
             lblGiaTriTrungBinh = new Label();
             lblTitleGiaTriTrungBinh = new Label();
             grpDanhSachHoaDon = new GroupBox();
-            this.dgvHoaDon = new DataGridView();
+            dgvHoaDon = new DataGridView();
             colHD_Ma = new DataGridViewTextBoxColumn();
             colHD_NgayLap = new DataGridViewTextBoxColumn();
             colHD_KhachHang = new DataGridViewTextBoxColumn();
@@ -63,15 +66,16 @@
             tblGrids = new TableLayoutPanel();
             grpChiTietHoaDon = new GroupBox();
             dgvChiTietHoaDon = new DataGridView();
+            panelChucNang = new Panel();
+            btnHome = new Button();
+            btnDong = new Button();
+            btnXuatBaoCao = new Button();
             colCT_STT = new DataGridViewTextBoxColumn();
             colCT_MaSP = new DataGridViewTextBoxColumn();
+            colCT_TenSP = new DataGridViewTextBoxColumn();
             colCT_DVT = new DataGridViewTextBoxColumn();
             colCT_SoLuong = new DataGridViewTextBoxColumn();
             colCT_ThanhTien = new DataGridViewTextBoxColumn();
-            panelChucNang = new Panel();
-            bntHome = new Button();
-            btnDong = new Button();
-            btnXuatBaoCao = new Button();
             grpBoLoc.SuspendLayout();
             tblCards.SuspendLayout();
             panel1.SuspendLayout();
@@ -79,7 +83,7 @@
             panel3.SuspendLayout();
             panel4.SuspendLayout();
             grpDanhSachHoaDon.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)this.dgvHoaDon).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvHoaDon).BeginInit();
             tblGrids.SuspendLayout();
             grpChiTietHoaDon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvChiTietHoaDon).BeginInit();
@@ -102,6 +106,9 @@
             // grpBoLoc
             // 
             grpBoLoc.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            grpBoLoc.Controls.Add(rdo30NgayGanNhat);
+            grpBoLoc.Controls.Add(rdo7NgayGanNhat);
+            grpBoLoc.Controls.Add(rdoHomNay);
             grpBoLoc.Controls.Add(button1);
             grpBoLoc.Controls.Add(btnThongKe);
             grpBoLoc.Controls.Add(txtTimKiem);
@@ -118,10 +125,46 @@
             grpBoLoc.Margin = new Padding(3, 4, 3, 4);
             grpBoLoc.Name = "grpBoLoc";
             grpBoLoc.Padding = new Padding(3, 4, 3, 4);
-            grpBoLoc.Size = new Size(1319, 101);
+            grpBoLoc.Size = new Size(1319, 115);
             grpBoLoc.TabIndex = 1;
             grpBoLoc.TabStop = false;
             grpBoLoc.Text = "A. Bộ lọc báo cáo";
+            // 
+            // rdo30NgayGanNhat
+            // 
+            rdo30NgayGanNhat.AutoSize = true;
+            rdo30NgayGanNhat.Font = new Font("Segoe UI", 9.5F);
+            rdo30NgayGanNhat.Location = new Point(410, 79);
+            rdo30NgayGanNhat.Name = "rdo30NgayGanNhat";
+            rdo30NgayGanNhat.Size = new Size(160, 25);
+            rdo30NgayGanNhat.TabIndex = 12;
+            rdo30NgayGanNhat.TabStop = true;
+            rdo30NgayGanNhat.Text = "30 Ngày Gần Nhất";
+            rdo30NgayGanNhat.UseVisualStyleBackColor = true;
+            // 
+            // rdo7NgayGanNhat
+            // 
+            rdo7NgayGanNhat.AutoSize = true;
+            rdo7NgayGanNhat.Font = new Font("Segoe UI", 9.5F);
+            rdo7NgayGanNhat.Location = new Point(186, 79);
+            rdo7NgayGanNhat.Name = "rdo7NgayGanNhat";
+            rdo7NgayGanNhat.Size = new Size(151, 25);
+            rdo7NgayGanNhat.TabIndex = 11;
+            rdo7NgayGanNhat.TabStop = true;
+            rdo7NgayGanNhat.Text = "7 Ngày Gần Nhất";
+            rdo7NgayGanNhat.UseVisualStyleBackColor = true;
+            // 
+            // rdoHomNay
+            // 
+            rdoHomNay.AutoSize = true;
+            rdoHomNay.Font = new Font("Segoe UI", 9.5F);
+            rdoHomNay.Location = new Point(17, 79);
+            rdoHomNay.Name = "rdoHomNay";
+            rdoHomNay.Size = new Size(97, 25);
+            rdoHomNay.TabIndex = 10;
+            rdoHomNay.TabStop = true;
+            rdoHomNay.Text = "Hôm Nay";
+            rdoHomNay.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -252,7 +295,7 @@
             tblCards.Controls.Add(panel2, 1, 0);
             tblCards.Controls.Add(panel3, 2, 0);
             tblCards.Controls.Add(panel4, 3, 0);
-            tblCards.Location = new Point(17, 179);
+            tblCards.Location = new Point(17, 194);
             tblCards.Margin = new Padding(3, 4, 3, 4);
             tblCards.Name = "tblCards";
             tblCards.RowCount = 1;
@@ -419,7 +462,7 @@
             // 
             // grpDanhSachHoaDon
             // 
-            grpDanhSachHoaDon.Controls.Add(this.dgvHoaDon);
+            grpDanhSachHoaDon.Controls.Add(dgvHoaDon);
             grpDanhSachHoaDon.Dock = DockStyle.Fill;
             grpDanhSachHoaDon.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
             grpDanhSachHoaDon.ForeColor = Color.FromArgb(30, 41, 59);
@@ -427,28 +470,28 @@
             grpDanhSachHoaDon.Margin = new Padding(0, 0, 9, 0);
             grpDanhSachHoaDon.Name = "grpDanhSachHoaDon";
             grpDanhSachHoaDon.Padding = new Padding(11, 13, 11, 13);
-            grpDanhSachHoaDon.Size = new Size(650, 560);
+            grpDanhSachHoaDon.Size = new Size(650, 574);
             grpDanhSachHoaDon.TabIndex = 0;
             grpDanhSachHoaDon.TabStop = false;
             grpDanhSachHoaDon.Text = "B. Danh sách hóa đơn (Chọn một hóa đơn để xem chi tiết)";
             // 
             // dgvHoaDon
             // 
-            this.dgvHoaDon.AllowUserToAddRows = false;
-            this.dgvHoaDon.AllowUserToDeleteRows = false;
-            this.dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvHoaDon.BackgroundColor = Color.White;
-            this.dgvHoaDon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHoaDon.Columns.AddRange(new DataGridViewColumn[] { colHD_Ma, colHD_NgayLap, colHD_KhachHang, colHD_TrangThai, colHD_TongTien });
-            this.dgvHoaDon.Dock = DockStyle.Fill;
-            this.dgvHoaDon.Location = new Point(11, 35);
-            this.dgvHoaDon.Margin = new Padding(3, 4, 3, 4);
-            this.dgvHoaDon.Name = "dgvHoaDon";
-            this.dgvHoaDon.ReadOnly = true;
-            this.dgvHoaDon.RowHeadersVisible = false;
-            this.dgvHoaDon.RowHeadersWidth = 51;
-            this.dgvHoaDon.Size = new Size(628, 512);
-            this.dgvHoaDon.TabIndex = 0;
+            dgvHoaDon.AllowUserToAddRows = false;
+            dgvHoaDon.AllowUserToDeleteRows = false;
+            dgvHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvHoaDon.BackgroundColor = Color.White;
+            dgvHoaDon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvHoaDon.Columns.AddRange(new DataGridViewColumn[] { colHD_Ma, colHD_NgayLap, colHD_KhachHang, colHD_TrangThai, colHD_TongTien });
+            dgvHoaDon.Dock = DockStyle.Fill;
+            dgvHoaDon.Location = new Point(11, 35);
+            dgvHoaDon.Margin = new Padding(3, 4, 3, 4);
+            dgvHoaDon.Name = "dgvHoaDon";
+            dgvHoaDon.ReadOnly = true;
+            dgvHoaDon.RowHeadersVisible = false;
+            dgvHoaDon.RowHeadersWidth = 51;
+            dgvHoaDon.Size = new Size(628, 526);
+            dgvHoaDon.TabIndex = 0;
             // 
             // colHD_Ma
             // 
@@ -493,13 +536,13 @@
             tblGrids.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tblGrids.Controls.Add(grpChiTietHoaDon, 1, 0);
             tblGrids.Controls.Add(grpDanhSachHoaDon, 0, 0);
-            tblGrids.Location = new Point(17, 307);
+            tblGrids.Location = new Point(17, 322);
             tblGrids.Margin = new Padding(3, 4, 3, 4);
             tblGrids.Name = "tblGrids";
             tblGrids.RowCount = 1;
             tblGrids.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tblGrids.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblGrids.Size = new Size(1319, 560);
+            tblGrids.Size = new Size(1319, 574);
             tblGrids.TabIndex = 3;
             // 
             // grpChiTietHoaDon
@@ -512,7 +555,7 @@
             grpChiTietHoaDon.Margin = new Padding(9, 0, 0, 0);
             grpChiTietHoaDon.Name = "grpChiTietHoaDon";
             grpChiTietHoaDon.Padding = new Padding(11, 13, 11, 13);
-            grpChiTietHoaDon.Size = new Size(651, 560);
+            grpChiTietHoaDon.Size = new Size(651, 574);
             grpChiTietHoaDon.TabIndex = 1;
             grpChiTietHoaDon.TabStop = false;
             grpChiTietHoaDon.Text = "C. Chi tiết hóa đơn được chọn";
@@ -524,7 +567,7 @@
             dgvChiTietHoaDon.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvChiTietHoaDon.BackgroundColor = Color.White;
             dgvChiTietHoaDon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvChiTietHoaDon.Columns.AddRange(new DataGridViewColumn[] { colCT_STT, colCT_MaSP, colCT_DVT, colCT_SoLuong, colCT_ThanhTien });
+            dgvChiTietHoaDon.Columns.AddRange(new DataGridViewColumn[] { colCT_STT, colCT_MaSP, colCT_TenSP, colCT_DVT, colCT_SoLuong, colCT_ThanhTien });
             dgvChiTietHoaDon.Dock = DockStyle.Fill;
             dgvChiTietHoaDon.Location = new Point(11, 35);
             dgvChiTietHoaDon.Margin = new Padding(3, 4, 3, 4);
@@ -532,70 +575,35 @@
             dgvChiTietHoaDon.ReadOnly = true;
             dgvChiTietHoaDon.RowHeadersVisible = false;
             dgvChiTietHoaDon.RowHeadersWidth = 51;
-            dgvChiTietHoaDon.Size = new Size(629, 512);
+            dgvChiTietHoaDon.Size = new Size(629, 526);
             dgvChiTietHoaDon.TabIndex = 0;
-            // 
-            // colCT_STT
-            // 
-            colCT_STT.HeaderText = "STT";
-            colCT_STT.MinimumWidth = 6;
-            colCT_STT.Name = "colCT_STT";
-            colCT_STT.ReadOnly = true;
-            // 
-            // colCT_MaSP
-            // 
-            colCT_MaSP.HeaderText = "Mã SP";
-            colCT_MaSP.MinimumWidth = 6;
-            colCT_MaSP.Name = "colCT_MaSP";
-            colCT_MaSP.ReadOnly = true;
-            // 
-            // colCT_DVT
-            // 
-            colCT_DVT.HeaderText = "ĐVT";
-            colCT_DVT.MinimumWidth = 6;
-            colCT_DVT.Name = "colCT_DVT";
-            colCT_DVT.ReadOnly = true;
-            // 
-            // colCT_SoLuong
-            // 
-            colCT_SoLuong.HeaderText = "Số lượng";
-            colCT_SoLuong.MinimumWidth = 6;
-            colCT_SoLuong.Name = "colCT_SoLuong";
-            colCT_SoLuong.ReadOnly = true;
-            // 
-            // colCT_ThanhTien
-            // 
-            colCT_ThanhTien.HeaderText = "Thành tiền";
-            colCT_ThanhTien.MinimumWidth = 6;
-            colCT_ThanhTien.Name = "colCT_ThanhTien";
-            colCT_ThanhTien.ReadOnly = true;
             // 
             // panelChucNang
             // 
-            panelChucNang.Controls.Add(bntHome);
+            panelChucNang.Controls.Add(btnHome);
             panelChucNang.Controls.Add(btnDong);
             panelChucNang.Controls.Add(btnXuatBaoCao);
             panelChucNang.Dock = DockStyle.Bottom;
-            panelChucNang.Location = new Point(0, 874);
+            panelChucNang.Location = new Point(0, 903);
             panelChucNang.Name = "panelChucNang";
             panelChucNang.Size = new Size(1353, 87);
             panelChucNang.TabIndex = 4;
             // 
-            // bntHome
+            // btnHome
             // 
-            bntHome.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            bntHome.BackColor = Color.FromArgb(37, 99, 235);
-            bntHome.Cursor = Cursors.Hand;
-            bntHome.FlatStyle = FlatStyle.Flat;
-            bntHome.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            bntHome.ForeColor = Color.White;
-            bntHome.Location = new Point(30, 19);
-            bntHome.Margin = new Padding(3, 4, 3, 4);
-            bntHome.Name = "bntHome";
-            bntHome.Size = new Size(150, 48);
-            bntHome.TabIndex = 11;
-            bntHome.Text = "⌂ Home";
-            bntHome.UseVisualStyleBackColor = false;
+            btnHome.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnHome.BackColor = Color.FromArgb(37, 99, 235);
+            btnHome.Cursor = Cursors.Hand;
+            btnHome.FlatStyle = FlatStyle.Flat;
+            btnHome.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnHome.ForeColor = Color.White;
+            btnHome.Location = new Point(30, 19);
+            btnHome.Margin = new Padding(3, 4, 3, 4);
+            btnHome.Name = "btnHome";
+            btnHome.Size = new Size(150, 48);
+            btnHome.TabIndex = 11;
+            btnHome.Text = "⌂ Home";
+            btnHome.UseVisualStyleBackColor = false;
             // 
             // btnDong
             // 
@@ -628,18 +636,61 @@
             btnXuatBaoCao.Text = "📊 Xuất Báo Cáo (Excel)";
             btnXuatBaoCao.UseVisualStyleBackColor = false;
             // 
+            // colCT_STT
+            // 
+            colCT_STT.HeaderText = "STT";
+            colCT_STT.MinimumWidth = 6;
+            colCT_STT.Name = "colCT_STT";
+            colCT_STT.ReadOnly = true;
+            // 
+            // colCT_MaSP
+            // 
+            colCT_MaSP.HeaderText = "Mã SP";
+            colCT_MaSP.MinimumWidth = 6;
+            colCT_MaSP.Name = "colCT_MaSP";
+            colCT_MaSP.ReadOnly = true;
+            // 
+            // colCT_TenSP
+            // 
+            colCT_TenSP.HeaderText = "Tên SP";
+            colCT_TenSP.MinimumWidth = 6;
+            colCT_TenSP.Name = "colCT_TenSP";
+            colCT_TenSP.ReadOnly = true;
+            // 
+            // colCT_DVT
+            // 
+            colCT_DVT.HeaderText = "ĐVT";
+            colCT_DVT.MinimumWidth = 6;
+            colCT_DVT.Name = "colCT_DVT";
+            colCT_DVT.ReadOnly = true;
+            // 
+            // colCT_SoLuong
+            // 
+            colCT_SoLuong.HeaderText = "Số lượng";
+            colCT_SoLuong.MinimumWidth = 6;
+            colCT_SoLuong.Name = "colCT_SoLuong";
+            colCT_SoLuong.ReadOnly = true;
+            // 
+            // colCT_ThanhTien
+            // 
+            colCT_ThanhTien.HeaderText = "Thành tiền";
+            colCT_ThanhTien.MinimumWidth = 6;
+            colCT_ThanhTien.Name = "colCT_ThanhTien";
+            colCT_ThanhTien.ReadOnly = true;
+            // 
             // FrmThongKe
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(248, 250, 252);
-            ClientSize = new Size(1353, 961);
+            ClientSize = new Size(1353, 990);
             Controls.Add(panelChucNang);
             Controls.Add(tblGrids);
             Controls.Add(tblCards);
             Controls.Add(grpBoLoc);
             Controls.Add(lblTieuDeForm);
             Name = "FrmThongKe";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmThongKe";
             grpBoLoc.ResumeLayout(false);
             grpBoLoc.PerformLayout();
@@ -649,7 +700,7 @@
             panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);
             grpDanhSachHoaDon.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)this.dgvHoaDon).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvHoaDon).EndInit();
             tblGrids.ResumeLayout(false);
             grpChiTietHoaDon.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvChiTietHoaDon).EndInit();
@@ -691,19 +742,23 @@
         private Panel panelChucNang;
         private Button btnXuatBaoCao;
         private Button btnDong;
-        private Button bntHome;
+        private Button btnHome;
         private DataGridView dgvHoaDon;
         private DataGridView dgvChiTietHoaDon;
-        private DataGridViewTextBoxColumn colCT_STT;
-        private DataGridViewTextBoxColumn colCT_MaSP;
-        private DataGridViewTextBoxColumn colCT_DVT;
-        private DataGridViewTextBoxColumn colCT_SoLuong;
-        private DataGridViewTextBoxColumn colCT_ThanhTien;
         private DataGridViewTextBoxColumn colHD_Ma;
         private DataGridViewTextBoxColumn colHD_NgayLap;
         private DataGridViewTextBoxColumn colHD_KhachHang;
         private DataGridViewTextBoxColumn colHD_TrangThai;
         private DataGridViewTextBoxColumn colHD_TongTien;
         private Label label3;
+        private RadioButton rdo30NgayGanNhat;
+        private RadioButton rdo7NgayGanNhat;
+        private RadioButton rdoHomNay;
+        private DataGridViewTextBoxColumn colCT_STT;
+        private DataGridViewTextBoxColumn colCT_MaSP;
+        private DataGridViewTextBoxColumn colCT_TenSP;
+        private DataGridViewTextBoxColumn colCT_DVT;
+        private DataGridViewTextBoxColumn colCT_SoLuong;
+        private DataGridViewTextBoxColumn colCT_ThanhTien;
     }
 }

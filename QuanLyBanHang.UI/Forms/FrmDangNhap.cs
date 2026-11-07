@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System;
 using System.Windows.Forms;
 using QuanLyBanHang.BLL;
 
@@ -13,13 +12,16 @@ namespace QuanLyBanHang.UI
     public partial class FrmDangNhap : Form
     {
         private TaiKhoanBLL bll;
+
+        // Biến static lưu tài khoản đăng nhập để dùng xuyên suốt ứng dụng
+        public static object TaiKhoanDangNhap = null;
+
         public FrmDangNhap()
         {
             InitializeComponent();
 
-            // Mặc định ô mật khẩu sẽ ẩn ký tự khi vừa chạy lên
             txtpass.UseSystemPasswordChar = true;
-            checkhienmatkhau.Checked = false; // Đảm bảo ô checkbox chưa tích
+            checkhienmatkhau.Checked = false;
 
             if (!this.DesignMode)
             {
@@ -32,25 +34,23 @@ namespace QuanLyBanHang.UI
 
             txtpass.KeyDown += txtpass_KeyDown;
         }
+
         private void FrmDangNhap_Load(object sender, EventArgs e)
         {
-            // Mặc định ẩn mật khẩu
             txtpass.UseSystemPasswordChar = true;
         }
 
+        // Giữ lại các hàm này để khớp với sự kiện trong Designer
         private void label3_Click(object sender, EventArgs e)
         {
-
         }
 
         private void txtacc_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void txtpass_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void checkhienmatkhau_CheckedChanged(object sender, EventArgs e)
@@ -94,20 +94,22 @@ namespace QuanLyBanHang.UI
 
             if (tk != null)
             {
+                // Lưu vào biến static toàn cục
+                TaiKhoanDangNhap = tk;
+
                 // Ẩn Form Đăng Nhập
                 this.Hide();
 
                 // Khởi tạo và hiển thị Form Trang Chủ
                 FrmTrangChu mainForm = new FrmTrangChu();
 
-                // Đảm bảo khi tắt Form Trang Chủ thì toàn bộ ứng dụng sẽ thoát hẳn (không chạy ngầm)
+                // Đảm bảo khi tắt Form Trang Chủ thì toàn bộ ứng dụng sẽ thoát hẳn
                 mainForm.FormClosed += (s, args) => Application.Exit();
 
                 mainForm.Show();
             }
             else
             {
-                // Sai tài khoản/mật khẩu thì vẫn báo lỗi để người dùng biết
                 MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtpass.Clear();
                 txtpass.Focus();
@@ -119,7 +121,7 @@ namespace QuanLyBanHang.UI
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thoát ứng dụng không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                Application.Exit(); // Thoát chương trình
+                Application.Exit();
             }
         }
 
